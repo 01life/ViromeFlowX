@@ -2,8 +2,7 @@
 // Assembly
 //
 
-include { MEGAHIT } from '../../modules/local/megahit'
-include { METASPADES } from '../../modules/local/metaspades'
+include { MEGAHIT } from '../../modules/local/spades'
 
 
 workflow ASSEMBLY {
