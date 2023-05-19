@@ -1,5 +1,5 @@
 //
-// This file holds several functions specific to the main.nf workflow in the nf-core/virome pipeline
+// This file holds several functions specific to the main.nf workflow in the nf-core/metagenome pipeline
 //
 
 class WorkflowMain {
@@ -22,7 +22,7 @@ class WorkflowMain {
     // Generate help string
     //
     public static String help(workflow, params, log) {
-        def command = "nextflow run ${workflow.manifest.name} --input samplesheet.csv --genome GRCh37 -profile docker"
+        def command = "nextflow run ${workflow.manifest.name} --input samplesheet.csv --outdir result -profile slurm"
         def help_string = ''
         help_string += NfcoreTemplate.logo(workflow, params.monochrome_logs)
         help_string += NfcoreSchema.paramsHelp(workflow, params, command)
@@ -88,12 +88,12 @@ class WorkflowMain {
     //
     // Get attribute from genome config file e.g. fasta
     //
-    public static Object getGenomeAttribute(params, attribute) {
-        if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
-            if (params.genomes[ params.genome ].containsKey(attribute)) {
-                return params.genomes[ params.genome ][ attribute ]
-            }
-        }
-        return null
-    }
+    // public static Object getGenomeAttribute(params, attribute) {
+    //     if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
+    //         if (params.genomes[ params.genome ].containsKey(attribute)) {
+    //             return params.genomes[ params.genome ][ attribute ]
+    //         }
+    //     }
+    //     return null
+    // }
 }
