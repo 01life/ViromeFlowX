@@ -2,7 +2,7 @@
 // Assembly
 //
 
-include { MEGAHIT } from '../../modules/local/spades'
+include { SPADES } from '../../modules/local/spades'
 
 
 workflow ASSEMBLY {
@@ -12,18 +12,13 @@ workflow ASSEMBLY {
 
     main:
     
-    if (!params.megahit){
-        METASPADES ( clean_reads1,clean_reads2 )
-        contigs = METASPADES.out.contigs
-                .map{ id,file -> [ id,[file] ]}
-    } else {
-        MEGAHIT ( clean_reads1,clean_reads2 )
-        contigs = MEGAHIT.out.contigs
-                .map{ id,file -> [ id,[file] ]}
-    }
+    SPADES(clean_reads1, clean_reads2)
 
+    contigs = SPADES.out.contigs
+                .map{ id,file -> [ id,[file] ]}
 
     emit:
     contigs           // channel: [ val(id), [ contigs ] ]
+    
 }
 

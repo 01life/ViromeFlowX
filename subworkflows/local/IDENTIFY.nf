@@ -7,7 +7,7 @@ include { VIRSORTER } from '../../modules/local/virsorter'
 include { MERGE } from '../../modules/local/merge_virome'
 
 
-workflow FINDER {
+workflow IDENTIFY {
     take:
     contigs      // channel: [ val(id), [ contigs ] ]
 

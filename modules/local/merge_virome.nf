@@ -21,23 +21,23 @@ process mergeVirome {
 
 }
 
-//可合并到cdhit!
-process merge_out{
+//合并到cdhit!
+// process merge_out{
 
-    publishDir "${params.outdir}/03.identify/merge/",mode:'copy'
+//     publishDir "${params.outdir}/03.identify/merge/",mode:'copy'
 
-    input:
-    path virus
+//     input:
+//     path virus
 
-    output:
-    path("merge.virus.fa.gz")
+//     output:
+//     path("merge.virus.fa.gz")
 
-    script:
-    """
-    cat ${virus} > merge.virus.fa
-    gzip merge.virus.fa
+//     script:
+//     """
+//     cat ${virus} > merge.virus.fa
+//     gzip merge.virus.fa
 
-    """
+//     """
 
 
-}
+// }
