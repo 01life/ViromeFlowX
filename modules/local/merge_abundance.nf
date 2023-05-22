@@ -8,7 +8,7 @@ process merge_abundance{
 
     output:
     path("contig/virus.contigs.abun.txt"),emit:"contigs_abundance"
-    path("gene/virus.gene.rpkm.pr")
+    path("gene/virus.gene.rpkm.pr"),emit:"rpkms"
 
     script:
 

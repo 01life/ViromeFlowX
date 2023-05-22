@@ -9,6 +9,12 @@ process gene_function {
     path("map_*")
     path("vir.faa*")
     path("gene2uniref.txt")
+    path("map_CAZy_uniref90.out.txt"),emit:"map_cazy"
+    path("map_eggnog_uniref90.out.txt"),emit:"map_eggnog"
+    path("map_go_uniref90.out.txt"),emit:"map_go"
+    path("map_ko_uniref90.out.txt"),emit:"map_ko"
+    path("map_level4ec_uniref90.out.txt"),emit:"map_level4ec"
+    path("map_pfam_uniref90.out.txt"),emit:"map_pfam"
 
     script:
 
