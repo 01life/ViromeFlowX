@@ -15,9 +15,9 @@ workflow IDENTIFY {
     
     CDHIT( virus )
 
-    PRODIGAL(CDHIT.out.fa)
+    PRODIGAL( CDHIT.out.fa )
 
-    PROKKA(CDHIT.out.fa)
+    PROKKA( CDHIT.out.fa )
 
     emit:
     virus_fa = CDHIT.out.fa       // channel: [ val(id), [ contigs ] ]
