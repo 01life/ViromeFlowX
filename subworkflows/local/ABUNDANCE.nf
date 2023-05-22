@@ -28,7 +28,8 @@ workflow ABUNDANCE {
     MERGE(CONTIG.out.abundance.collect(), GENE.out.rpkm.collect())
 
     emit:
-    contigs_abundance = MERGE.out.contigs_abundance         
+    contigs_abundance = MERGE.out.contigs_abundance 
+    rpkms = MERGE.out.rpkms     
     
 }
 

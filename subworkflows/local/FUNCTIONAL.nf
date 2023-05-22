@@ -5,7 +5,7 @@
 include { FUNCTION } from '../../modules/local/gene_function'
 
 
-workflow ASSEMBLY {
+workflow FUNCTIONAL {
 
     take:
     prodigal_faa      // channel: [ ]
@@ -16,12 +16,12 @@ workflow ASSEMBLY {
     FUNCTION( prodigal_faa )
     
     emit:
-    map_cazy = FUNCTION.out.map_cazy
-    map_eggnog = FUNCTION.out.map_eggnog
-    map_go = FUNCTION.out.map_go
-    map_ko = FUNCTION.out.map_ko
-    map_level4ec = FUNCTION.out.map_level4ec
-    map_pfam = FUNCTION.out.map_pfam
+    cazy = FUNCTION.out.cazy
+    eggnog = FUNCTION.out.eggnog
+    go = FUNCTION.out.go
+    ko = FUNCTION.out.ko
+    level4ec = FUNCTION.out.level4ec
+    pfam = FUNCTION.out.pfam
     
 }
 

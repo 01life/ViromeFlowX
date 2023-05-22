@@ -6,9 +6,9 @@ process prokka {
     path cdhits
 
     output:
-    path("vir.bed")
+    path("vir.bed"),emit:"bed"
     path("virus.prokka*")
-    path("virus.prokka.faa"),emit:'faa'
+    path("virus.prokka.faa"),emit:"faa"
 
     script:
     """

@@ -34,6 +34,6 @@ workflow INPUT_QC {
     emit:
     clean_reads1 = QC.out.clean_reads1          // channel: [ val(id), [ reads1 ] ]
     clean_reads2 = QC.out.clean_reads2          // channel: [ val(id), [ reads2 ] ]
-    versions = QC.out.versions                  // channel: [ versions.yml ]
+   
 }
 

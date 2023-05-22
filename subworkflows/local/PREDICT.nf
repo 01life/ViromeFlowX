@@ -7,7 +7,7 @@ include { PRODIGAL } from '../../modules/local/prodigal'
 include { PROKKA } from '../../modules/local/prokka'
 
 
-workflow IDENTIFY {
+workflow PREDICT {
     take:
     virus      // channel: [ *_virus.fa ]
 
@@ -20,10 +20,11 @@ workflow IDENTIFY {
     PROKKA( CDHIT.out.fa )
 
     emit:
-    virus_fa = CDHIT.out.fa       // channel: [ val(id), [ contigs ] ]
+    virus_fa = CDHIT.out.fa       
     virus_len = CDHIT.out.len
     viral_cds = PRODIGAL.out.cds
     viral_pep = PRODIGAL.out.pep
     virus_faa = PROKKA.out.faa
+    virus_bed = PROKKA.out.bed
 
 }

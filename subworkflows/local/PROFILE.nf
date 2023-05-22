@@ -10,18 +10,18 @@ workflow PROFILE {
     take:
     abundance
     taxonomy
-    map_cazy
-    map_eggnog
-    map_go
-    map_ko
-    map_level4ec
-    map_pfam
+    cazy
+    eggnog
+    go
+    ko
+    level4ec
+    pfam
     rpkms
 
     main:
     
     CLASSIFY( abundance, taxonomy )
 
-    FUNCTION( map_cazy, map_eggnog, map_go, map_ko, map_level4ec, map_pfam, rpkms )
+    FUNCTION( cazy, eggnog, go, ko, level4ec, pfam, rpkms )
 
 }

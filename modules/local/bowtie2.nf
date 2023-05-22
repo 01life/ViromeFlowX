@@ -13,7 +13,7 @@ process bowtie2{
     script:
     """
     
-    bowtie2-build  --threads 16 ${cdhitsfa} index
+    bowtie2-build --threads 16 ${cdhitsfa} index
 
     bowtie2 -p 16 -\$PWD/index -1 ${reads1} -2 ${reads2} -S ${id}.sam
 
