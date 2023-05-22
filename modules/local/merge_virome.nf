@@ -1,4 +1,4 @@
-process mergeVirome {
+process merge_virome {
     tag "$id"
 
     publishDir "${params.outdir}/03.identify/merge/",mode:'copy'

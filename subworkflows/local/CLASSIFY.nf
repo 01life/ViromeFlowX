@@ -29,6 +29,6 @@ workflow CLASSIFY {
     MERGE( virus_len, GENOME.out.format, CRASS.out.list,PROTEIN.out.format, PFAM.out.format, DEMOVIR.out.format)
 
     emit:
-    all_virus = MERGE.out.virus.collect()     // channel: [ ]
+    taxonomy = MERGE.out.taxonomy
     
 }

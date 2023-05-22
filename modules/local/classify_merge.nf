@@ -13,6 +13,7 @@ process classify_merge {
     output:
     path("*.taxonomy.txt")
     path("crAss*")
+    path("contigs.taxonomy.txt"),emit:"taxonomy"
 
     script:
     """
