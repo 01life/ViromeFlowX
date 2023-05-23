@@ -1,5 +1,6 @@
 
 process spades {
+   
     tag "$id"
     
     label 'process_high'
@@ -19,7 +20,7 @@ process spades {
     script:
     """
     mkdir ${id}
-    python /share/app/SPAdes/3.11.1/bin/spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t 16
+    python /share/app/SPAdes/3.11.1/bin/spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t 32
     perl /share/app/deal_fa/0.1/deal_fa.pl contigs.fasta A1 >contigs
     perl /share/app/deal_fa/0.1/deal_fa.pl scaffolds.fasta A1 >scaffolds
     /share/app/seqtk/1.3-r106/seqtk seq -L 1000 contigs >1k.contigs
