@@ -1,6 +1,6 @@
 process classify_demovir {
 
-    publishDir "${params.outdir}/05.classify/5.Demovir",mode:'copy'
+    publishDir "${params.outdir}/05.classify/5.Demovir", mode:'copy'
 
     input:
     path prodigals
@@ -23,11 +23,11 @@ process classify_demovir {
     perl /share/app/get_sciname/0.1/get_sciname.pl DemoVir_assignments.txt > contig2sciname.txt
     sed -i '/no_order/d' contig2sciname.txt
     cut -f 2 contig2sciname.txt > contig2sciname.txt.cut
-    /share/app/taxonkit/0.7.2/taxonkit name2taxid --data-dir ${params.datadir1} contig2sciname.txt.cut > contig2sciname.txt.cut.nam2taxid
+    /share/app/taxonkit/0.7.2/taxonkit name2taxid --data-dir ${params.genome_data} contig2sciname.txt.cut > contig2sciname.txt.cut.nam2taxid
     cut -f 2 contig2sciname.txt.cut.nam2taxid > contig2sciname.txt.cut.nam2taxid.cut
 
-    /share/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.datadir1} contig2sciname.txt.cut.nam2taxid.cut > contig2sciname.txt.cut.nam2taxid.cut.lineage
-    /share/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.datadir1} contig2sciname.txt.cut.nam2taxid.cut.lineage -P > contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat
+    /share/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut > contig2sciname.txt.cut.nam2taxid.cut.lineage
+    /share/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut.lineage -P > contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat
 
     paste contig2sciname.txt contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat | cut -f 1,5 > Demovir.contig.taxonmy
     cat Demovir.contig.taxonmy  | sed 's/;p__;c__;o__;f__;g__;s__\$//' | sed 's/;c__;o__;f__;g__;s__\$//' | sed 's/;o__;f__;g__;s__\$//' | sed 's/;f__;g__;s__\$//' | sed 's/;g__;s__\$//' | sed 's/;s__\$//' | sed 's/ /_/g' > Demovir.contig.taxonmy.format

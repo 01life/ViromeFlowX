@@ -19,11 +19,11 @@ process classify_genome {
     perl /share/app/get_lca_input/0.1/get_lca_input.pl blastn.out.top5_18 > blastn.out.top5.contig2taxids
     cut -f 2 blastn.out.top5.contig2taxids > blastn.out.top5.contig2taxids.2
     export BLASTDB="/db/classify/refseq_genome/taxdb"
-    /share/app/taxonkit/0.7.2/taxonkit lca --data-dir ${params.datadir1} blastn.out.top5.contig2taxids.2 > contig.tmp
+    /share/app/taxonkit/0.7.2/taxonkit lca --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.2 > contig.tmp
     paste blastn.out.top5.contig2taxids contig.tmp |cut -f 1,4 > blastn.out.top5.contig2taxids.lca
     cut -f 2 blastn.out.top5.contig2taxids.lca > blastn.out.top5.contig2taxids.lca.2
-    /share/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.datadir1} blastn.out.top5.contig2taxids.lca.2 > blastn.out.top5.contig2taxids.lca.2.line
-    /share/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.datadir1} blastn.out.top5.contig2taxids.lca.2.line -P > blastn.out.top5.contig2taxids.lca.2.line.reformat
+    /share/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.lca.2 > blastn.out.top5.contig2taxids.lca.2.line
+    /share/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.lca.2.line -P > blastn.out.top5.contig2taxids.lca.2.line.reformat
     paste blastn.out.top5.contig2taxids.lca blastn.out.top5.contig2taxids.lca.2.line.reformat | cut -f 1,5 | awk '\$2!="k__Viruses;p__;c__;o__;f__;g__;s__"' | awk '\$2!="k__;p__;c__;o__;f__;g__;s__"'  | sed 's/;p__;c__;o__;f__;g__;s__\$//' | sed 's/;c__;o__;f__;g__;s__\$//' | sed 's/;o__;f__;g__;s__\$//' | sed 's/;f__;g__;s__\$//' | sed 's/;g__;s__\$//' | sed 's/;s__\$//' | sed 's/ /_/g' > refseq_genome.contig.taxonomy.format
     """
 }

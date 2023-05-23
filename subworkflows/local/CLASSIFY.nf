@@ -3,7 +3,7 @@
 //
 
 include { GENOME } from '../../modules/local/classify_genome'
-include { DEMOVIR } from '../../modules/local/classify_demovir'
+include { DEMOVIR } from '../../modules/local/classify_Demovir'
 include { PFAM } from '../../modules/local/classify_pfam'
 include { PROTEIN } from '../../modules/local/classify_protein'
 include { CRASS } from '../../modules/local/classify_crAss'
