@@ -2,8 +2,6 @@ process classify_demovir {
 
     label 'process_single'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
     publishDir "${params.outdir}/05.classify/5.Demovir", mode:'copy'
 
     input:
@@ -27,11 +25,12 @@ process classify_demovir {
     perl /share/app/get_sciname/0.1/get_sciname.pl DemoVir_assignments.txt > contig2sciname.txt
     sed -i '/no_order/d' contig2sciname.txt
     cut -f 2 contig2sciname.txt > contig2sciname.txt.cut
-    /share/app/taxonkit/0.7.2/taxonkit name2taxid --data-dir ${params.genome_data} contig2sciname.txt.cut > contig2sciname.txt.cut.nam2taxid
+
+    taxonkit name2taxid --data-dir ${params.genome_data} contig2sciname.txt.cut > contig2sciname.txt.cut.nam2taxid
     cut -f 2 contig2sciname.txt.cut.nam2taxid > contig2sciname.txt.cut.nam2taxid.cut
 
-    /share/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut > contig2sciname.txt.cut.nam2taxid.cut.lineage
-    /share/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut.lineage -P > contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat
+    taxonkit lineage --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut > contig2sciname.txt.cut.nam2taxid.cut.lineage
+    taxonkit reformat --data-dir ${params.genome_data} contig2sciname.txt.cut.nam2taxid.cut.lineage -P > contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat
 
     paste contig2sciname.txt contig2sciname.txt.cut.nam2taxid.cut.lineage.reformat | cut -f 1,5 > Demovir.contig.taxonmy
     cat Demovir.contig.taxonmy  | sed 's/;p__;c__;o__;f__;g__;s__\$//' | sed 's/;c__;o__;f__;g__;s__\$//' | sed 's/;o__;f__;g__;s__\$//' | sed 's/;f__;g__;s__\$//' | sed 's/;g__;s__\$//' | sed 's/;s__\$//' | sed 's/ /_/g' > Demovir.contig.taxonmy.format

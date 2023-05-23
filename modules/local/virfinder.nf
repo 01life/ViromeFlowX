@@ -5,8 +5,6 @@ process virfinder {
 
     label 'process_single'
     
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
     publishDir "${params.outdir}/03.identify/VirFinder",mode:'copy'
 
     input:

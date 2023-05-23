@@ -2,8 +2,6 @@ process prodigal {
     
     label 'process_low'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
     publishDir "${params.outdir}/04.predict/prodigal/",mode:'copy'
 
     input:
@@ -16,7 +14,7 @@ process prodigal {
 
     script:
     """
-    /share/app/prodigal/2.6.3/prodigal -a viral.pep -d viral.cds -f gff -i ${cdhits} -o viral.gene.gff -p meta -q
+    prodigal -a viral.pep -d viral.cds -f gff -i ${cdhits} -o viral.gene.gff -p meta -q
 
     """
 

@@ -2,8 +2,6 @@ process classify_merge {
 
     label 'process_low'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
     publishDir "${params.outdir}/05.classify/6.merge",mode:'copy'
 
     input:

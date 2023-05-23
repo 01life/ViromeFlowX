@@ -2,8 +2,6 @@ process prokka {
 
     label 'process_single'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
     publishDir "${params.outdir}/04.predict/prokka",mode:'copy'
 
     input:

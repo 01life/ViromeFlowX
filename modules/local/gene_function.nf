@@ -2,9 +2,6 @@ process gene_function {
 
     label 'process_single'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-
-
     publishDir "${params.outdir}/07.functional",mode:'copy'
 
     input:
@@ -25,7 +22,7 @@ process gene_function {
 
     """
     mkdir tmp
-    /share/app/diamond/0.9.30.131/diamond blastp -q ${prokka} -d ${params.uniref90_data} -p 16 -e 1e-10 --sensitive --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovhsp scovhsp -t \$PWD/tmp -o vir.faa.diamond.out
+    diamond blastp -q ${prokka} -d ${params.uniref90_data} -p 16 -e 1e-10 --sensitive --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovhsp scovhsp -t \$PWD/tmp -o vir.faa.diamond.out
 
     perl /share/app/get_blast_top_n/0.1/get_blast_top_n.pl vir.faa.diamond.out 1 > vir.faa.diamond.out.best
     awk '\$3>50' vir.faa.diamond.out.best |  awk '\$16>80' > vir.faa.diamond.out.best.filter

@@ -4,8 +4,6 @@ process contig_abundance{
 
     label 'process_single'
 
-    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
-    
     publishDir "${params.outdir}/06.abundance/contig/${id}",mode:'copy'
 
     input:
@@ -20,7 +18,9 @@ process contig_abundance{
     script:
     """
     /share/app/coverm/0.6.1/coverm contig  -b ${filter_bam}  -m trimmed_mean -t 16 --output-file sort.filter.dpmean
-    /share/app/bedtools/2.27.1/bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
+    
+    bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
+    
     perl /share/app/filter_contig_cov/0.1/filter_contig_cov.pl sort.filter.cov > sort.filter.cov.contig
     perl /share/app/fishInWinter/0.1/fishInWinter.pl  sort.filter.cov.contig  sort.filter.dpmean > ${id}.contig.abundance
 
