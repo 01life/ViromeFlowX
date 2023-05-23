@@ -26,7 +26,7 @@ workflow CLASSIFY {
     PFAM( viral_pep )
     PROTEIN( viral_pep )
     CRASS( viral_pep, virus_len, virus_fa )
-    MERGE( virus_len, GENOME.out.format, CRASS.out.list,PROTEIN.out.format, PFAM.out.format, DEMOVIR.out.format)
+    MERGE( virus_len, GENOME.out.format, CRASS.out.list, PROTEIN.out.format, PFAM.out.format, DEMOVIR.out.format)
 
     emit:
     taxonomy = MERGE.out.taxonomy
