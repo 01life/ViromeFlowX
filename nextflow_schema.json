@@ -10,7 +10,11 @@
             "type": "object",
             "fa_icon": "fas fa-terminal",
             "description": "Define where the pipeline should find input data and save output data.",
-            "required": ["input", "outdir"],
+            "required": [
+                "input",
+                "outdir",
+                "Account"
+            ],
             "properties": {
                 "input": {
                     "type": "string",
@@ -35,50 +39,139 @@
                     "help_text": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits. If set in your user config file (`~/.nextflow/config`) then you don't need to specify this on the command line for every run.",
                     "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
                 },
-                "multiqc_title": {
+                "Account": {
                     "type": "string",
-                    "description": "MultiQC report title. Printed as page header, used for filename if not otherwise specified.",
-                    "fa_icon": "fas fa-file-signature"
+                    "default": "None",
+                    "fa_icon": "fas fa-user"
                 }
             }
         },
-        "reference_genome_options": {
-            "title": "Reference genome options",
+        "qc_options": {
+            "title": "QC options",
             "type": "object",
-            "fa_icon": "fas fa-dna",
-            "description": "Reference genome related files and options required for the workflow.",
+            "description": "QC parameters",
+            "default": "",
             "properties": {
-                "genome": {
-                    "type": "string",
-                    "description": "Name of iGenomes reference.",
-                    "fa_icon": "fas fa-book",
-                    "help_text": "If using a reference genome configured in the pipeline using iGenomes, use this parameter to give the ID for the reference. This is then used to build the full paths for all required reference genome files e.g. `--genome GRCh38`. \n\nSee the [nf-core website docs](https://nf-co.re/usage/reference_genomes) for more details."
+                "QC_mode": {
+                    "type": "integer",
+                    "default": 3,
+                    "fa_icon": "fas fa-step-forward",
+                    "description": "QC mode"
                 },
-                "fasta": {
+                "bowtie2_index": {
                     "type": "string",
-                    "format": "file-path",
-                    "mimetype": "text/plain",
-                    "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?$",
-                    "description": "Path to FASTA genome file.",
-                    "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
-                    "fa_icon": "far fa-file-code"
+                    "default": "/share/database/Homo_sapiens/hg38_bowtie2_index/hg38.index",
+                    "description": "bowtie2 index for remove host"
                 },
-                "igenomes_base": {
+                "adapters": {
                     "type": "string",
-                    "format": "directory-path",
-                    "description": "Directory / URL base for iGenomes references.",
-                    "default": "s3://ngi-igenomes/igenomes",
-                    "fa_icon": "fas fa-cloud-download-alt",
-                    "hidden": true
-                },
-                "igenomes_ignore": {
-                    "type": "boolean",
-                    "description": "Do not load the iGenomes reference config.",
-                    "fa_icon": "fas fa-ban",
-                    "hidden": true,
-                    "help_text": "Do not load `igenomes.config` when running the pipeline. You may choose this option if you observe clashes between custom parameters and those supplied in `igenomes.config`."
+                    "default": "/share/app/SOP/pipeline/adapters/TruSeq3-PE.fa",
+                    "fa_icon": "fas fa-file-alt",
+                    "description": "adapters file for trimmomatic"
                 }
-            }
+            },
+            "fa_icon": "fas fa-broom"
+        },
+        "references_database_options": {
+            "title": "References Database options",
+            "type": "object",
+            "description": "Database configuration",
+            "default": "",
+            "properties": {
+                "crAss_db1": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/crAss-like/crAssphage_polymerase_Terminase/crAssphage_polymerase_Terminase.fa",
+                    "description": "database for classify_crAss"
+                },
+                "crAss_db2": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/crAss-like/NC_024711.1/NC_024711.1.fasta",
+                    "description": "database for classify_crAss"
+                },
+                "demovir_db": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/Demovir/uniprot_trembl.viral.udb",
+                    "description": "database for classify_Demovir"
+                },
+                "genome_db": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/refseq_genome/refseq_virus_filter.fasta",
+                    "description": "reference genome database"
+                },
+                "pfam_db": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/pfam/virus.pfam",
+                    "description": "database for classify_pfam"
+                },
+                "protein_db1": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/refseq_protein/virus.pep.filter.fasta",
+                    "description": "database for classify_protein"
+                },
+                "protein_db2": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/refseq_protein/protID2taxid.txt",
+                    "description": "database for classify_protein"
+                },
+                "CAZy": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_CAZy_uniref90.txt.gz",
+                    "description": "database for classify_CAZy"
+                },
+                "eggnog": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_eggnog_uniref90.txt.gz",
+                    "description": "humann database"
+                },
+                "go": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_go_uniref90.txt.gz",
+                    "description": "humann database"
+                },
+                "ko": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_ko_uniref90.txt.gz",
+                    "description": "humann database"
+                },
+                "level4ec": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_level4ec_uniref90.txt.gz",
+                    "description": "humann database"
+                },
+                "pfam": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_pfam_uniref90.txt.gz",
+                    "description": "humann database"
+                }
+            },
+            "fa_icon": "fas fa-database"
+        },
+        "data_directory_options": {
+            "title": "Data directory options",
+            "type": "object",
+            "description": "Data path for classify",
+            "default": "",
+            "properties": {
+                "genome_data": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/refseq_genome/taxdump",
+                    "fa_icon": "fas fa-dna",
+                    "description": "reference genome data"
+                },
+                "pfam_data": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/classify/pfam/Pfam/",
+                    "fa_icon": "far fa-folder-open",
+                    "description": "data for classify_pfam"
+                },
+                "uniref90_data": {
+                    "type": "string",
+                    "default": "/data/db/flow_configure_data/uniprot/uniref_annotated/uniref90/uniref90_201901",
+                    "fa_icon": "fab fa-uniregistry",
+                    "description": "data for gene_function"
+                }
+            },
+            "fa_icon": "fas fa-server"
         },
         "institutional_config_options": {
             "title": "Institutional config options",
@@ -138,7 +231,7 @@
                 "max_cpus": {
                     "type": "integer",
                     "description": "Maximum number of CPUs that can be requested for any single job.",
-                    "default": 16,
+                    "default": 32,
                     "fa_icon": "fas fa-microchip",
                     "hidden": true,
                     "help_text": "Use to set an upper-limit for the CPU requirement for each process. Should be an integer e.g. `--max_cpus 1`"
@@ -146,7 +239,7 @@
                 "max_memory": {
                     "type": "string",
                     "description": "Maximum amount of memory that can be requested for any single job.",
-                    "default": "128.GB",
+                    "default": "64.GB",
                     "fa_icon": "fas fa-memory",
                     "pattern": "^\\d+(\\.\\d+)?\\.?\\s*(K|M|G|T)?B$",
                     "hidden": true,
@@ -188,7 +281,14 @@
                     "description": "Method used to save pipeline results to output directory.",
                     "help_text": "The Nextflow `publishDir` option specifies which intermediate files should be saved to the output directory. This option tells the pipeline what method should be used to move these files. See [Nextflow docs](https://www.nextflow.io/docs/latest/process.html#publishdir) for details.",
                     "fa_icon": "fas fa-copy",
-                    "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"],
+                    "enum": [
+                        "symlink",
+                        "rellink",
+                        "link",
+                        "copy",
+                        "copyNoFollow",
+                        "move"
+                    ],
                     "hidden": true
                 },
                 "email_on_fail": {
@@ -205,14 +305,6 @@
                     "fa_icon": "fas fa-remove-format",
                     "hidden": true
                 },
-                "max_multiqc_email_size": {
-                    "type": "string",
-                    "description": "File size limit when attaching MultiQC reports to summary emails.",
-                    "pattern": "^\\d+(\\.\\d+)?\\.?\\s*(K|M|G|T)?B$",
-                    "default": "25.MB",
-                    "fa_icon": "fas fa-file-upload",
-                    "hidden": true
-                },
                 "monochrome_logs": {
                     "type": "boolean",
                     "description": "Do not use coloured log outputs.",
@@ -225,23 +317,6 @@
                     "fa_icon": "fas fa-people-group",
                     "help_text": "Incoming hook URL for messaging service. Currently, MS Teams and Slack are supported.",
                     "hidden": true
-                },
-                "multiqc_config": {
-                    "type": "string",
-                    "description": "Custom config file to supply to MultiQC.",
-                    "fa_icon": "fas fa-cog",
-                    "hidden": true
-                },
-                "multiqc_logo": {
-                    "type": "string",
-                    "description": "Custom logo file to supply to MultiQC. File name must also be set in the MultiQC config file",
-                    "fa_icon": "fas fa-image",
-                    "hidden": true
-                },
-                "multiqc_methods_description": {
-                    "type": "string",
-                    "description": "Custom MultiQC yaml file containing HTML including a methods description.",
-                    "fa_icon": "fas fa-cog"
                 },
                 "tracedir": {
                     "type": "string",
@@ -272,7 +347,13 @@
             "$ref": "#/definitions/input_output_options"
         },
         {
-            "$ref": "#/definitions/reference_genome_options"
+            "$ref": "#/definitions/qc_options"
+        },
+        {
+            "$ref": "#/definitions/references_database_options"
+        },
+        {
+            "$ref": "#/definitions/data_directory_options"
         },
         {
             "$ref": "#/definitions/institutional_config_options"
