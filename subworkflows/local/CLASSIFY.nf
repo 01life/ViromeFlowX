@@ -1,5 +1,5 @@
 //
-// Virome sequence recognition
+// Virome sequence classification
 //
 
 include { GENOME } from '../../modules/local/classify_genome'

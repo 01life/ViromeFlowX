@@ -8,7 +8,7 @@ include { FUNCTION } from '../../modules/local/gene_function'
 workflow FUNCTIONAL {
 
     take:
-    prodigal_faa      // channel: [ ]
+    prodigal_faa      // channel: [ [prodigal_faa] ]
 
 
     main:

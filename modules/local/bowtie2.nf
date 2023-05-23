@@ -1,9 +1,12 @@
 process bowtie2{
-
+    
+    tag "$id"
+    
     publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
 
     input:
-    tuple val(id),path(cdhitsfa),path(reads1),path(reads2)
+    path index
+    tuple val(id),path(reads1),path(reads2)
 
     output:    
     tuple val(id),path("${id}.sorted.bam")
@@ -12,10 +15,8 @@ process bowtie2{
 
     script:
     """
-    
-    bowtie2-build --threads 16 ${cdhitsfa} index
 
-    bowtie2 -p 16 -\$PWD/index -1 ${reads1} -2 ${reads2} -S ${id}.sam
+    bowtie2 -p 16 -x ${index}/index -1 ${reads1} -2 ${reads2} -S ${id}.sam
 
     samtools sort --threads 16 ${id}.sam -o ${id}.sorted.bam
     

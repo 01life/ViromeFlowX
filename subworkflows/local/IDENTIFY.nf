@@ -22,7 +22,9 @@ workflow IDENTIFY {
 
     MERGE(merge_data)
 
+    all_virus = MERGE.out.virus.collect() 
+
     emit:
-    all_virus = MERGE.out.virus.collect()     // channel: [ ]
+    all_virus
     
 }

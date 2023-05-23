@@ -2,6 +2,7 @@
 // Contigs abundance and gene abundance
 //
 
+include { BUILD } from '../../modules/local/build'
 include { BOWTIE2 } from '../../modules/local/bowtie2'
 include { CONTIG } from '../../modules/local/contig_abundance'
 include { GENE } from '../../modules/local/gene_abundance'
@@ -12,18 +13,20 @@ workflow ABUNDANCE {
     take:
     clean_reads1    // channel: [ val(id), [ reads1 ] ]
     clean_reads2    // channel: [ val(id), [ reads2 ] ]
-    cdhitsfa        // channel: [ val(id), [ cdhitsfa ] ]
-    prokka_faa      // channel: [ val(id), [ prokka_faa ] ]
+    cdhitsfa        // channel: [  [ cdhitsfa ] ]
+    prokka_bed      // channel: [  [ prokka_bed ] ]
 
     main:
     
-    data  = cdhitsfa.join(clean_reads1).join(clean_reads2)
+    data  = clean_reads1.join(clean_reads2)
 
-    BOWTIE2(data)
+    BUILD(cdhitsfa)
+
+    BOWTIE2(BUILD.out.index, data)
 
     CONTIG(BOWTIE2.out.filter_bam)
 
-    GENE(BOWTIE2.out.filter_bam.join(prokka_faa))
+    GENE( prokka_bed, BOWTIE2.out.filter_bam )
 
     MERGE(CONTIG.out.abundance.collect(), GENE.out.rpkm.collect())
 

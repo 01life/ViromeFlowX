@@ -7,7 +7,6 @@ process merge_virome {
     tuple val(id),path(contigs),path(virfinderid),path(virsorterid)
 
     output:
-    path("${id}/",type:'dir')
     path("${id}/${id}_virus.fa"),emit:'virus'
 
     script:
@@ -20,24 +19,3 @@ process merge_virome {
     """
 
 }
-
-//合并到cdhit!
-// process merge_out{
-
-//     publishDir "${params.outdir}/03.identify/merge/",mode:'copy'
-
-//     input:
-//     path virus
-
-//     output:
-//     path("merge.virus.fa.gz")
-
-//     script:
-//     """
-//     cat ${virus} > merge.virus.fa
-//     gzip merge.virus.fa
-
-//     """
-
-
-// }

@@ -7,6 +7,7 @@ process virsorter {
     tuple val(id),path(contigs)
 
     output:
+    path("${id}/",type:'dir')
     tuple val(id),path("${id}/VirSorter.filter.id"),emit:"virsorterid"
 
     script:

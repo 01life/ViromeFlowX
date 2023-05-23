@@ -1,6 +1,6 @@
 process merge_abundance{
     
-    publishDir "${params.outdir}/06.abundance/",mode:'copy
+    publishDir "${params.outdir}/06.abundance/",mode:'copy'
 
     input:
     path contigs
