@@ -1,10 +1,11 @@
 
 process spades {
     tag "$id"
-
-    errorStrategy{'retry'}
-    maxRetries 2
-
+    
+    label 'process_high'
+    
+    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
+    
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
     input:

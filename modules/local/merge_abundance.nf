@@ -1,5 +1,9 @@
 process merge_abundance{
     
+    label 'process_low'
+
+    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
+    
     publishDir "${params.outdir}/06.abundance/",mode:'copy'
 
     input:

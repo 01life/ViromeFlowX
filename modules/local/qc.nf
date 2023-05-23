@@ -2,6 +2,7 @@
 process QC {
 
     tag "$id"
+    
     label 'process_single'
 
     queue 'meta_mapping2'

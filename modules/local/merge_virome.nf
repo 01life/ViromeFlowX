@@ -1,12 +1,18 @@
 process merge_virome {
+   
     tag "$id"
 
+    label 'process_low'
+
+    container '093786120757.dkr.ecr.cn-northwest-1.amazonaws.com.cn/flow-virus:v0.1'
+    
     publishDir "${params.outdir}/03.identify/merge/",mode:'copy'
 
     input:
     tuple val(id),path(contigs),path(virfinderid),path(virsorterid)
 
     output:
+    path("${id}/",type:'dir')
     path("${id}/${id}_virus.fa"),emit:'virus'
 
     script:
