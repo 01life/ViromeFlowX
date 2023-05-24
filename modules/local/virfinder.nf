@@ -17,7 +17,7 @@ process virfinder {
     script:
     """
     mkdir ${id}
-    Rscript /share/app/VirFinder/0.1/VirFinder.R ${contigs} VirFinder.out
+    Rscript /ehpcdata/PM/DATA/RD23010035/app/VirFinder/0.1/VirFinder.R ${contigs} VirFinder.out
     awk '\$3>0.7' VirFinder.out | awk '\$4<0.05' > VirFinder.out.filter
     cut -f1 VirFinder.out.filter > VirFinder.out.filter.id
     mv VirFinder.out* ${id}

@@ -16,11 +16,11 @@ process merge_abundance{
 
     """
     mkdir contigs
-    python /share/app/merge_tables/0.1/merge_tables.py ${contigs} > contigs/virus.contigs.abun.txt
+    python /ehpcdata/PM/DATA/RD23010035/app/merge_tables/0.1/merge_tables.py ${contigs} > contigs/virus.contigs.abun.txt
     sed -i 's/.sort.filter.cov.contig//g' contigs/virus.contigs.abun.txt
 
     mkdir gene
-    python /share/app/merge_tables/0.1/merge_tables.py ${rpkms} > gene/virus.gene.rpkm.pr
+    python /ehpcdata/PM/DATA/RD23010035/app/merge_tables/0.1/merge_tables.py ${rpkms} > gene/virus.gene.rpkm.pr
     """
 
 }

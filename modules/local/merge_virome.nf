@@ -17,7 +17,7 @@ process merge_virome {
     """
     mkdir ${id}
     cat ${virfinderid} ${virsorterid} | cut -f1 |sort | uniq > uniq.id
-    perl /share/app/fishInWinter/0.1/fishInWinter.pl  --fformat fasta  uniq.id ${contig} > ${id}_virus.fa
+    perl /ehpcdata/PM/DATA/RD23010035/app/fishInWinter/0.1/fishInWinter.pl  --fformat fasta  uniq.id ${contig} > ${id}_virus.fa
     mv ${id}_virus.fa uniq.id ${id}
 
     """

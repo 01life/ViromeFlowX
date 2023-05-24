@@ -13,7 +13,7 @@ process build{
     script:
     """
     mkdir db
-    bowtie2-build --threads 16 ${cdhitsfa} db/index
+    /ehpcdata/PM/DATA/RD23010035/app/bowtie2/2.4.1/samtools-1.14/bowtie2-build --threads 16 ${cdhitsfa} db/index
 
     """
 }

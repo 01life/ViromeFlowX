@@ -14,7 +14,7 @@ process prokka {
 
     script:
     """
-    prokka --outdir \$PWD --force --prefix virus.prokka --metagenome --cpus 16 ${cdhits}
+    /ehpcdata/PM/DATA/RD23010035/app/prokka/1.14.6/prokka --outdir \$PWD --force --prefix virus.prokka --metagenome --cpus 16 ${cdhits}
     cat virus.prokka.gff | grep CDS | cut -f 1,4,5,9 | awk -F ';' '{print \$1}' | sed 's/ID=//' > vir.bed
 
     """
