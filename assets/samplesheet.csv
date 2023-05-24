@@ -1,7 +1,4 @@
 sample,reads1,reads2
-face_3,/ehpcdata/PM/DATA/RD23010035/data/QX_face_3_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_3_2.fq.gz
-face_4,/ehpcdata/PM/DATA/RD23010035/data/QX_face_4_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_4_2.fq.gz
-face_5,/ehpcdata/PM/DATA/RD23010035/data/QX_face_5_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_5_2.fq.gz
-face_6,/ehpcdata/PM/DATA/RD23010035/data/QX_face_6_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_6_2.fq.gz
-face_7,/ehpcdata/PM/DATA/RD23010035/data/QX_face_7_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_7_2.fq.gz
-face_8,/ehpcdata/PM/DATA/RD23010035/data/QX_face_8_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/QX_face_8_2.fq.gz
+A1,/ehpcdata/PM/DATA/RD23010035/data/control-A1_FSFP202111618-1a_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A1_FSFP202111618-1a_2.fq.gz
+A2,/ehpcdata/PM/DATA/RD23010035/data/control-A2_FDSW202403847-1r_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A2_FDSW202403847-1r_2.fq.gz
+A3,/ehpcdata/PM/DATA/RD23010035/data/control-A3_FDME202122376-1a_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A3_FDME202122376-1a_2.fq.gz
