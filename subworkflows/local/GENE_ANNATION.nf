@@ -18,7 +18,6 @@ workflow GENE_ANNOTATION {
     FUNCTION( PROKKA.out.faa )
     
     emit:
-    virus_faa = PROKKA.out.faa
     virus_bed = PROKKA.out.bed
     cazy = FUNCTION.out.cazy
     eggnog = FUNCTION.out.eggnog

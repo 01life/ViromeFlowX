@@ -52,7 +52,7 @@ workflow VIROME {
 
     ANNOTATION ( PREDICT.out.virus_fa )
 
-    CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep, ANNOTATION.out.virus_faa )
+    CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
 
     ABUNDANCE ( QC.out.clean_reads1, QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
 

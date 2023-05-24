@@ -17,7 +17,6 @@ workflow CLASSIFY {
     virus_len
     viral_cds
     viral_pep
-    virus_faa
 
     main:
     
@@ -26,6 +25,7 @@ workflow CLASSIFY {
     PFAM( viral_pep )
     PROTEIN( viral_pep )
     CRASS( viral_pep, virus_len, virus_fa )
+    
     MERGE( virus_len, GENOME.out.format, CRASS.out.list, PROTEIN.out.format, PFAM.out.format, DEMOVIR.out.format)
 
     emit:
