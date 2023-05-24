@@ -1,21 +1,25 @@
 //
-// Gene function
+// Gene Annotation
 //
 
+include { PROKKA } from '../../modules/local/prokka'
 include { FUNCTION } from '../../modules/local/gene_function'
 
 
-workflow FUNCTIONAL {
+workflow GENE_ANNOTATION {
 
     take:
-    prodigal_faa      // channel: [ [prodigal_faa] ]
-
+    cdhitsfa     // channel: [ [cdhit.out.fa] ]
 
     main:
     
-    FUNCTION( prodigal_faa )
+    PROKKA( cdhitsfa )
+
+    FUNCTION( PROKKA.out.faa )
     
     emit:
+    virus_faa = PROKKA.out.faa
+    virus_bed = PROKKA.out.bed
     cazy = FUNCTION.out.cazy
     eggnog = FUNCTION.out.eggnog
     go = FUNCTION.out.go
