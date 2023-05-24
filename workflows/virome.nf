@@ -56,7 +56,7 @@ workflow VIROME {
 
     ABUNDANCE ( QC.out.clean_reads1, QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
 
-    PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ANNOTATION.out.rpkms)
+    PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    
 }
 
