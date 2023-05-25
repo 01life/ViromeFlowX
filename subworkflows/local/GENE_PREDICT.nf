@@ -7,7 +7,7 @@ include { PRODIGAL } from '../../modules/local/prodigal'
 
 
 
-workflow GENE_PREDICT {
+workflow PREDICT {
     take:
     virus      // channel: [ *_virus.fa ]
 

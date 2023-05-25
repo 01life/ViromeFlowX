@@ -6,7 +6,7 @@ include { PROKKA } from '../../modules/local/prokka'
 include { FUNCTION } from '../../modules/local/gene_function'
 
 
-workflow GENE_ANNOTATION {
+workflow ANNOTATION {
 
     take:
     cdhitsfa     // channel: [ [cdhit.out.fa] ]
