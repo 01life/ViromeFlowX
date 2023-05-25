@@ -44,7 +44,7 @@ workflow VIROME {
 
     INPUT_QC( ch_input )
 
-    ASSEMBLY( QC.out.clean_reads1, QC.out.clean_reads2 )
+    ASSEMBLY( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2 )
 
     IDENTIFY( ASSEMBLY.out.onek, ASSEMBLY.out.contigs )
 
@@ -54,7 +54,7 @@ workflow VIROME {
 
     CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
 
-    ABUNDANCE ( QC.out.clean_reads1, QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+    ABUNDANCE ( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
 
     PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    
