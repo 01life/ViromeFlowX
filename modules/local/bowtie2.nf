@@ -1,4 +1,4 @@
-process bowtie2{
+process BOWTIE2{
     
     tag "$id"
 

@@ -1,4 +1,4 @@
-process gene_function {
+process FUNCTION {
 
     label 'process_single'
 

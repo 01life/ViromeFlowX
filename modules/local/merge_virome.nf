@@ -1,4 +1,4 @@
-process merge_virome {
+process MERGE {
    
     tag "$id"
 

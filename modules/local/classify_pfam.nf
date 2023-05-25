@@ -1,4 +1,4 @@
-process classify_pfam {
+process PFAM {
     
     label 'process_single'
 

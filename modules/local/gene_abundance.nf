@@ -1,4 +1,4 @@
-process gene_abundance{
+process GENE{
     
     tag "$id"
 

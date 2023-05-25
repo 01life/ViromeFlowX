@@ -1,4 +1,4 @@
-process classify_crAss {
+process CRASS {
 
     label 'process_single'
 

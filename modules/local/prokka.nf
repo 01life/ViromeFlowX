@@ -1,4 +1,4 @@
-process prokka {
+process PROKKA {
 
     label 'process_single'
 

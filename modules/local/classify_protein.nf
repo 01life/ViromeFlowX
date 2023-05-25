@@ -1,4 +1,4 @@
-process classify_protein {
+process PROTEIN {
     
     label 'process_single'
 

@@ -1,4 +1,4 @@
-process contig_classify{
+process CLASSIFY{
     
     label 'process_single'
 

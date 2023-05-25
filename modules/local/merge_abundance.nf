@@ -1,4 +1,4 @@
-process merge_abundance{
+process MERGE{
     
     label 'process_low'
 

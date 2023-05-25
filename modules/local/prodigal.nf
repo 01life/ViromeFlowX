@@ -1,4 +1,4 @@
-process prodigal {
+process PRODIGAL {
     
     label 'process_low'
 

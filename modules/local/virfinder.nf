@@ -1,5 +1,5 @@
 
-process virfinder {
+process VIRFINDER {
 
     tag "$id"
 

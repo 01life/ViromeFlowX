@@ -1,5 +1,5 @@
 
-process spades {
+process SPADES {
    
     tag "$id"
     

@@ -1,4 +1,4 @@
-process build{
+process BUILD{
 
     label 'process_single'
 

@@ -1,4 +1,4 @@
-process virsorter {
+process VIRSORTER {
     
     tag "$id"
 

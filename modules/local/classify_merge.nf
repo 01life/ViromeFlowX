@@ -1,4 +1,4 @@
-process classify_merge {
+process MERGE {
 
     label 'process_low'
 

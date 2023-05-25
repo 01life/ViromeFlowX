@@ -1,4 +1,4 @@
-process function_profile{
+process FUNCTION{
     
     label 'process_single'
 

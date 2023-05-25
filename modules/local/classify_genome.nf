@@ -1,4 +1,4 @@
-process classify_genome {
+process GENOME {
     
     label 'process_single'
 

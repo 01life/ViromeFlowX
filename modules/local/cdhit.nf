@@ -1,4 +1,4 @@
-process cdhit {
+process CDHIT {
 
     label 'process_single'
 

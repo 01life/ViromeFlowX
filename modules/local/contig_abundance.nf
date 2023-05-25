@@ -1,4 +1,4 @@
-process contig_abundance{
+process CONTIG{
 
     tag "$id"
 
