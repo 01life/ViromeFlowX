@@ -23,7 +23,9 @@ workflow ABUNDANCE {
 
     BUILD(cdhitsfa)
 
-    BOWTIE2(BUILD.out.index, data)
+    index = BUILD.out.index.collect()
+
+    BOWTIE2(index, data)
 
     CONTIG(BOWTIE2.out.filter_bam)
 
