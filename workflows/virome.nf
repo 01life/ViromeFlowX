@@ -42,7 +42,7 @@ include { PROFILE } from '../subworkflows/local/PROFILE'
 
 workflow VIROME {
 
-    QC( ch_input )
+    INPUT_QC( ch_input )
 
     ASSEMBLY( QC.out.clean_reads1, QC.out.clean_reads2 )
 
