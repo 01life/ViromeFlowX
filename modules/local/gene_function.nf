@@ -5,7 +5,7 @@ process FUNCTION {
     publishDir "${params.outdir}/07.functional",mode:'copy'
 
     input:
-    path prokka
+    path(prokka)
 
     output:
     path("map_*")

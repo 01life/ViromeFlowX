@@ -5,7 +5,7 @@ process PROKKA {
     publishDir "${params.outdir}/04.predict/prokka",mode:'copy'
 
     input:
-    path cdhits
+    path(cdhits)
 
     output:
     path("vir.bed"),emit:"bed"

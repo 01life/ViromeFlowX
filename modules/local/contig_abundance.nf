@@ -1,4 +1,4 @@
-process CONTIG{
+process CONTIG {
 
     tag "$id"
 

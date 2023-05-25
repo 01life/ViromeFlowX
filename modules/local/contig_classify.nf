@@ -1,12 +1,12 @@
-process CLASSIFY{
+process CLASSIFY {
     
     label 'process_single'
 
     publishDir "${params.outdir}/08.profile/taxa",mode:'copy'
 
     input:
-    path abundance
-    path taxonomy
+    path(abundance)
+    path(taxonomy)
 
     output:
     path("virus*")

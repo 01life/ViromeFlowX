@@ -5,7 +5,7 @@ process DEMOVIR {
     publishDir "${params.outdir}/05.classify/5.Demovir", mode:'copy'
 
     input:
-    path prodigals
+    path(prodigals)
 
     output:
     path("contig2sciname*")

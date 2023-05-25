@@ -5,7 +5,7 @@ process GENOME {
     publishDir "${params.outdir}/05.classify/1.refseq_genome/",mode:'copy'
 
     input:
-    path cdhits
+    path(cdhits)
 
     output:
     path("blastn*")

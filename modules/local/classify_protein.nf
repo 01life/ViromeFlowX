@@ -5,7 +5,7 @@ process PROTEIN {
     publishDir "${params.outdir}/05.classify/3.refseq_protein",mode:'copy'
 
     input:
-    path prodigals
+    path(prodigals)
 
     output:
     path("contig2taxdump*")

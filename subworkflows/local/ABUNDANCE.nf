@@ -10,6 +10,7 @@ include { MERGE } from '../../modules/local/merge_abundance'
 
 
 workflow ABUNDANCE {
+    
     take:
     clean_reads1    // channel: [ val(id), [ reads1 ] ]
     clean_reads2    // channel: [ val(id), [ reads2 ] ]

@@ -5,12 +5,12 @@ process MERGE {
     publishDir "${params.outdir}/05.classify/6.merge",mode:'copy'
 
     input:
-    path cdhitslen
-    path refseq_genome
-    path crAssphage
-    path refseq_protein
-    path pfam
-    path demovir
+    path(cdhitslen)
+    path(refseq_genome)
+    path(crAssphage)
+    path(refseq_protein)
+    path(pfam)
+    path(demovir)
 
     output:
     path("*.taxonomy.txt")

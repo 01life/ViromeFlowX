@@ -1,17 +1,17 @@
-process FUNCTION{
+process FUNCTION {
     
     label 'process_single'
 
     publishDir "${params.outdir}/08.profile/functional",mode:'copy'
 
     input:
-    path map_caz
-    path map_egg
-    path map_go
-    path map_ko
-    path map_level
-    path map_pfam
-    path rpkms
+    path(map_caz)
+    path(map_egg)
+    path(map_go)
+    path(map_ko)
+    path(map_level)
+    path(map_pfam)
+    path(rpkms)
 
     output:
     path("*.pr")

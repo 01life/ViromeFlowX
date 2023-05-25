@@ -1,4 +1,4 @@
-process GENE{
+process GENE {
     
     tag "$id"
 
@@ -7,7 +7,7 @@ process GENE{
     publishDir "${params.outdir}/06.abundance/gene/${id}"
 
     input:
-    path prokka_bed
+    path(prokka_bed)
     tuple val(id),path(filter_bam)
 
     output:

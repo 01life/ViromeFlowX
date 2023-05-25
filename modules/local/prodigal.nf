@@ -5,7 +5,7 @@ process PRODIGAL {
     publishDir "${params.outdir}/04.predict/prodigal/",mode:'copy'
 
     input:
-    path cdhits
+    path(cdhits)
 
     output:
     path("viral.cds"),emit:"cds"

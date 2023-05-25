@@ -5,7 +5,7 @@ process PFAM {
     publishDir "${params.outdir}/05.classify/4.pfam",mode:'copy'
 
     input:
-    path prodigals
+    path(prodigals)
 
     output:
     path("pfam.out*")

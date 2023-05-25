@@ -5,7 +5,7 @@ process CDHIT {
     publishDir "${params.outdir}/04.predict/cdhit/",mode:'copy'
 
     input:
-    path virus
+    path(virus)
 
     output:
     path("virus.cdhit.fa"),emit:'fa'

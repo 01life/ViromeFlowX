@@ -1,4 +1,4 @@
-process BOWTIE2{
+process BOWTIE2 {
     
     tag "$id"
 
@@ -7,7 +7,7 @@ process BOWTIE2{
     publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
 
     input:
-    path index
+    path(index)
     tuple val(id),path(reads1),path(reads2)
 
     output:    

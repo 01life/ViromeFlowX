@@ -5,9 +5,9 @@ process CRASS {
     publishDir "${params.outdir}/05.classify/2.crAss-like_Phage_Detection",mode:'copy'
 
     input:
-    path prodigals
-    path cdhitslen
-    path cdhitsfa
+    path(prodigals)
+    path(cdhitslen)
+    path(cdhitsfa)
 
     output:
     path("crAss*")
