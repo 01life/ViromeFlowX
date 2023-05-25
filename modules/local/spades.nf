@@ -18,6 +18,7 @@ process SPADES {
     script:
     """
     mkdir ${id}
+    source activate py37
     /ehpcdata/PM/DATA/RD23010035/app/SPAdes/3.11.1/bin/spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t 32
     perl /ehpcdata/PM/DATA/RD23010035/app/deal_fa/0.1/deal_fa.pl contigs.fasta A1 >contigs
     perl /ehpcdata/PM/DATA/RD23010035/app/deal_fa/0.1/deal_fa.pl scaffolds.fasta A1 >scaffolds
