@@ -3,7 +3,7 @@ process VIRFINDER {
 
     tag "$id"
 
-    label 'process_single'
+    label 'process_low'
     
     publishDir "${params.outdir}/03.identify/VirFinder",mode:'copy'
 
