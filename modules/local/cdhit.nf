@@ -22,8 +22,6 @@ process CDHIT {
     
     /ehpcdata/PM/DATA/RD23010035/app/seqkit/0.16.1/seqkit fx2tab -l -n virus.cdhit.fa > virus.cdhit.fa.len
 
-    cp merge.virus.fa.gz ${params.outdir}/03.identify/merge/
-
     """
 
 }

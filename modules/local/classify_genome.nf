@@ -16,7 +16,7 @@ process GENOME {
     """
     /ehpcdata/PM/DATA/RD23010035/app/blast/2.10.0+/blastn -db ${params.genome_db} -query ${cdhits} -evalue 1e-10 -num_threads 16 -outfmt '6 qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovs qcovhsp qcovus staxid sscinames scomnames' -out blastn.out
     awk '\$15>50' blastn.out > blastn.out.50
-    perl/ehpcdata/PM/DATA/RD23010035/app/get_blast_top_n/0.1/get_blast_top_n.pl blastn.out.50 5 > blastn.out.top5
+    perl /ehpcdata/PM/DATA/RD23010035/app/get_blast_top_n/0.1/get_blast_top_n.pl blastn.out.50 5 > blastn.out.top5
     cut -f 1,18 blastn.out.top5 > blastn.out.top5_18
 
     perl /ehpcdata/PM/DATA/RD23010035/app/get_lca_input/0.1/get_lca_input.pl blastn.out.top5_18 > blastn.out.top5.contig2taxids

@@ -42,19 +42,37 @@ include { PROFILE } from '../subworkflows/local/PROFILE'
 
 workflow VIROME {
 
-    INPUT_QC( ch_input )
+    //QC和组装已测试完成
 
-    ASSEMBLY( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2 )
+    // INPUT_QC( ch_input )
 
-    IDENTIFY( ASSEMBLY.out.onek, ASSEMBLY.out.contigs )
+    // ASSEMBLY( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2 )
 
-    PREDICT ( IDENTIFY.out.all_virus )
+    //序列识别先单独测试
+    // IDENTIFY( ASSEMBLY.out.onek, ASSEMBLY.out.contigs )
+
+    // PREDICT ( IDENTIFY.out.all_virus )
+
+
+    // input samplesheet must be 3 rows: [sample,reads1,reads2]
+    clean_reads1 = channel.from ( ch_input )
+                    .splitCsv ( header:true, sep:',' )
+                    .map { row -> [row.sample, row.reads1] }
+
+    clean_reads2 = channel.from ( ch_input )
+                    .splitCsv ( header:true, sep:',' )
+                    .map { row -> [row.sample, row.reads2] }  
+
+    all_virus = channel.fromPath("fa/*.fa").collect()
+    PREDICT ( all_virus )
 
     ANNOTATION ( PREDICT.out.virus_fa )
 
     CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
 
-    ABUNDANCE ( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+    // ABUNDANCE ( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+
+    ABUNDANCE ( clean_reads1, clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
 
     PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    

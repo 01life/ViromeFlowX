@@ -8,10 +8,11 @@ process BUILD {
     path(cdhitsfa)
     
     output:    
-    path("index*"),emit:"index"
+    path("virus.fa*"),emit:"index"
     
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/bowtie2/2.4.1/samtools-1.14/bowtie2-build --threads 16 ${cdhitsfa} index
+    cp ${cdhitsfa} virus.fa
+    /ehpcdata/PM/DATA/RD23010035/app/bowtie2/2.4.1/bowtie2-build --threads 16 virus.fa virus.fa
     """
 }

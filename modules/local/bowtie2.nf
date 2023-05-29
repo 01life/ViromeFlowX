@@ -17,8 +17,8 @@ process BOWTIE2 {
 
     script:
     """
-
-    /ehpcdata/PM/DATA/RD23010035/app/bowtie2/2.4.1/bowtie2 -p 16 -x ${index} -1 ${reads1} -2 ${reads2} -S ${id}.sam
+    
+    /ehpcdata/PM/DATA/RD23010035/app/bowtie2/2.4.1/bowtie2 -p 16 -x virus.fa -1 ${reads1} -2 ${reads2} -S ${id}.sam
 
     /ehpcdata/PM/DATA/RD23010035/app/samtools/1.14/samtools-1.14/samtools sort --threads 16 ${id}.sam -o ${id}.sorted.bam
     
