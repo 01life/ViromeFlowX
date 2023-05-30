@@ -29,7 +29,8 @@ workflow ABUNDANCE {
 
     CONTIG(BOWTIE2.out.filter_bam)
 
-    GENE( prokka_bed, BOWTIE2.out.filter_bam )
+    bam = BOWTIE2.out.filter_bam.join(BOWTIE2.out.filter_bam_bai)
+    GENE( prokka_bed, bam)
 
     MERGE(CONTIG.out.abundance.collect(), GENE.out.rpkm.collect())
 

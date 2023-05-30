@@ -13,7 +13,7 @@ process BOWTIE2 {
     output:    
     tuple val(id),path("${id}.sorted.bam")
     tuple val(id),path("${id}.filter.bam"),emit:"filter_bam"
-    tuple val(id),path("${id}.filter.bam.csi"),emit:"filter_bam_csi"
+    tuple val(id),path("${id}.filter.bam.bai"),emit:"filter_bam_bai"
 
     script:
     """
