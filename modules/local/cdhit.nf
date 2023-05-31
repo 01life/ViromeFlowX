@@ -1,6 +1,6 @@
 process CDHIT {
 
-    label 'process_single'
+    label 'process_low'
 
     publishDir "${params.outdir}/04.predict/cdhit/",mode:'copy'
 

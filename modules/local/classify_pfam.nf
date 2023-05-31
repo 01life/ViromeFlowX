@@ -1,6 +1,6 @@
 process PFAM {
     
-    label 'process_single'
+    label 'process_low'
 
     publishDir "${params.outdir}/05.classify/4.pfam",mode:'copy'
 
@@ -13,7 +13,7 @@ process PFAM {
 
     script:
     """
-    perl /ehpcdata/PM/DATA/RD23010035/app/miniconda3/bin/pfam_scan.pl -fasta ${prodigals} -cpu 16 -dir ${params.pfam_data} -outfile pfam.out
+    perl /ehpcdata/PM/DATA/RD23010035/app/miniconda3/bin/pfam_scan.pl -fasta ${prodigals} -cpu 2 -dir ${params.pfam_data} -outfile pfam.out
     perl /ehpcdata/PM/DATA/RD23010035/app/get_filter/0.1/get_filter.pl ${params.pfam_db} pfam.out > pfam.out.filter
     
     awk '\$3!=""' pfam.out.filter > pfam.out.virus

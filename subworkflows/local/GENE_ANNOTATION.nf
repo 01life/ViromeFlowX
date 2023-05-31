@@ -3,7 +3,7 @@
 //
 
 include { PROKKA } from '../../modules/local/prokka'
-include { FUNCTION } from '../../modules/local/gene_function'
+include { GENEFUNCTION } from '../../modules/local/gene_function'
 
 
 workflow ANNOTATION {
@@ -15,7 +15,7 @@ workflow ANNOTATION {
     
     PROKKA( cdhitsfa )
 
-    FUNCTION( PROKKA.out.faa )
+    GENEFUNCTION( PROKKA.out.faa )
     
     emit:
     virus_bed = PROKKA.out.bed

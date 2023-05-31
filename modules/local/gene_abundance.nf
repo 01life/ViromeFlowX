@@ -2,7 +2,7 @@ process GENE {
     
     tag "$id"
 
-    label 'process_single'
+    label 'process_low'
 
     publishDir "${params.outdir}/06.abundance/gene/${id}"
 
@@ -21,7 +21,7 @@ process GENE {
     """
     /ehpcdata/PM/DATA/RD23010035/app/bedtools/2.27.1/bedtools multicov -bams ${filter_bam} -bed ${prokka_bed} > gene.count
 
-    /ehpcdata/PM/DATA/RD23010035/app/samtools/1.14/samtools-1.14/samtools flagstat --threads 16 ${filter_bam} > flagstat
+    /ehpcdata/PM/DATA/RD23010035/app/samtools/1.14/samtools-1.14/samtools flagstat --threads 2 ${filter_bam} > flagstat
 
     perl /ehpcdata/PM/DATA/RD23010035/app/get_stat/0.1/get_stat.pl flagstat > total.reads
 

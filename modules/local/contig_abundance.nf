@@ -2,7 +2,7 @@ process CONTIG {
 
     tag "$id"
 
-    label 'process_single'
+    label 'process_low'
 
     publishDir "${params.outdir}/06.abundance/contig/${id}",mode:'copy'
 
@@ -17,7 +17,7 @@ process CONTIG {
 
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/coverm/0.6.1/coverm contig  -b ${filter_bam}  -m trimmed_mean -t 16 --output-file sort.filter.dpmean
+    /ehpcdata/PM/DATA/RD23010035/app/coverm/0.6.1/coverm contig  -b ${filter_bam}  -m trimmed_mean -t 2 --output-file sort.filter.dpmean
     
     /ehpcdata/PM/DATA/RD23010035/app/bedtools/2.27.1/bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
     

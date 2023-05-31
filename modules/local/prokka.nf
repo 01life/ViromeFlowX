@@ -1,6 +1,6 @@
 process PROKKA {
 
-    label 'process_single'
+    label 'process_medium'
 
     publishDir "${params.outdir}/04.predict/prokka",mode:'copy'
 
@@ -14,7 +14,7 @@ process PROKKA {
 
     script:
     """
-    prokka --outdir \$PWD --force --prefix virus.prokka --metagenome --cpus 16 ${cdhits}
+    prokka --outdir \$PWD --force --prefix virus.prokka --metagenome --cpus 8 ${cdhits}
     cat virus.prokka.gff | grep CDS | cut -f 1,4,5,9 | awk -F ';' '{print \$1}' | sed 's/ID=//' > vir.bed
 
     """

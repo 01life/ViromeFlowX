@@ -1,6 +1,6 @@
 process CLASSIFY {
     
-    label 'process_single'
+    label 'process_low'
 
     publishDir "${params.outdir}/08.profile/taxa",mode:'copy'
 

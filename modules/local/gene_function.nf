@@ -1,4 +1,4 @@
-process FUNCTION {
+process GENEFUNCTION {
 
     label 'process_single'
 
