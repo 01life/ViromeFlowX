@@ -3,7 +3,8 @@ process SPADES {
    
     tag "$id"
     
-    label 'process_high'
+    errorStrategy{'retry'}
+    maxRetries 2
     
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
