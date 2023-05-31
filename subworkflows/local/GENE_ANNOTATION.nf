@@ -19,12 +19,12 @@ workflow ANNOTATION {
     
     emit:
     virus_bed = PROKKA.out.bed
-    cazy = FUNCTION.out.cazy
-    eggnog = FUNCTION.out.eggnog
-    go = FUNCTION.out.go
-    ko = FUNCTION.out.ko
-    level4ec = FUNCTION.out.level4ec
-    pfam = FUNCTION.out.pfam
+    cazy = GENEFUNCTION.out.cazy
+    eggnog = GENEFUNCTION.out.eggnog
+    go = GENEFUNCTION.out.go
+    ko = GENEFUNCTION.out.ko
+    level4ec = GENEFUNCTION.out.level4ec
+    pfam = GENEFUNCTION.out.pfam
     
 }
 
