@@ -4,14 +4,14 @@ process BOWTIE2 {
 
     label 'process_single'
     
-    publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
+    // publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
 
     input:
     path(index)
     tuple val(id),path(reads1),path(reads2)
 
     output:    
-    tuple val(id),path("${id}.sorted.bam")
+    // tuple val(id),path("${id}.sorted.bam")
     tuple val(id),path("${id}.filter.bam"),emit:"filter_bam"
     tuple val(id),path("${id}.filter.bam.bai"),emit:"filter_bam_bai"
 

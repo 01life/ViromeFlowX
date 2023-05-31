@@ -2,7 +2,7 @@ process BUILD {
     
     label 'process_single'
     
-    publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
+    // publishDir "${params.outdir}/06.abundance/map/",mode:'copy'
     
     input:
     path(cdhitsfa)
