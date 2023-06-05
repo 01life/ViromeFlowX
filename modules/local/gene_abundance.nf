@@ -4,7 +4,7 @@ process GENE {
 
     label 'process_low'
 
-    publishDir "${params.outdir}/06.abundance/gene/${id}"
+    publishDir "${params.outdir}/06.abundance/gene/${id}",mode:'copy'
 
     input:
     path(prokka_bed)
