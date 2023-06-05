@@ -11,10 +11,11 @@ process CDHIT {
     path("virus.cdhit.fa"),emit:'fa'
     path("virus.cdhit.fa.len"),emit:'len'
     path("virus.cdhit.fa.clstr")
+    path(" merge.virus.fa.gz")
 
     script:
     """
-
+    # 合并所有样本中的病毒序列
     cat ${virus} > merge.virus.fa
     gzip merge.virus.fa
 
