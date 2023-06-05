@@ -18,7 +18,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [Gene_Predict](#gene_predict)
 - [Gene_Annotation](#gene_annotation)
 - [Abundance](#Abundance)
-- [Funtional](#Funtional)
+- [Funtional](#funtional)
 - [Profile](#Profile)
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
 
