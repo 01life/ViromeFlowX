@@ -18,6 +18,7 @@ process SPADES {
     tuple val(id),path("${id}/1k.contigs.gz"),emit:"contigs"
     tuple val(id),path("${id}/1k.contigs"),emit:"onek"
     path("${id}/spades.log")
+    path("${id}/input_dataset.yaml")
 
     script:
     """
