@@ -26,8 +26,13 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 <!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+1. QC ( [`trimmomatic`](https://github.com/usadellab/Trimmomatic) [`bowtie2`](https://github.com/BenLangmead/bowtie2) )
+2. Assembly [`metaspades`](https://github.com/ablab/spades)
+3. Identify ( [`VirFinder`](https://github.com/jessieren/VirFinder) [`VirSorter2`](https://github.com/jiarong/VirSorter2) ) 
+4. Gene_Predict( [`Cdhit`](https://github.com/weizhongli/cdhit) [`Prodigal`](https://github.com/hyattpd/Prodigal) )
+5. Gene_Annotation ( [`prokka`](https://github.com/tseemann/prokka) )
+6. Classify ( [`usearch`](https://drive5.com/usearch) [`Blast`](https://blast.ncbi.nlm.nih.gov/Blast.cgi) [`taxonkit`](https://github.com/shenwei356/taxonkit) )
+7. Abundance ( [`CoverM`](https://github.com/wwood/CoverM) [`bedtools2`](https://github.com/arq5x/bedtools2) )
 
 ## Quick Start
 
@@ -38,7 +43,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 3. Download the pipeline and test it on a minimal dataset with a single command:
 
    ```bash
-   nextflow run nf-core/virome -profile test,YOURPROFILE --outdir <OUTDIR>
+   nextflow run /path/to/project/nf-core-virome -profile test,YOURPROFILE --outdir <OUTDIR>
    ```
 
    Note that some form of configuration will be needed so that Nextflow knows how to fetch the required software. This is usually done in the form of a config profile (`YOURPROFILE` in the example command above). You can chain multiple config profiles in a comma-separated string.
@@ -53,16 +58,23 @@ On release, automated continuous integration tests run the pipeline on a full-si
    <!-- TODO nf-core: Update the example "typical command" below used to run the pipeline -->
 
    ```bash
-   nextflow run nf-core/virome --input samplesheet.csv --outdir <OUTDIR> --genome GRCh37 -profile <docker/singularity/podman/shifter/charliecloud/conda/institute>
+   nextflow run /path/to/project/nf-core-virome --input samplesheet.csv --outdir <OUTDIR> -profile <docker/singularity/podman/shifter/charliecloud/conda/institute>
    ```
 
 ## Documentation
 
-The nf-core/virome pipeline comes with documentation about the pipeline [usage](https://nf-co.re/virome/usage), [parameters](https://nf-co.re/virome/parameters) and [output](https://nf-co.re/virome/output).
+The nf-core/virome pipeline comes with documentation about the pipeline [usage](docs/usage.md), [parameters](https://nf-co.re/pipeline_schema_builder?id=1685934039_c37b87cf4b3c) and [output](docs/output.md).
+
+The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2) -> Gene_Predict -> Geneset_Annotation -> Classify(demovir、pfam、protein、crAss、genome) -> Abundance
+you can also use `--help` to see the parameters.
+
+   ```bash
+   nextflow run /path/to/project/nf-core-virome --help
+   ```
 
 ## Credits
 
-nf-core/virome was originally written by yangying.
+nf-core/virome was originally written by 👩‍💻yangying.
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 

@@ -142,6 +142,12 @@
                     "type": "string",
                     "default": "/data/db/flow_configure_data/humann/full_mapping/map_pfam_uniref90.txt.gz",
                     "description": "humann database"
+                },
+                "virsorter2_db": {
+                    "type": "string",
+                    "default": "/share/database/VirSorter/db/",
+                    "description": "virsorter2 database",
+                    "fa_icon": "fas fa-database"
                 }
             },
             "fa_icon": "fas fa-database"
