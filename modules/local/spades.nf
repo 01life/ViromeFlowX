@@ -27,14 +27,15 @@ process SPADES {
 
     perl /ehpcdata/PM/DATA/RD23010035/app/deal_fa/0.1/deal_fa.pl contigs.fasta ${id} >contigs
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/deal_fa/0.1/deal_fa.pl scaffolds.fasta ${id} >scaffolds
+    #perl /ehpcdata/PM/DATA/RD23010035/app/deal_fa/0.1/deal_fa.pl scaffolds.fasta ${id} >scaffolds
 
     /ehpcdata/PM/DATA/RD23010035/app/seqtk/1.3-r106/seqtk seq -L 1000 contigs >1k.contigs
     
-    pigz contigs scaffolds
+    #pigz contigs scaffolds
     #gzip -c 1k.contigs > 1k.contigs.gz
-    rm -rf K* corrected misc tmp assembly* before* contigs* dataset* first* input params.txt scaffolds*
-    mv 1k* input* spades.log ${id}
+    #rm -rf K* corrected misc tmp assembly* before* contigs* dataset* first* input params.txt scaffolds*
+    
+    mv 1k.contigs input_dataset.yaml spades.log ${id}
 
     """
 
