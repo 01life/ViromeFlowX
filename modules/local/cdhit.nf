@@ -11,7 +11,7 @@ process CDHIT {
     path("virus.cdhit.fa"),emit:'fa'
     path("virus.cdhit.fa.len"),emit:'len'
     path("virus.cdhit.fa.clstr")
-    path(" merge.virus.fa.gz")
+    path("merge.virus.fa.gz")
 
     script:
     """
