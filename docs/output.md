@@ -46,7 +46,6 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - `02.assembly/`
   - `Sample ID/`
     - `1k.contigs`
-    - `1k.contigs.gz`
     - `input_dataset.yaml`
     - `spades.log`
 
