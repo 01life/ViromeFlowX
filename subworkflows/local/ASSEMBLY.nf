@@ -16,12 +16,9 @@ workflow ASSEMBLY {
 
     contigs = SPADES.out.contigs
                 .map{ id,file -> [ id,[file] ]}
-    
-    onek = SPADES.out.onek
-                .map{ id,file -> [ id,[file] ]}
 
     emit:
-    onek
     contigs           // channel: [ val(id), [ contigs ] ]
+    
 }
 

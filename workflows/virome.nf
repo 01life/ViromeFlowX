@@ -49,7 +49,7 @@ workflow VIROME {
     ASSEMBLY( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2 )
 
     //序列识别先单独测试
-    IDENTIFY( ASSEMBLY.out.onek, ASSEMBLY.out.contigs )
+    IDENTIFY( ASSEMBLY.out.contigs )
 
     PREDICT ( IDENTIFY.out.all_virus )
 

@@ -15,8 +15,7 @@ process SPADES {
     tuple val(id),path(reads2)
 
     output:
-    tuple val(id),path("${id}/1k.contigs.gz"),emit:"contigs"
-    tuple val(id),path("${id}/1k.contigs"),emit:"onek"
+    tuple val(id),path("${id}/1k.contigs"),emit:"contigs"
     path("${id}/spades.log")
     path("${id}/input_dataset.yaml")
 
@@ -33,7 +32,7 @@ process SPADES {
     /ehpcdata/PM/DATA/RD23010035/app/seqtk/1.3-r106/seqtk seq -L 1000 contigs >1k.contigs
     
     pigz contigs scaffolds
-    gzip -c 1k.contigs > 1k.contigs.gz
+    #gzip -c 1k.contigs > 1k.contigs.gz
     rm -rf K* corrected misc tmp assembly* before* contigs* dataset* first* input params.txt scaffolds*
     mv 1k* input* spades.log ${id}
 

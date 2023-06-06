@@ -9,7 +9,6 @@ include { MERGE } from '../../modules/local/merge_virome'
 
 workflow IDENTIFY {
     take:
-    onek
     contigs      // channel: [ val(id), [ contigs ] ]
 
     main:
@@ -18,7 +17,7 @@ workflow IDENTIFY {
 
     VIRSORTER(contigs)
 
-    merge_data= onek.join(VIRFINDER.out.virfinderid).join(VIRSORTER.out.virsorterid)
+    merge_data= contigs.join(VIRFINDER.out.virfinderid).join(VIRSORTER.out.virsorterid)
 
     MERGE(merge_data)
 
