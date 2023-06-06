@@ -37,6 +37,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 5. Gene_Annotation ( [`prokka`](https://github.com/tseemann/prokka) )
 6. Classify ( [`usearch`](https://drive5.com/usearch) [`Blast`](https://blast.ncbi.nlm.nih.gov/Blast.cgi) [`taxonkit`](https://github.com/shenwei356/taxonkit) )
 7. Abundance ( [`CoverM`](https://github.com/wwood/CoverM) [`bedtools2`](https://github.com/arq5x/bedtools2) )
+8. Profile
 
 ## Quick Start
 
