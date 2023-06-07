@@ -12,8 +12,8 @@ process VIRSORTER {
     tuple val(id),path(contigs)
 
     output:
+    path("${id}/*")
     tuple val(id),path("${id}/VirSorter.filter.id"),emit:"virsorterid"
-    path("${id}/config.yaml")
 
 
     script:
