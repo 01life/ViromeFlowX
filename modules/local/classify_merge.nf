@@ -19,7 +19,7 @@ process MERGE {
 
     script:
     """
-    Rscript /ehpcdata/PM/DATA/RD23010035/app/merge.virus.taxonomy/0.2/merge.virus.taxonomy.R --id ${cdhitslen} --refseq_genome ${refseq_genome} --crAassphage ${crAssphage} --refseq_protein ${refseq_protein} --pfam ${pfam} --demovir ${demovir} --output \$PWD
+    Rscript ${params.nfcore_bin}/merge.virus.taxonomy.R --id ${cdhitslen} --refseq_genome ${refseq_genome} --crAassphage ${crAssphage} --refseq_protein ${refseq_protein} --pfam ${pfam} --demovir ${demovir} --output \$PWD
 
     """
 }

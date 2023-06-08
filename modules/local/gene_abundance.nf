@@ -23,9 +23,9 @@ process GENE {
 
     samtools flagstat --threads 2 ${filter_bam} > flagstat
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/get_stat/0.1/get_stat.pl flagstat > total.reads
+    perl ${params.nfcore_bin}/get_stat.pl flagstat > total.reads
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/cal_RPKM/0.1/cal_RPKM.pl total.reads gene.count flagstat > ${id}.rp
+    perl ${params.nfcore_bin}cal_RPKM.pl total.reads gene.count flagstat > ${id}.rp
 
     cut -f 4,8 ${id}.rp > ${id}.rpkm
 

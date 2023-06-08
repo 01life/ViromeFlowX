@@ -24,11 +24,11 @@ process CRASS {
 
     cat blastp.out.350AlnLen | cut -f 1 | awk -F '_' '{print \$1"_"\$2"_"\$3}' > crAss-like.list
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/fishInWinter/0.1/fishInWinter.pl  crAss-like.list ${cdhitslen} > crAss-like.len.list
+    perl ${params.nfcore_bin}/fishInWinter.pl  crAss-like.list ${cdhitslen} > crAss-like.len.list
 
     awk '\$2>70000' crAss-like.len.list > crAss-like.len70k.list
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/fishInWinter/0.1/fishInWinter.pl  --fformat fasta  crAss-like.len70k.list ${cdhitsfa} > crAss-like.len70k.list.fasta
+    perl ${params.nfcore_bin}/fishInWinter.pl  --fformat fasta  crAss-like.len70k.list ${cdhitsfa} > crAss-like.len70k.list.fasta
 
     #sed -i '1iID\\tlength' crAss-like.len70k.list
     test -s crAss-like.len70k.list  && sed -i '1iID\tlength' crAss-like.len70k.list  || echo -e "ID\tlength" >> crAss-like.len70k.list
@@ -37,7 +37,7 @@ process CRASS {
 
     cat NC_024711.blastn.out | awk '\$6>95' | awk '\$16>80' | cut -f 1 | sort | uniq > p-crAssphage.list
     
-    perl /ehpcdata/PM/DATA/RD23010035/app/fishInWinter/0.1/fishInWinter.pl  --except  p-crAssphage.list crAss-like.len70k.list > crAss-like.phage.list
+    perl ${params.nfcore_bin}/fishInWinter.pl  --except  p-crAssphage.list crAss-like.len70k.list > crAss-like.phage.list
 
     """
 }

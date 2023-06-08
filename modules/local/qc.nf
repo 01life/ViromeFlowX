@@ -18,7 +18,7 @@ process QC {
 
     script:
     """
-    java -jar /share/app/SOP/pipeline/qc.jar -s ${id} -i ${reads} -o ${id} -m ${params.QC_mode} -align bowtie2 -db ${params.bowtie2_index} -t 16 -adapters ${params.adapters}
+    java -jar ${params.nfcore_bin}/qc.jar -s ${id} -i ${reads} -o ${id} -m ${params.QC_mode} -align bowtie2 -db ${params.bowtie2_index} -t 16 -adapters ${params.adapters}
     
     """
     

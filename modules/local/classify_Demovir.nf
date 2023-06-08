@@ -20,9 +20,9 @@ process DEMOVIR {
     sort -u -k1,1 trembl_ublast.viral.txt > trembl_ublast.viral.u.txt
     cut -f 1,2 trembl_ublast.viral.u.txt | sed 's/_[0-9]\\+\\t/\\t/' | cut -f 1 | paste trembl_ublast.viral.u.txt - > trembl_ublast.viral.u.contigID.txt
 
-    Rscript /ehpcdata/PM/DATA/RD23010035/app/Demovir/0.1/demovir.R trembl_ublast.viral.u.contigID.txt DemoVir_assignments.txt
+    Rscript ${params.nfcore_bin}/demovir.R trembl_ublast.viral.u.contigID.txt DemoVir_assignments.txt
 
-    perl /ehpcdata/PM/DATA/RD23010035/app/get_sciname/0.1/get_sciname.pl DemoVir_assignments.txt > contig2sciname.txt
+    perl ${params.nfcore_bin}/get_sciname.pl DemoVir_assignments.txt > contig2sciname.txt
     sed -i '/no_order/d' contig2sciname.txt
     cut -f 2 contig2sciname.txt > contig2sciname.txt.cut
 

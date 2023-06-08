@@ -21,8 +21,8 @@ process CONTIG {
     
     bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
     
-    perl /ehpcdata/PM/DATA/RD23010035/app/filter_contig_cov/0.1/filter_contig_cov.pl sort.filter.cov > sort.filter.cov.contig
-    perl /ehpcdata/PM/DATA/RD23010035/app/fishInWinter/0.1/fishInWinter.pl sort.filter.cov.contig  sort.filter.dpmean > ${id}.contig.abundance
+    perl ${params.nfcore_bin}/filter_contig_cov.pl sort.filter.cov > sort.filter.cov.contig
+    perl ${params.nfcore_bin}/fishInWinter.pl sort.filter.cov.contig  sort.filter.dpmean > ${id}.contig.abundance
 
     """
 }

@@ -15,8 +15,8 @@ process CLASSIFY {
     script:
 
     """
-    Rscript /ehpcdata/PM/DATA/RD23010035/app/cal_relab/0.1/cal_relab.R ${abundance} virus.contigs.abun.relab.txt
-    Rscript /ehpcdata/PM/DATA/RD23010035/app/merge_tax2abun/0.1/merge_tax2abun.R --tax ${taxonomy} --abun virus.contigs.abun.relab.txt --output virus
+    Rscript ${params.nfcore_bin}/cal_relab.R ${abundance} virus.contigs.abun.relab.txt
+    Rscript ${params.nfcore_bin}/merge_tax2abun.R --tax ${taxonomy} --abun virus.contigs.abun.relab.txt --output virus
     cat virus.taxonomy.txt | grep -E "Taxonomy|p__" | grep -E -v "c__|o__|f__|g__|s__" | sed 's/^.*p__//' | sed 's/Taxonomy//' > phylum.pr
     cat virus.taxonomy.txt | grep -E "Taxonomy|c__" | grep -E -v "o__|f__|g__|s__" | sed 's/^.*c__//' | sed 's/Taxonomy//' >  class.pr
     cat virus.taxonomy.txt | grep -E "Taxonomy|o__" | grep -E -v "f__|g__|s__" | sed 's/^.*o__//' | sed 's/Taxonomy//' > order.pr
