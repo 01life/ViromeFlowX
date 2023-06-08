@@ -16,7 +16,7 @@ process PROTEIN {
 
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/blast/2.10.0+/blastp -db ${params.protein_db1} -query ${prodigals} -evalue 1e-10 -num_threads 16 -outfmt '6 qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovs qcovhsp qcovus' -out blastp.out
+    blastp -db ${params.protein_db1} -query ${prodigals} -evalue 1e-10 -num_threads 16 -outfmt '6 qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovs qcovhsp qcovus' -out blastp.out
 
     perl /ehpcdata/PM/DATA/RD23010035/app/add_taxid/0.1/add_taxid.pl ${params.protein_db2} blastp.out > blastp.out.addTaxid
     awk '\$NF!=""' blastp.out.addTaxid > blastp.out.addTaxid.nf
@@ -24,8 +24,8 @@ process PROTEIN {
     cat blastp.out.addTaxid.top3 | cut -f 1,18 > blastp.out.addTaxid.top3.id2taxid
     cut -f 2 blastp.out.addTaxid.top3.id2taxid > blastp.out.addTaxid.top3.id2taxid.2
 
-    /ehpcdata/PM/DATA/RD23010035/app/taxonkit/0.7.2/taxonkit lineage --data-dir ${params.genome_data} blastp.out.addTaxid.top3.id2taxid.2 > blastp.out.addTaxid.top3.id2taxid.2.line
-    /ehpcdata/PM/DATA/RD23010035/app/taxonkit/0.7.2/taxonkit reformat --data-dir ${params.genome_data} blastp.out.addTaxid.top3.id2taxid.2.line -P > blastp.out.addTaxid.top3.id2taxid.2.line.reformat
+    taxonkit lineage --data-dir ${params.genome_data} blastp.out.addTaxid.top3.id2taxid.2 > blastp.out.addTaxid.top3.id2taxid.2.line
+    taxonkit reformat --data-dir ${params.genome_data} blastp.out.addTaxid.top3.id2taxid.2.line -P > blastp.out.addTaxid.top3.id2taxid.2.line.reformat
     paste blastp.out.addTaxid.top3.id2taxid blastp.out.addTaxid.top3.id2taxid.2.line.reformat | cut -f 1,5 > blastp.out.addTaxid.top3.id2taxid.name2taxdump
     perl /ehpcdata/PM/DATA/RD23010035/app/get_max_tax/0.1/get_max_tax.pl blastp.out.addTaxid.top3.id2taxid.name2taxdump > blastp.out.addTaxid.top3.id2taxid.name2taxdump.max
 

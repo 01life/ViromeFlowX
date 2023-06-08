@@ -19,9 +19,9 @@ process GENE {
 
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/bedtools/2.27.1/bedtools multicov -bams ${filter_bam} -bed ${prokka_bed} > gene.count
+    bedtools multicov -bams ${filter_bam} -bed ${prokka_bed} > gene.count
 
-    /ehpcdata/PM/DATA/RD23010035/app/samtools/1.14/samtools-1.14/samtools flagstat --threads 2 ${filter_bam} > flagstat
+    samtools flagstat --threads 2 ${filter_bam} > flagstat
 
     perl /ehpcdata/PM/DATA/RD23010035/app/get_stat/0.1/get_stat.pl flagstat > total.reads
 

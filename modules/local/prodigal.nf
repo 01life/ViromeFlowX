@@ -14,7 +14,7 @@ process PRODIGAL {
 
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/prodigal/2.6.3/prodigal -a viral.pep -d viral.cds -f gff -i ${cdhits} -o viral.gene.gff -p meta -q
+    prodigal -a viral.pep -d viral.cds -f gff -i ${cdhits} -o viral.gene.gff -p meta -q
 
     """
 
