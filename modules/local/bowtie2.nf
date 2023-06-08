@@ -19,7 +19,7 @@ process BOWTIE2 {
 
     samtools sort --threads 16 ${id}.sam -o ${id}.sorted.bam
     
-    /ehpcdata/PM/DATA/RD23010035/app/coverm/0.6.1/coverm filter --bam-files ${id}.sorted.bam --output-bam-files ${id}.filter.bam --threads 16 --min-read-percent-identity 95
+    coverm filter --bam-files ${id}.sorted.bam --output-bam-files ${id}.filter.bam --threads 16 --min-read-percent-identity 95
     
     samtools index -@ 16 ${id}.filter.bam
     

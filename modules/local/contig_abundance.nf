@@ -17,7 +17,7 @@ process CONTIG {
 
     script:
     """
-    /ehpcdata/PM/DATA/RD23010035/app/coverm/0.6.1/coverm contig  -b ${filter_bam}  -m trimmed_mean -t 2 --output-file sort.filter.dpmean
+    coverm contig  -b ${filter_bam}  -m trimmed_mean -t 2 --output-file sort.filter.dpmean
     
     bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
     
