@@ -8,10 +8,6 @@ process DEMOVIR {
     path(prodigals)
 
     output:
-    path("contig2sciname*")
-    path("Demovir.contig.taxonmy")
-    path("DemoVir_assignments.txt")
-    path("trembl_ublast*")
     path("Demovir.contig.taxonmy.format"),emit:'format'
 
     script:

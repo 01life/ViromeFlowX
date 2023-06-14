@@ -8,27 +8,13 @@ process GENOME {
     path(cdhits)
 
     output:
-    path("blastn*")
-    path("contig.tmp")
     path("refseq_genome.contig.taxonomy.format"),emit:'format'
 
     script:
     """
-    blastn -db ${params.genome_db} -query ${cdhits} -evalue 1e-10 -num_threads 2 -outfmt '6 qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovs qcovhsp qcovus staxid sscinames scomnames' -out blastn.out
-    awk '\$15>50' blastn.out > blastn.out.50
-    perl ${params.nfcore_bin}/get_blast_top_n.pl blastn.out.50 5 > blastn.out.top5
-    cut -f 1,18 blastn.out.top5 > blastn.out.top5_18
+    blastn -db ${params.genome_db} -query ${cdhits} -evalue 1e-10 -num_threads 2 -outfmt '6 qaccver qcovs staxid' | awk '\$2>50' | cut -f 1,3 > blastn.out
 
-    perl ${params.nfcore_bin}/get_lca_input.pl blastn.out.top5_18 > blastn.out.top5.contig2taxids
-    cut -f 2 blastn.out.top5.contig2taxids > blastn.out.top5.contig2taxids.2
+    perl ${params.nfcore_bin}/get_blast_top_n.pl blastn.out 5 | taxonkit lineage --data-dir ${params.genome_data} -i 2 | taxonkit reformat --data-dir ${params.genome_data} -P -i 3 -t | cut -f 1,4,5 | perl ${params.nfcore_bin}/get_tax.pl - nucl 0.999 | sed 's/ /_/g' | grep -v "k__Viruses\$" |sed '1iID\\ttax' > refseq_genome.contig.taxonomy.format
 
-    # export BLASTDB="/db/classify/refseq_genome/taxdb"
-    taxonkit lca --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.2 > contig.tmp
-    paste blastn.out.top5.contig2taxids contig.tmp |cut -f 1,4 > blastn.out.top5.contig2taxids.lca
-    cut -f 2 blastn.out.top5.contig2taxids.lca > blastn.out.top5.contig2taxids.lca.2
-    
-    taxonkit lineage --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.lca.2 > blastn.out.top5.contig2taxids.lca.2.line
-    taxonkit reformat --data-dir ${params.genome_data} blastn.out.top5.contig2taxids.lca.2.line -P > blastn.out.top5.contig2taxids.lca.2.line.reformat
-    paste blastn.out.top5.contig2taxids.lca blastn.out.top5.contig2taxids.lca.2.line.reformat | cut -f 1,5 | awk '\$2!="k__Viruses;p__;c__;o__;f__;g__;s__"' | awk '\$2!="k__;p__;c__;o__;f__;g__;s__"'  | sed 's/;p__;c__;o__;f__;g__;s__\$//' | sed 's/;c__;o__;f__;g__;s__\$//' | sed 's/;o__;f__;g__;s__\$//' | sed 's/;f__;g__;s__\$//' | sed 's/;g__;s__\$//' | sed 's/;s__\$//' | sed 's/ /_/g' > refseq_genome.contig.taxonomy.format
     """
 }
