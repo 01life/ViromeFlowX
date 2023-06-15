@@ -1,8 +1,8 @@
 arg <- commandArgs(T)
 
 trembl_ublast <- arg[1]
-outputFile <- arg[2]
-taxa_file <- "/ehpcdata/PM/DATA/RD23010035/app/Demovir/0.1/TrEMBL_viral_taxa.RDS"
+taxa_file <- arg[2]
+outputFile <- arg[3]
 
 results = read.delim(trembl_ublast,sep="\t",header=FALSE)
 colnames(results) = c("query","subject","percentid","alnlen","qlen","slen","qstart","qend","sstart","send","evalue","bitscore","contig")
