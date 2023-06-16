@@ -15,13 +15,13 @@ process BOWTIE2 {
     script:
     """
     
-    bowtie2 -p 16 -x virus.fa -1 ${reads1} -2 ${reads2} -S ${id}.sam
+    bowtie2 -p ${task.cpus} -x virus.fa -1 ${reads1} -2 ${reads2} -S ${id}.sam
 
-    samtools sort --threads 16 ${id}.sam -o ${id}.sorted.bam
+    samtools sort --threads ${task.cpus} ${id}.sam -o ${id}.sorted.bam
     
-    coverm filter --bam-files ${id}.sorted.bam --output-bam-files ${id}.filter.bam --threads 16 --min-read-percent-identity 95
+    coverm filter --bam-files ${id}.sorted.bam --output-bam-files ${id}.filter.bam --threads ${task.cpus} --min-read-percent-identity 95
     
-    samtools index -@ 16 ${id}.filter.bam
+    samtools index -@ ${task.cpus} ${id}.filter.bam
     
     """
 }

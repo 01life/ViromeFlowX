@@ -23,7 +23,7 @@ process SPADES {
     """
     mkdir ${id}
 
-    spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t 16
+    spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus}
 
     perl ${params.nfcore_bin}/deal_fa.pl contigs.fasta ${id} >contigs
 

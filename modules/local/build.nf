@@ -11,7 +11,7 @@ process BUILD {
     script:
     """
     cp ${cdhitsfa} virus.fa
-    bowtie2-build --threads 16 virus.fa virus.fa
+    bowtie2-build --threads ${task.cpus} virus.fa virus.fa
 
     """
 }

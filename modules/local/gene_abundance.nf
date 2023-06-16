@@ -21,7 +21,7 @@ process GENE {
     """
     bedtools multicov -bams ${filter_bam} -bed ${prokka_bed} > gene.count
 
-    samtools flagstat --threads 2 ${filter_bam} > flagstat
+    samtools flagstat --threads ${task.cpus} ${filter_bam} > flagstat
 
     perl ${params.nfcore_bin}/get_stat.pl flagstat > total.reads
 

@@ -22,7 +22,7 @@ process GENEFUNCTION {
 
     """
     mkdir tmp
-    diamond blastp -q ${prokka} -d ${params.uniref90_data} -p 16 -e 1e-10 --sensitive --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovhsp scovhsp -t \$PWD/tmp -o vir.faa.diamond.out
+    diamond blastp -q ${prokka} -d ${params.uniref90_data} -p ${task.cpus} -e 1e-10 --sensitive --outfmt 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen qcovhsp scovhsp -t \$PWD/tmp -o vir.faa.diamond.out
 
     perl ${params.nfcore_bin}/get_blast_top_n.pl vir.faa.diamond.out 1 > vir.faa.diamond.out.best
     awk '\$3>50' vir.faa.diamond.out.best |  awk '\$16>80' > vir.faa.diamond.out.best.filter

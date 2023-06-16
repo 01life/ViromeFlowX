@@ -17,7 +17,7 @@ process CONTIG {
 
     script:
     """
-    coverm contig  -b ${filter_bam}  -m trimmed_mean -t 2 --output-file sort.filter.dpmean
+    coverm contig  -b ${filter_bam}  -m trimmed_mean -t ${task.cpus} --output-file sort.filter.dpmean
     
     bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
     
