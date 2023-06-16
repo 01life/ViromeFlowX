@@ -25,7 +25,7 @@ process GENE {
 
     perl ${params.nfcore_bin}/get_stat.pl flagstat > total.reads
 
-    perl ${params.nfcore_bin}cal_RPKM.pl total.reads gene.count flagstat > ${id}.rp
+    perl ${params.nfcore_bin}/cal_RPKM.pl total.reads gene.count flagstat > ${id}.rp
 
     cut -f 4,8 ${id}.rp > ${id}.rpkm
 

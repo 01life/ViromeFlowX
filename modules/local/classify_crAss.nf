@@ -23,7 +23,10 @@ process CRASS {
 
     cat p-crAssphage.blastn.out | awk '\$6>95' | awk '\$16>80' | cut -f 1 | sort | uniq > p-crAssphage.list
 
-    cat crAss-like.list | csvtk grep -H -v -P p-crAssphage.list -o crAss-like.list
+    if [ -s p-crAssphage.list ]; 
+        then cat crAss-like.list | csvtk grep -H -v -P p-crAssphage.list -o crAss-like.list; 
+    fi 
+    
     sed -i '1iID\\ttax' crAss-like.list
 
     """
