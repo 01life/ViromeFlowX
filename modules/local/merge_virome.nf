@@ -11,7 +11,7 @@ process MERGE {
 
     output:
     path("${id}/",type:'dir')
-    path("${id}/${id}_virus.fa"),emit:'virus'
+    tuple val(id),path("${id}/${id}_virus.fa"),emit:'virus'
 
     script:
     """

@@ -5,6 +5,7 @@
 include { VIRFINDER } from '../../modules/local/virfinder'
 include { VIRSORTER } from '../../modules/local/virsorter'
 include { MERGE } from '../../modules/local/merge_virome'
+include { CHECKV } from '../../modules/local/checkv'
 
 
 workflow IDENTIFY {
@@ -21,7 +22,9 @@ workflow IDENTIFY {
 
     MERGE(merge_data)
 
-    all_virus = MERGE.out.virus.collect() 
+    CHECKV(MERGE.out.virus)
+
+    all_virus = CHECKV.out.viruses.collect() 
 
     emit:
     all_virus
