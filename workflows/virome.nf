@@ -24,9 +24,10 @@ if (params.input) { ch_input = file(params.input) } else { exit 1, 'Input sample
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-
-include { INPUT_QC } from '../subworkflows/local/QC'
+include { INPUT_PARSER } from '../subworkflows/local/INPUT_PARSER'
+include { QC } from '../subworkflows/local/QC'
 include { ASSEMBLY } from '../subworkflows/local/ASSEMBLY'
+include { RAPID_TAXONOMIC_PROFILING } from '../subworkflows/local/RAPID_TAXONOMIC_PROFILING'
 include { IDENTIFY } from '../subworkflows/local/IDENTIFY'
 include { PREDICT } from '../subworkflows/local/GENE_PREDICT'
 include { CLASSIFY } from '../subworkflows/local/CLASSIFY'
@@ -42,37 +43,50 @@ include { PROFILE } from '../subworkflows/local/PROFILE'
 
 workflow VIROME {
 
-    //QC和组装已测试完成
+    //输入解析
+    INPUT_PARSER(ch_input)
 
-    INPUT_QC( ch_input )
+    ch_reads1 = INPUT_PARSER.out.reads1
+    ch_reads2 = INPUT_PARSER.out.reads2
+    ch_contig = INPUT_PARSER.out.contig
 
-    ASSEMBLY( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2 )
+    ch_clean_reads1 = Channel.empty()
+    ch_clean_reads2 = Channel.empty()
 
+    //跳过组装或QC，输入：clean_reads
+    if(params.skip_qc || params.skip_assembly){
+        ch_clean_reads1 = ch_reads1
+        ch_clean_reads2 = ch_reads2
+    }else{
+        //执行QC
+        if( !params.skip_qc ){
+            QC( ch_reads1, ch_reads2 )
+            ch_clean_reads1 = QC.out.clean_reads1
+            ch_clean_reads2 = QC.out.clean_reads2
+        }
+    }
+
+    //执行组装
+    if(!params.skip_assembly){
+        ASSEMBLY( ch_clean_reads1, ch_clean_reads2 )
+        ch_contig = ASSEMBLY.out.contigs
+    }
+
+    //执行kraken2
+    if(!params.skip_kraken2){
+        RAPID_TAXONOMIC_PROFILING(ch_clean_reads1, ch_clean_reads2)
+    }
+   
     //序列识别先单独测试
-    IDENTIFY( ASSEMBLY.out.contigs )
+    IDENTIFY( ch_contig )
 
     PREDICT ( IDENTIFY.out.all_virus )
-
-
-    // input samplesheet must be 3 rows: [sample,reads1,reads2]
-    // clean_reads1 = channel.from ( ch_input )
-    //                 .splitCsv ( header:true, sep:',' )
-    //                 .map { row -> [row.sample, row.reads1] }
-
-    // clean_reads2 = channel.from ( ch_input )
-    //                 .splitCsv ( header:true, sep:',' )
-    //                 .map { row -> [row.sample, row.reads2] }  
-
-    // all_virus = channel.fromPath("fa/*.fa").collect()
-    // PREDICT ( all_virus )
 
     ANNOTATION ( PREDICT.out.virus_fa )
 
     CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
 
-    ABUNDANCE ( INPUT_QC.out.clean_reads1, INPUT_QC.out.clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
-
-    // ABUNDANCE ( clean_reads1, clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+    ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
 
     PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    

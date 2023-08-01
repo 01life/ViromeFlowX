@@ -1,12 +1,12 @@
 
-process SPADES {
+process METASPADES {
    
     tag "$id"
     
     errorStrategy{'retry'}
-    maxRetries 2
+    maxRetries 1
 
-    // conda '/share/app/miniconda3/envs/py37'
+    conda '/share/app/miniconda3/envs/py37'
     
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
@@ -23,7 +23,7 @@ process SPADES {
     """
     mkdir ${id}
 
-    spades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus}
+    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus}
 
     perl ${params.nfcore_bin}/deal_fa.pl contigs.fasta ${id} >contigs
 

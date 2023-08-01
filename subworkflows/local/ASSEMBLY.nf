@@ -2,7 +2,7 @@
 // Assembly
 //
 
-include { SPADES } from '../../modules/local/spades'
+include { METASPADES } from '../../modules/local/metaspades'
 
 
 workflow ASSEMBLY {
@@ -12,9 +12,9 @@ workflow ASSEMBLY {
 
     main:
     
-    SPADES(clean_reads1, clean_reads2)
+    METASPADES(clean_reads1, clean_reads2)
 
-    contigs = SPADES.out.contigs
+    contigs = METASPADES.out.contigs
                 .map{ id,file -> [ id,[file] ]}
 
     emit:

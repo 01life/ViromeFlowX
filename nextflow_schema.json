@@ -42,32 +42,39 @@
                 "Account": {
                     "type": "string",
                     "default": "None",
-                    "fa_icon": "fas fa-user"
+                    "fa_icon": "fas fa-user",
+                    "description": "Slurm account"
                 }
             }
         },
-        "qc_options": {
-            "title": "QC options",
+        "modules_options": {
+            "title": "Modules options",
             "type": "object",
-            "description": "QC parameters",
+            "description": "Modules parameters",
             "default": "",
             "properties": {
-                "QC_mode": {
-                    "type": "integer",
-                    "default": 3,
-                    "fa_icon": "fas fa-step-forward",
-                    "description": "QC mode"
-                },
-                "bowtie2_index": {
-                    "type": "string",
-                    "default": "/share/database/Homo_sapiens/hg38_bowtie2_index/hg38.index",
-                    "description": "bowtie2 index for remove host"
+                "skip_qc": {
+                    "type": "boolean",
+                    "description": "skip QC module"
                 },
                 "adapters": {
                     "type": "string",
                     "default": "/share/app/SOP/pipeline/adapters/TruSeq3-PE.fa",
                     "fa_icon": "fas fa-file-alt",
                     "description": "adapters file for trimmomatic"
+                },
+                "trim_options": {
+                    "type": "string",
+                    "default": "ILLUMINACLIP:/ehpcdata/PM/DATA/RD23010035/nf-core-virome/assets/TruSeq3-PE.fa:2:30:10 LEADING:5 TRAILING:5 SLIDINGWINDOW:4:15 MINLEN:50 -phred33",
+                    "description": "options for trimmomatic"
+                },
+                "skip_assembly": {
+                    "type": "boolean",
+                    "description": "skip assembly module"
+                },
+                "skip_kraken2": {
+                    "type": "boolean",
+                    "description": "skip kraken2"
                 }
             },
             "fa_icon": "fas fa-broom"
@@ -78,20 +85,42 @@
             "description": "Database configuration",
             "default": "",
             "properties": {
+                "host_db": {
+                    "type": "string",
+                    "default": "/share/database/Homo_sapiens/hg38_bowtie2_index/hg38.index",
+                    "description": "index filename prefix of host database (minus trailing .X.bt2)",
+                    "help_text": "Human genome reference database  for removing host\uff08default: hg38\uff09\nDownload link: http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz"
+                },
+                "virsorter2_db": {
+                    "type": "string",
+                    "default": "/share/database/VirSorter/db/",
+                    "description": "virsorter2 database",
+                    "fa_icon": "fas fa-database"
+                },
+                "kraken2_db": {
+                    "type": "string",
+                    "default": "/share/database/Kraken2/ViralDB",
+                    "description": "path to Kraken2 viral database"
+                },
+                "checkv_db": {
+                    "type": "string",
+                    "default": "/share/database/checkv/checkv-db-v1.0",
+                    "description": "path to CheckV database"
+                },
                 "crAss_db1": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/crAss-like/crAssphage_polymerase_Terminase/crAssphage_polymerase_Terminase.fa",
-                    "description": "database for classify_crAss"
+                    "default": "/share/database/meta_virus/crAss-like/crAss-like/crAss-like",
+                    "description": "crAss database for classification"
                 },
                 "crAss_db2": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/crAss-like/NC_024711.1/NC_024711.1.fasta",
-                    "description": "database for classify_crAss"
+                    "default": "/share/database/meta_virus/crAss-like/p-crAssphage/p-crAssphage",
+                    "description": "crAss database for classification"
                 },
                 "demovir_db": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/Demovir/uniprot_trembl.viral.udb",
-                    "description": "database for classify_Demovir"
+                    "default": "/share/database/Demovir/uniprot_trembl.viral.udb",
+                    "description": "demovir database for classification"
                 },
                 "genome_db": {
                     "type": "string",
@@ -100,54 +129,43 @@
                 },
                 "pfam_db": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/pfam/virus.pfam",
-                    "description": "database for classify_pfam"
+                    "default": "/share/database/meta_virus/Pfam/virus.pfam",
+                    "description": "pfam database for classification"
                 },
-                "protein_db1": {
+                "protein_db": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/refseq_protein/virus.pep.filter.fasta",
-                    "description": "database for classify_protein"
-                },
-                "protein_db2": {
-                    "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/refseq_protein/protID2taxid.txt",
-                    "description": "database for classify_protein"
+                    "default": "/share/database/meta_virus/refseq_viral_prot/prot",
+                    "description": "protein database for classification"
                 },
                 "CAZy": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_CAZy_uniref90.txt.gz",
-                    "description": "database for classify_CAZy"
+                    "default": "/share/database/humann/v201901/full_mapping/map_CAZy_uniref90.txt.gz",
+                    "description": "CAZy database for classification"
                 },
                 "eggnog": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_eggnog_uniref90.txt.gz",
-                    "description": "humann database"
+                    "default": "/share/database/humann/v201901/full_mapping/map_eggnog_uniref90.txt.gz",
+                    "description": "eggnog database"
                 },
                 "go": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_go_uniref90.txt.gz",
-                    "description": "humann database"
+                    "default": "/share/database/humann/v201901/full_mapping/map_go_uniref90.txt.gz",
+                    "description": "go database"
                 },
                 "ko": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_ko_uniref90.txt.gz",
-                    "description": "humann database"
+                    "default": "/share/database/humann/v201901/full_mapping/map_ko_uniref90.txt.gz",
+                    "description": "ko database"
                 },
                 "level4ec": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_level4ec_uniref90.txt.gz",
-                    "description": "humann database"
+                    "default": "/share/database/humann/v201901/full_mapping/map_level4ec_uniref90.txt.gz",
+                    "description": "level4ec database"
                 },
                 "pfam": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/humann/full_mapping/map_pfam_uniref90.txt.gz",
-                    "description": "humann database"
-                },
-                "virsorter2_db": {
-                    "type": "string",
-                    "default": "/share/database/VirSorter/db/",
-                    "description": "virsorter2 database",
-                    "fa_icon": "fas fa-database"
+                    "default": "/share/database/humann/v201901/full_mapping/map_pfam_uniref90.txt.gz",
+                    "description": "pfam database"
                 }
             },
             "fa_icon": "fas fa-database"
@@ -160,21 +178,26 @@
             "properties": {
                 "genome_data": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/refseq_genome/taxdump",
+                    "default": "/share/database/NCBI/latest/new_taxdump",
                     "fa_icon": "fas fa-dna",
                     "description": "reference genome data"
                 },
                 "pfam_data": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/classify/pfam/Pfam/",
+                    "default": "/share/database/Pfam",
                     "fa_icon": "far fa-folder-open",
                     "description": "data for classify_pfam"
                 },
                 "uniref90_data": {
                     "type": "string",
-                    "default": "/data/db/flow_configure_data/uniprot/uniref_annotated/uniref90/uniref90_201901",
+                    "default": "/share/database/humann/v201901/uniprot/uniref_annotated/uniref90/uniref90_201901.dmnd",
                     "fa_icon": "fab fa-uniregistry",
                     "description": "data for gene_function"
+                },
+                "demovir_taxa": {
+                    "type": "string",
+                    "default": "/share/app/Demovir/TrEMBL_viral_taxa.RDS",
+                    "description": "demovir taxonomic file"
                 }
             },
             "fa_icon": "fas fa-server"
@@ -269,6 +292,12 @@
             "description": "Less common options for the pipeline, typically set in a config file.",
             "help_text": "These options are common to all nf-core pipelines and allow you to customise some of the core preferences for how the pipeline runs.\n\nTypically these options would be set in a Nextflow config file loaded for all pipeline runs, such as `~/.nextflow/config`.",
             "properties": {
+                "nfcore_bin": {
+                    "type": "string",
+                    "default": "${baseDir}/bin",
+                    "description": "This parameter is used to invoke custom scripts",
+                    "hidden": true
+                },
                 "help": {
                     "type": "boolean",
                     "description": "Display help text.",
@@ -353,7 +382,7 @@
             "$ref": "#/definitions/input_output_options"
         },
         {
-            "$ref": "#/definitions/qc_options"
+            "$ref": "#/definitions/modules_options"
         },
         {
             "$ref": "#/definitions/references_database_options"
