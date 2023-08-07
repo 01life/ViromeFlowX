@@ -21,7 +21,7 @@ names(dat)[1] <- "ID"
 names(abun)[1] <- "ID"
 
 dat$taxonomy <- gsub(" ","_",dat$taxonomy)
-dat$taxonomy <- gsub("p__;|c__;|o__;|f__;|g__;","",dat$taxonomy)
+#dat$taxonomy <- gsub("p__;|c__;|o__;|f__;|g__;","",dat$taxonomy)
 
 #去掉丰度全为0的行
 if(ncol(abun)==2){
@@ -43,5 +43,5 @@ dat_sum <- aggregate(dat_2[,2:ncol(dat_2)],by=list(dat_2$taxonomy),sum)
 names(dat_sum)[1] <- "Taxonomy"
 dat_sum <- dat_sum[order(dat_sum$Taxonomy,decreasing = FALSE),]
 
-write.table(dat_1,paste0(outFile,".contig_with_tax.txt"),row.names = F,sep = '\t',quote = F)
+write.table(dat_1,paste0(outFile,".contig.with.tax.txt"),row.names = F,sep = '\t',quote = F)
 write.table(dat_sum,paste0(outFile,".taxonomy.txt"),row.names = F,sep = '\t',quote = F)

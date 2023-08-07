@@ -4,7 +4,7 @@ process CONTIG {
 
     label 'process_low'
 
-    publishDir "${params.outdir}/06.abundance/contig/${id}",mode:'copy'
+    publishDir "${params.outdir}/06.abundance/virusContig/${id}",mode:'copy'
 
     input:
     tuple val(id),path(filter_bam)

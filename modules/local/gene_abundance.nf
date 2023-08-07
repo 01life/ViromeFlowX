@@ -4,7 +4,7 @@ process GENE {
 
     label 'process_low'
 
-    publishDir "${params.outdir}/06.abundance/gene/${id}",mode:'copy'
+    publishDir "${params.outdir}/06.abundance/virusGene/${id}",mode:'copy'
 
     input:
     path(prokka_bed)
@@ -13,7 +13,6 @@ process GENE {
     output:
     path("flagstat")
     path("gene.count")
-    path("${id}.rp")
     path("${id}.rpkm"),emit:rpkm
     path("total.reads")
 
@@ -25,9 +24,9 @@ process GENE {
 
     perl ${params.nfcore_bin}/get_stat.pl flagstat > total.reads
 
-    perl ${params.nfcore_bin}/cal_RPKM.pl total.reads gene.count flagstat > ${id}.rp
+    perl ${params.nfcore_bin}/cal_RPKM.pl total.reads gene.count flagstat > ${id}.pr
 
-    cut -f 4,8 ${id}.rp > ${id}.rpkm
+    cut -f 4,8 ${id}.pr > ${id}.rpkm
 
     """
 }

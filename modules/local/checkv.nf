@@ -4,6 +4,8 @@ process CHECKV {
 
     label 'process_low'
 
+    conda '/home/yangying/tools/checkv'
+
     publishDir "${params.outdir}/03.identify/CheckV",mode:'copy'
 
     input:
@@ -15,10 +17,6 @@ process CHECKV {
 
     script:
     """
-    # 合并所有样本中的病毒序列
-    cat ${virus} > merge.virus.fa
-    gzip merge.virus.fa
-
     checkv end_to_end ${virus_fa} ${id} -d ${params.checkv_db} -t ${task.cpus}
 
     cat ${id}/proviruses.fna ${id}/viruses.fna > ${id}/${id}_proviruses_viruses.fna

@@ -8,6 +8,7 @@ process PRODIGAL {
     path(cdhits)
 
     output:
+    path("vir.bed"),emit:"bed"
     path("viral.cds"),emit:"cds"
     path("viral.pep"),emit:"pep"
     path("viral.gene.gff")
@@ -16,6 +17,8 @@ process PRODIGAL {
     """
     prodigal -a viral.pep -d viral.cds -f gff -i ${cdhits} -o viral.gene.gff -p meta -q
 
+    python ${params.nfcore_bin}/prodigal_gff2beb.py viral.gene.gff vir.bed
+    
     """
 
 }

@@ -31,6 +31,7 @@ include { RAPID_TAXONOMIC_PROFILING } from '../subworkflows/local/RAPID_TAXONOMI
 include { IDENTIFY } from '../subworkflows/local/IDENTIFY'
 include { PREDICT } from '../subworkflows/local/GENE_PREDICT'
 include { CLASSIFY } from '../subworkflows/local/CLASSIFY'
+include { GENESET } from '../subworkflows/local/GENESET'
 include { ABUNDANCE } from '../subworkflows/local/ABUNDANCE'
 include { ANNOTATION } from '../subworkflows/local/GENE_ANNOTATION'
 include { PROFILE } from '../subworkflows/local/PROFILE'
@@ -80,15 +81,23 @@ workflow VIROME {
     //序列识别先单独测试
     IDENTIFY( ch_contig )
 
-    PREDICT ( IDENTIFY.out.all_virus )
+    //PREDICT ( IDENTIFY.out.all_virus )
 
-    ANNOTATION ( PREDICT.out.virus_fa )
+    //ANNOTATION ( PREDICT.out.virus_fa )
 
-    CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
+    GENESET(IDENTIFY.out.all_virus)
 
-    ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+    CLASSIFY ( GENESET.out.virus_fa, GENESET.out.virus_len, GENESET.out.viral_cds, GENESET.out.viral_pep )
 
-    PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
+    ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, GENESET.out.virus_fa, GENESET.out.virus_bed )
+
+    PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, GENESET.out.cazy, GENESET.out.eggnog, GENESET.out.go, GENESET.out.ko, GENESET.out.level4ec, GENESET.out.pfam, ABUNDANCE.out.rpkms)
+
+    //CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
+
+    //ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
+
+    //PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    
 }
 
