@@ -17,7 +17,7 @@ workflow INPUT_PARSER {
             .from(samplesheet)
             .splitCsv(header: true)
             .map { row ->
-                        def id = row.sample
+                        def id = row.id
                         def reads1 = row.reads1 ? file(row.reads1, checkIfExists: true) : false
                         def reads2 = row.reads2 ? file(row.reads2, checkIfExists: true) : false
                         def contig = row.contig ? file(row.contig, checkIfExists: true) : false
