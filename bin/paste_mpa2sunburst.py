@@ -11,7 +11,7 @@ with open(sys.argv[1],'r') as mpaF, open(sys.argv[2],'w') as outF:
         if len(idline) > 1 and a[0] in ["d","k"]:
             parent_child_Dir.setdefault(idline[-2],[]).append(idline[-1])
             avgAbundance = numpy.average(list(map(float, al[1:])))
-            childValueDir[idline[-1]] = [idline[-2],avgAbundance] # 加和所有标本总丰度
+            childValueDir[idline[-1]] = [idline[-2],avgAbundance] # Sum up the total abundance of all samples
             allitem.append(idline[-1])
 
 

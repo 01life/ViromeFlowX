@@ -15,7 +15,7 @@ process CDHIT {
 
     script:
     """
-    # 合并所有样本中的病毒序列
+    # Merge the viral sequences from all samples
     cat ${virus} > merge.virus.fa
     gzip merge.virus.fa
 

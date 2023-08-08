@@ -1,4 +1,4 @@
-#计算相对丰度
+#Calculate relative abundance
 args <- commandArgs(T)
 
 inputFix <- args[1]

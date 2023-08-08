@@ -23,22 +23,22 @@ names(abun)[1] <- "ID"
 dat$taxonomy <- gsub(" ","_",dat$taxonomy)
 #dat$taxonomy <- gsub("p__;|c__;|o__;|f__;|g__;","",dat$taxonomy)
 
-#去掉丰度全为0的行
+#Remove rows with abundance values that are all 0
 if(ncol(abun)==2){
-  	#只有一个样本的情况
+  	#only one sample
 	abun <- abun[abun[,2]>0,]
 }else{
 	abun <- abun[rowSums(abun[,2:ncol(abun)])>0,]
 }
 
-#合并物种注释表与contigs丰度表
+#Merge species annotation table and contigs abundance table
 dat_1 <- merge(abun,dat,id="ID",sort = FALSE) 
 
 dat_2 <- data.frame(dat_1[,c("ID","taxonomy")],
                     dat_1[,names(abun)[2:ncol(abun)]])
 dat_2 <- subset(dat_2,select = -c(ID))
 
-#对物种注释丰度值求和
+#Sum the abundance values of species annotations
 dat_sum <- aggregate(dat_2[,2:ncol(dat_2)],by=list(dat_2$taxonomy),sum)
 names(dat_sum)[1] <- "Taxonomy"
 dat_sum <- dat_sum[order(dat_sum$Taxonomy,decreasing = FALSE),]

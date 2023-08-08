@@ -44,7 +44,7 @@ include { PROFILE } from '../subworkflows/local/PROFILE'
 
 workflow VIROME {
 
-    //输入解析
+    // parsing input data
     INPUT_PARSER(ch_input)
 
     ch_reads1 = INPUT_PARSER.out.reads1
@@ -54,12 +54,12 @@ workflow VIROME {
     ch_clean_reads1 = Channel.empty()
     ch_clean_reads2 = Channel.empty()
 
-    //跳过组装或QC，输入：clean_reads
+    //Run pipeline with skip_assembly or skip_QC，input reads is clean_reads
     if(params.skip_qc || params.skip_assembly){
         ch_clean_reads1 = ch_reads1
         ch_clean_reads2 = ch_reads2
     }else{
-        //执行QC
+        //Run QC
         if( !params.skip_qc ){
             QC( ch_reads1, ch_reads2 )
             ch_clean_reads1 = QC.out.clean_reads1
@@ -67,18 +67,17 @@ workflow VIROME {
         }
     }
 
-    //执行组装
+    //Run assembly
     if(!params.skip_assembly){
         ASSEMBLY( ch_clean_reads1, ch_clean_reads2 )
         ch_contig = ASSEMBLY.out.contigs
     }
 
-    //执行kraken2
+    //Run kraken2
     if(!params.skip_kraken2){
         RAPID_TAXONOMIC_PROFILING(ch_clean_reads1, ch_clean_reads2)
     }
    
-    //序列识别先单独测试
     IDENTIFY( ch_contig )
 
     //PREDICT ( IDENTIFY.out.all_virus )
