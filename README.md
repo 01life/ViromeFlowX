@@ -1,4 +1,4 @@
-# ![nf-core/virome](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only) ![nf-core/virome](docs/images/nf-core-virome_logo_dark.png#gh-dark-mode-only)
+# ![ViromeFlowX](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only) ![ViromeFlowX](docs/images/nf-core-virome_logo_dark.png#gh-dark-mode-only)
 
 [![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/virome/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
@@ -14,10 +14,10 @@
 
 <!-- TODO nf-core: Write a 1-2 sentence summary of what data the pipeline is for and what it does -->
 
-**nf-core-virome** is a user-friendly Nextflow workflow that automates viral genome assembly, identification, classification, and annotation. This streamlined workflow integrates cutting-edge tools for processing raw sequencing data for taxonomic annotation and functional analysis. The pipeline enables efficient mining of viral genomic data, offering a valuable resource to investigate the gut virome's role in virus-host interactions and virus-related diseases.
+**ViromeFlowX** is a user-friendly Nextflow workflow that automates viral genome assembly, identification, classification, and annotation. This streamlined workflow integrates cutting-edge tools for processing raw sequencing data for taxonomic annotation and functional analysis. The pipeline enables efficient mining of viral genomic data, offering a valuable resource to investigate the gut virome's role in virus-host interactions and virus-related diseases.
 
 <p align="center">
-    <img src="docs/images/workflow.jpg" alt="nf-core/metassembly workflow overview" width="90%">
+    <img src="docs/images/workflow.jpg" alt="ViromeFlowX workflow overview" width="90%">
 </p>
 
 The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!
@@ -47,7 +47,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 3. Download the pipeline and test it on a minimal dataset with a single command:
 
    ```bash
-   nextflow run /path/to/project/nf-core-virome -profile test,YOURPROFILE --outdir <OUTDIR>
+   nextflow run /path/to/project/ViromeFlowX -profile test,YOURPROFILE --outdir <OUTDIR>
    ```
 
    Note that some form of configuration will be needed so that Nextflow knows how to fetch the required software. This is usually done in the form of a config profile (`YOURPROFILE` in the example command above). You can chain multiple config profiles in a comma-separated string.
@@ -62,7 +62,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
    <!-- TODO nf-core: Update the example "typical command" below used to run the pipeline -->
 
    ```bash
-   nextflow run /path/to/project/nf-core-virome --input samplesheet.csv --outdir <OUTDIR> -profile <docker/singularity/podman/shifter/charliecloud/conda/institute>
+   nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile <docker/singularity/podman/shifter/charliecloud/conda/institute>
    ```
 
 ## Documentation
@@ -73,7 +73,7 @@ The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSo
 you can also use `--help` to see the parameters.
 
    ```bash
-   nextflow run /path/to/project/nf-core-virome --help
+   nextflow run /path/to/project/ViromeFlowX --help
    ```
 
 ## Credits
