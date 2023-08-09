@@ -14,7 +14,7 @@
 
 <!-- TODO nf-core: Write a 1-2 sentence summary of what data the pipeline is for and what it does -->
 
-**nf-core/virome** is a bioinformatics best-practice analysis pipeline for virome workflow.
+**nf-core-virome** is a user-friendly Nextflow workflow that automates viral genome assembly, identification, classification, and annotation. This streamlined workflow integrates cutting-edge tools for processing raw sequencing data for taxonomic annotation and functional analysis. The pipeline enables efficient mining of viral genomic data, offering a valuable resource to investigate the gut virome's role in virus-host interactions and virus-related diseases.
 
 <p align="center">
     <img src="docs/images/workflow.jpg" alt="nf-core/metassembly workflow overview" width="90%">
@@ -30,14 +30,13 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 <!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
-1. QC ( [`trimmomatic`](https://github.com/usadellab/Trimmomatic) [`bowtie2`](https://github.com/BenLangmead/bowtie2) )
-2. Assembly [`metaspades`](https://github.com/ablab/spades)
-3. Identify ( [`VirFinder`](https://github.com/jessieren/VirFinder) [`VirSorter2`](https://github.com/jiarong/VirSorter2) ) 
-4. Gene_Predict( [`Cdhit`](https://github.com/weizhongli/cdhit) [`Prodigal`](https://github.com/hyattpd/Prodigal) )
-5. Gene_Annotation ( [`prokka`](https://github.com/tseemann/prokka) )
-6. Classify ( [`usearch`](https://drive5.com/usearch) [`Blast`](https://blast.ncbi.nlm.nih.gov/Blast.cgi) [`taxonkit`](https://github.com/shenwei356/taxonkit) )
-7. Abundance ( [`CoverM`](https://github.com/wwood/CoverM) [`bedtools2`](https://github.com/arq5x/bedtools2) )
-8. Profile
+1. Quality Control ( [`trimmomatic`](https://github.com/usadellab/Trimmomatic) [`bowtie2`](https://github.com/BenLangmead/bowtie2) )
+2. Assembly ( [`metaspades`](https://github.com/ablab/spades) )
+3. Viral Taxonomic Classify ( [`Kraken2`](https://github.com/DerrickWood/kraken2) )
+4. Viral Contigs Identification ( [`VirFinder`](https://github.com/jessieren/VirFinder) [`VirSorter2`](https://github.com/jiarong/VirSorter2) [`CheckV`](https://bitbucket.org/berkeleylab/checkv/src/master/) [`Cdhit`](https://github.com/weizhongli/cdhit) ) 
+5. Gene Prediction & Functional Annotation ( [`Prodigal`](https://github.com/hyattpd/Prodigal) [`bedtools2`](https://github.com/arq5x/bedtools2) [`DIAMOND`](https://github.com/bbuchfink/diamond) )
+6. Viral Taxonomic Classify Assignment ( [`usearch`](https://drive5.com/usearch) [`Blast`](https://blast.ncbi.nlm.nih.gov/Blast.cgi) [`taxonkit`](https://github.com/shenwei356/taxonkit) [`CoverM`](https://github.com/wwood/CoverM) )
+
 
 ## Quick Start
 
@@ -70,7 +69,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 The nf-core/virome pipeline comes with documentation about the pipeline [usage](docs/usage.md), [parameters](https://nf-co.re/pipeline_schema_builder?id=1685934039_c37b87cf4b3c) and [output](docs/output.md).
 
-The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2) -> Gene_Predict -> Geneset_Annotation -> Classify(demovir、pfam、protein、crAss、genome) -> Abundance
+The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2) -> Geneset -> Classify(demovir、pfam、protein、crAss、genome) -> Abundance
 you can also use `--help` to see the parameters.
 
    ```bash
@@ -82,6 +81,10 @@ you can also use `--help` to see the parameters.
 nf-core/virome was originally written by 👩‍💻yangying.
 
 We thank the following people for their extensive assistance in the development of this pipeline:
+👨Xie hailiang
+🧑Sun yingshuai
+👩‍💻Liang lifeng
+👨‍💻Xiao yang
 
 <!-- TODO nf-core: If applicable, make list of people who have also contributed -->
 
@@ -90,6 +93,8 @@ We thank the following people for their extensive assistance in the development 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
 
 For further information or help, don't hesitate to get in touch on the [Slack `#virome` channel](https://nfcore.slack.com/channels/virome) (you can join with [this invite](https://nf-co.re/join/slack)).
+
+### :warning: Don't change the main master branch code directly, PLEASE create new branches and commit requirements!
 
 ## Citations
 

@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This document describes the output produced by the pipeline. Most of the plots are taken from the MultiQC report, which summarises results at the end of the pipeline.
-
-The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
+This document describes the output produced by the pipeline.The directories listed below will be created in the results directory after the pipeline has finished. All paths are relative to the top-level results directory.
 
 <!-- TODO nf-core: Write this documentation describing your workflow's output -->
 
@@ -15,8 +13,7 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 - [QC](#QC) - Raw read QC
 - [Assembly](#Assembly) - Assembly clean reads
 - [Identify](#Identify)
-- [Gene_Predict](#gene_predict)
-- [Gene_Annotation](#gene_annotation)
+- [Geneset](#geneset)
 - [Abundance](#Abundance)
 - [Funtional](#funtional)
 - [Profile](#Profile)
@@ -35,7 +32,10 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 </details>
 
-[qc.jar](https://www.yuque.com/weiguang-zmv3n/oig0wr/dn0h3dfpw047snx4) is a wrapped jar package , @Author: Yangying.
+[`Trimmomatic`](https://github.com/usadellab/Trimmomatic) is a fast, multithreaded command line tool that can be used to trim and crop 
+Illumina (FASTQ) data as well as to remove adapters. These adapters can pose a real problem depending on the library preparation and downstream application.
+
+[`Bowtie 2`](https://github.com/BenLangmead/bowtie2) is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s of characters, and particularly good at aligning to relatively long (e.g. mammalian) genomes. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.
 
 
 ### Assembly
@@ -59,6 +59,15 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 <summary>Output files</summary>
 
 - `03.identify/`
+  - `CheckV`
+    - `Sample ID`
+      - `*_proviruses_viruses.fna`
+      - `complete_genomes.tsv`
+      - `completeness.tsv`
+      - `contamination.tsv`
+      - `proviruses.fna`
+      - `quality_summary.tsv`
+      - `viruses.fna`
   - `merge/`
     - `Sample ID`
       - `*_virus.fa`
@@ -79,7 +88,13 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 </details>
 
-### Gene_Predict
+[VirFinder](https://github.com/jessieren/VirFinder) R package for identifying viral sequences from metagenomic data using sequence signatures.
+
+[VirSorter2](https://github.com/jiarong/VirSorter2) VirSorter2 applies a multi-classifier, expert-guided approach to detect diverse DNA and RNA virus genomes.
+
+[CheckV](https://bitbucket.org/berkeleylab/checkv/src/master/) is a fully automated command-line pipeline for assessing the quality of single-contig viral genomes, including identification of host contamination for integrated proviruses, estimating completeness for genome fragments, and identification of closed genomes.
+
+### Geneset
 
 <details markdown="1">
 <summary>Output files</summary>
@@ -94,27 +109,6 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
     - `viral.cds`
     - `viral.gene.gff`
     - `viral.pep`
-  - `prokka/`
-    - `vir.bed`
-    - `virus.prokka.err`
-    - `virus.prokka.faa`
-    - `virus.prokka.ffn`
-    - `virus.prokka.fna`
-    - `virus.prokka.fsa`
-    - `virus.prokka.gbk`
-    - `virus.prokka.gff`
-    - `virus.prokka.log`
-    - `virus.prokka.sqn`
-    - `virus.prokka.tbl`
-    - `virus.prokka.tsv`
-    - `virus.prokka.txt`
-
-</details>
-
-### Gene_Annotation
-
-<details markdown="1">
-<summary>Output files</summary>
 
 - `05.classify/`
   - `1.refseq_genome/`
@@ -136,6 +130,12 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
     - `refseq_protein.contigs.taxonomy.txt`
 
 </details>
+
+[Cdhit](https://github.com/weizhongli/cdhit) is a widely used program for clustering biological sequences to reduce sequence redundancy and improve the performance of other sequence analyses.
+
+[Prodigal](https://github.com/hyattpd/Prodigal) Fast, reliable protein-coding gene prediction for prokaryotic genomes.
+
+[taxonkit](https://github.com/shenwei356/taxonkit) A Practical and Efficient NCBI Taxonomy Toolkit.
 
 ### Abundance
 
@@ -187,6 +187,9 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
 
 </details>
 
+
+[DIAMOND](https://github.com/bbuchfink/diamond) is a sequence aligner for protein and translated DNA searches, designed for high performance analysis of big sequence data. 
+
 ### Profile
 
 <details markdown="1">
@@ -216,8 +219,15 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
     - `virus.contigs.abun.relab.txt`
     - `virus.contig_with_tax.txt`
     - `virus.taxonomy.txt`
+  - `Kraken2/`
+    - `Sample ID/`
+      - `*_bracken_*.xls`
+      - `*_kreport_bracken_*.xls`
+    - `Kraken2_*.xls`
 
 </details>
+
+[Kraken 2](https://github.com/DerrickWood/kraken2) is the newest version of Kraken, a taxonomic classification system using exact k-mer matches to achieve high accuracy and fast classification speeds.
 
 ### Pipeline information
 

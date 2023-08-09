@@ -8,40 +8,35 @@
 
 <!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
 
+ViromeFlowX is a user-friendly Nextflow workflow that automates viral genome assembly, identification, classification, and annotation. This streamlined workflow integrates cutting-edge tools for processing raw sequencing data for taxonomic annotation and functional analysis. ViromeFlowX enables efficient mining of viral genomic data, offering a valuable resource to investigate the gut virome's role in virus-host interactions and virus-related diseases.
+
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 or 4 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
 ```
 
-### Full samplesheet
+### Run the whole pipeline with default parameters
 
-The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 3 columns to match those defined in the table below.
-
-A final samplesheet file consisting of both single- and paired-end data may look something like the one below. This is for 6 samples, where `TREATMENT_REP3` has been sequenced twice.
+If you want to run the whole pipeline with default parameters, there is a strict requirement for the first 3 columns to match those defined in the table below. 
 
 ```console
-sample,reads1,read2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz
-CONTROL_REP3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz
-TREATMENT_REP1,AEG588A4_S4_L003_R1_001.fastq.gz,
-TREATMENT_REP2,AEG588A5_S5_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
-```
+id,reads1,read2
+sample_2,/PATH/sample_L002_R1.fastq.gz,/PATH/sample_L002_R2.fastq.gz
+sample_3,/PATH/sample_L003_R1.fastq.gz,/PATH/sample_L003_R2.fastq.gz
+
 
 | Column    | Description                                                                                                                                                                            |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
+| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
 | `reads1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 | `reads2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
-## Running the pipeline
+## Running the whole pipeline
 
 The typical command for running the pipeline is as follows:
 
@@ -59,6 +54,57 @@ work                # Directory containing the nextflow working files
 .nextflow_log       # Log file from Nextflow
 # Other nextflow hidden files, eg. history of pipeline runs and old logs.
 ```
+
+### Run with special parameters
+
+1. skip QC step of the pipeline
+
+If you want to run the pipeline with parameter --skip_qc, the input samplesheet.csv must contain the following three columns: id, reads1, reads2. The information in the reads1 and reads2 columns corresponds to the cleaned sequence files.
+
+| Column    | Description                                                                                                                                                                            |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
+| `reads1` | Full path to FastQ file for cleaned short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+| `reads2` | Full path to FastQ file for cleaned short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".              
+
+> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the cleaned sequence files.
+
+The command to skip QC steps when running the pipeline is as follows:
+
+```bash
+nextflow run /path/to/project/nf-core-virome --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_qc
+```
+
+
+2. skip Assembly step of the pipeline
+
+If you want to run the pipeline with parameter --skip_assembly, the input samplesheet.csv must contain the following four columns: id, reads1, reads2, contig. The information in the reads1 and reads2 columns corresponds to the cleaned sequence files.The contig column information is the full path of the sample contigs sequence file.
+
+| Column    | Description                                                                                                                                                                            |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
+| `reads1` | Full path to clean reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+| `reads2` | Full path to clean reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".   
+| `contig` | Full path to assembly contigs. File has to have the extension ".fa" or ".fasta".            
+
+The command to skip Assembly steps when running the pipeline is as follows:
+
+```bash
+nextflow run /path/to/project/nf-core-virome --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_assembly
+```
+> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the cleaned sequence files.
+
+
+3. skip Kraken2 step of the pipeline
+
+The command to skip Kraken2 steps when running the pipeline is as follows:
+
+```bash
+nextflow run /path/to/project/nf-core-virome --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_kraken2
+```
+
+> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the raw sequence files.
+
 
 ### Updating the pipeline
 
@@ -115,7 +161,7 @@ If `-profile` is not specified, the pipeline will run locally and expect all sof
 
 ### ⭐`-resume`
 
-> **NB:** This is very useful. 支持断点重投，非常有用！
+> **NB:** This is very useful.
 
 Specify this when restarting a pipeline. Nextflow will use cached results from any pipeline steps where the inputs are the same, continuing from where it got to previously. For input to be considered the same, not only the names must be identical but the files' contents as well. For more info about this parameter, see [this blog post](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html).
 

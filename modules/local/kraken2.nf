@@ -5,7 +5,7 @@ process KRAKEN2 {
 
     label 'process_high'
     
-    publishDir "${params.outdir}/02.Kraken2/${id}",mode:'copy'
+    publishDir "${params.outdir}/08.profile/Kraken2/${id}",mode:'copy'
 
     input:
     tuple val(id),path(reads1)
