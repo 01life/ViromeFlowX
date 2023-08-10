@@ -1,0 +1,4 @@
+id,reads1,reads2
+A1,/ehpcdata/PM/DATA/RD23010035/data/control-A1_FSFP202111618-1a_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A1_FSFP202111618-1a_2.fq.gz
+A2,/ehpcdata/PM/DATA/RD23010035/data/control-A2_FDSW202403847-1r_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A2_FDSW202403847-1r_2.fq.gz
+A3,/ehpcdata/PM/DATA/RD23010035/data/control-A3_FDME202122376-1a_1.fq.gz,/ehpcdata/PM/DATA/RD23010035/data/control-A3_FDME202122376-1a_2.fq.gz
