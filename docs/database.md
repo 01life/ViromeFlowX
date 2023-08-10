@@ -92,20 +92,24 @@ wget http://huttenhower.sph.harvard.edu/humann_data/uniprot/uniref_annotated/uni
 mkdir -p uniprot/uniref_annotated/uniref90 && tar xzvf uniref90_annotated_v201901.tar.gz -C uniprot/uniref_annotated/uniref90
 ```
 
-### demovir_data
+### demovir_taxa
 
 ```bash
-https://github.com/feargalr/Demovir
+wget https://github.com/feargalr/Demovir/blob/master/TrEMBL_viral_taxa.RDS
 ```
 
 ### pfam_db
 
-```bash
+The pfam database, referenced in the [`article`](https://doi.org/10.1016/j.chom.2020.06.005), classifies viruses into Caudovirales, Myoviridae, or Microviridae. As the database is no longer updated and relies on the mentioned article, it has been uploaded to GitHub for easy access and download.
 
+```bash
+wget https://github.com/01life/flowDB/blob/main/virome/virus.pfam
 ```
 
 ### demovir_db
 
 ```bash
-
+wget https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/10442241/nr.95.fasta.bz2
+bunzip2 nr.95.fasta.bz2
+usearch -makeudb_ublast nr.95.fasta -output uniprot_trembl.viral.udb &> usearch_database.log
 ```
