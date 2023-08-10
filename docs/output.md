@@ -1,4 +1,4 @@
-# nf-core/virome: Output
+# ViromeFlowX: Output
 
 ## Introduction
 

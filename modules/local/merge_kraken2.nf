@@ -3,7 +3,7 @@ process MERGEKRAKEN2 {
 
     label 'process_low'
 
-    publishDir "${params.outdir}/02.Kraken2",mode:'copy'
+    publishDir "${params.outdir}/08.profile/Kraken2/",mode:'copy'
     
     input:
     path(mapping)

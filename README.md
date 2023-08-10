@@ -42,9 +42,18 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 1. Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=22.10.1`)
 
-2. Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/) (you can follow [this tutorial](https://singularity-tutorial.github.io/01-installation/)), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(you can use [`Conda`](https://conda.io/miniconda.html) both to install Nextflow itself and also to manage software within pipelines. Please only use it within pipelines as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_.
+2. Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/) (you can follow [this tutorial](https://singularity-tutorial.github.io/01-installation/)), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(you can use [`Conda`](https://conda.io/miniconda.html) both to install Nextflow itself and also to manage software within pipelines. Please only use it within pipelines as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_. It is recommended to use [`mamba`(https://github.com/mamba-org/mamba)'] or [`Conda`](https://conda.io/miniconda.html) for installing and managing software of this pipeline.
 
-3. Download the pipeline and test it on a minimal dataset with a single command:
+3. Install the software dependencies of ViromeFlowX with the following command:
+
+   ```bash
+   mamba/conda env create -f /path/to/project/ViromeFlowX/environment.yml
+   ```
+   > Notes: The [`usearch`](http://www.drive5.com/usearch/) tool is not supported for installation through conda. You need to manually download and install it. Please refer to the official [`documentation`](http://www.drive5.com/usearch/manual/install.html) for installation instructions.
+
+4. Download and configure the databases, please refer to the [`documentation`](https://github.com/twilightBI/nf-core-virome/blob/master/docs/database.md) for details
+
+5. Download the pipeline and test it on a minimal dataset with a single command:
 
    ```bash
    nextflow run /path/to/project/ViromeFlowX -profile test,YOURPROFILE --outdir <OUTDIR>
@@ -57,7 +66,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
    > - If you are using `singularity`, please use the [`nf-core download`](https://nf-co.re/tools/#downloading-pipelines-for-offline-use) command to download images first, before running the pipeline. Setting the [`NXF_SINGULARITY_CACHEDIR` or `singularity.cacheDir`](https://www.nextflow.io/docs/latest/singularity.html?#singularity-docker-hub) Nextflow options enables you to store and re-use the images from a central location for future pipeline runs.
    > - If you are using `conda`, it is highly recommended to use the [`NXF_CONDA_CACHEDIR` or `conda.cacheDir`](https://www.nextflow.io/docs/latest/conda.html) settings to store the environments in a central location for future pipeline runs.
 
-4. Start running your own analysis!
+6. Start running your own analysis!
 
    <!-- TODO nf-core: Update the example "typical command" below used to run the pipeline -->
 

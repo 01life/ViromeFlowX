@@ -4,7 +4,7 @@ process CHECKV {
 
     label 'process_low'
 
-    conda '/home/yangying/tools/checkv'
+    // conda '/home/yangying/tools/checkv'
 
     publishDir "${params.outdir}/03.identify/CheckV",mode:'copy'
 

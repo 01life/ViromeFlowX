@@ -6,7 +6,7 @@ process METASPADES {
     errorStrategy{'retry'}
     maxRetries 1
 
-    conda '/share/app/miniconda3/envs/py37'
+    // conda '/share/app/miniconda3/envs/py37'
     
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
