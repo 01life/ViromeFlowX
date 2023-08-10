@@ -51,7 +51,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
    ```
    > Notes: The [`usearch`](http://www.drive5.com/usearch/) tool is not supported for installation through conda. You need to manually download and install it. Please refer to the official [`documentation`](http://www.drive5.com/usearch/manual/install.html) for installation instructions.
 
-4. Download and configure the databases, please refer to the [`documentation`](https://github.com/twilightBI/nf-core-virome/blob/master/docs/database.md) for details
+4. Download and configure the databases, please refer to the [`documentation`](https://github.com/01life/ViromeFlowX/blob/main/docs/databse.md) for details
 
 5. Download the pipeline and test it on a minimal dataset with a single command:
 
