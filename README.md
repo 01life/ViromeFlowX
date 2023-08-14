@@ -42,7 +42,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 1. Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=22.10.1`)
 
-2. Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/) (you can follow [this tutorial](https://singularity-tutorial.github.io/01-installation/)), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(you can use [`Conda`](https://conda.io/miniconda.html) both to install Nextflow itself and also to manage software within pipelines. Please only use it within pipelines as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_. It is recommended to use [`mamba`(https://github.com/mamba-org/mamba)'] or [`Conda`](https://conda.io/miniconda.html) for installing and managing software of this pipeline.
+2. Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/) (you can follow [this tutorial](https://singularity-tutorial.github.io/01-installation/)), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(you can use [`Conda`](https://conda.io/miniconda.html) both to install Nextflow itself and also to manage software within pipelines. Please only use it within pipelines as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_. It is recommended to use [`mamba`](https://github.com/mamba-org/mamba) or [`Conda`](https://conda.io/miniconda.html) for installing and managing software of this pipeline.
 
 3. Install the software dependencies of ViromeFlowX with the following command:
 
@@ -78,7 +78,7 @@ On release, automated continuous integration tests run the pipeline on a full-si
 
 The nf-core/virome pipeline comes with documentation about the pipeline [usage](docs/usage.md), [parameters](https://nf-co.re/pipeline_schema_builder?id=1685934039_c37b87cf4b3c) and [output](docs/output.md).
 
-The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2) -> Geneset -> Classify(demovir、pfam、protein、crAss、genome) -> Abundance
+The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2、CheckV) -> Taxonomic Classify(Kraken2) -> Geneset -> Taxonomic Classify Assignment (demovir、pfam、protein、crAss、genome) -> Abundance
 you can also use `--help` to see the parameters.
 
    ```bash
