@@ -21,7 +21,7 @@ def parse_arguments(args):
     parser.add_argument(
         "--bowtie2-options",
         help="bowtie2 options",
-        default="--very-sensitive --no-head --no-sq --reorder")
+        default="--very-sensitive --no-head --reorder")
     parser.add_argument(
         "-db","--database",
         help="reference database",
@@ -70,16 +70,16 @@ def rmhost_with_bowtie(pair1,pair2,database,threads,options,out,gzip):
  
             if (flag & 4) and (flag & 8): # other mode: "(flag & 4) or (flag & 8)"
                 if flag & 64:
-                    pair1_unaligned.write("\n".join(["@"+data[0],data[9],"+",data[10]])+"\n")
+                    pair1_unaligned.write("\n".join(["@"+data[0]+"/1",data[9],"+",data[10]])+"\n")
                     reads_surviving+=1
                 else:
-                    pair2_unaligned.write("\n".join(["@"+data[0],data[9],"+",data[10]])+"\n")
+                    pair2_unaligned.write("\n".join(["@"+data[0]+"/2",data[9],"+",data[10]])+"\n")
 
         pair1_unaligned.close()
         pair2_unaligned.close()
           
         if gzip:
-            subprocess.check_call(['gzip','-f',out1,out2])
+            subprocess.check_call(['pigz','-f','-p',str(threads),out1,out2])
     else:
         for line in p.stdout:
             data=line.decode('utf-8').rstrip().split("\t")
@@ -92,7 +92,7 @@ def rmhost_with_bowtie(pair1,pair2,database,threads,options,out,gzip):
         pair1_unaligned.close()
           
         if gzip:
-            subprocess.check_call(['gzip','-f',out1])
+            subprocess.check_call(['pigz','-f','-p',str(threads),out1])
 
     reads_total=0
     for line in p.stderr:
