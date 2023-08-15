@@ -26,8 +26,8 @@ process CRASS {
     if [ -s p-crAssphage.list ]; 
         then cat crAss-like.list | csvtk grep -H -v -P p-crAssphage.list -o crAss-like.list; 
     fi 
-    
-    test -s crAss-like.list && sed -i '1iID\\ttax' crAss-like.list || echo -e "ID\\ttax" >> crAss-like.list
+
+    test -s crAss-like.list && sed -i '1iID' crAss-like.list || echo -e "ID" >> crAss-like.list
 
     """
 }
