@@ -3,8 +3,10 @@ process METASPADES {
    
     tag "$id"
     
-    errorStrategy{'retry'}
-    maxRetries 1
+    label 'process_high'
+    
+    // errorStrategy{'retry'}
+    // maxRetries 1
 
     // conda '/share/app/miniconda3/envs/py37'
     
