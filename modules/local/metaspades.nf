@@ -5,6 +5,8 @@ process METASPADES {
     
     label 'process_high'
     
+    errorStrategy = { task.exitStatus in [143,137,104,134,139,247] ? 'terminate' : 'retry' }
+    
     // errorStrategy{'retry'}
     // maxRetries 1
 

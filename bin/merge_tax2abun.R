@@ -14,8 +14,8 @@ abun1 <- opt$options$abun
 outFile <- opt$options$output
 
 ##data
-dat <- read.table(taxfile,header = TRUE,sep = '\t')
-abun <- read.table(abun1,header = TRUE,sep = '\t')
+dat <- read.table(taxfile,header = TRUE,sep = '\t',check.names = FALSE)
+abun <- read.table(abun1,header = TRUE,sep = '\t',check.names = FALSE)
 
 names(dat)[1] <- "ID"
 names(abun)[1] <- "ID"
@@ -35,7 +35,7 @@ if(ncol(abun)==2){
 dat_1 <- merge(abun,dat,id="ID",sort = FALSE) 
 
 dat_2 <- data.frame(dat_1[,c("ID","taxonomy")],
-                    dat_1[,names(abun)[2:ncol(abun)]])
+                    dat_1[,names(abun)[2:ncol(abun)]],check.names = FALSE)
 dat_2 <- subset(dat_2,select = -c(ID))
 
 #Sum the abundance values of species annotations

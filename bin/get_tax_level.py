@@ -19,7 +19,7 @@ def extract(lines, level, path):
         cols = line.strip().split('\t')
         if line[0] != '#' :
             #处理头信息
-            if cols[0]=='clade_name':
+            if cols[0]=='Taxonomy':
                 content = "\t"+"\t".join(cols[2:]) + '\n'
                 out.write(content)
             else:
