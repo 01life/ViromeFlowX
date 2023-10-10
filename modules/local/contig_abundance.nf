@@ -13,7 +13,7 @@ process CONTIG {
     path("sort.filter.cov")
     path("sort.filter.cov.contig")
     path("sort.filter.dpmean")
-    path("${id}.contig.abundance"),emit:"abundance"
+    path("${id}.abundance"),emit:"abundance"
 
     script:
     """
@@ -22,7 +22,7 @@ process CONTIG {
     bedtools genomecov -ibam ${filter_bam} -bga -pc > sort.filter.cov
     
     perl ${params.nfcore_bin}/filter_contig_cov.pl sort.filter.cov > sort.filter.cov.contig
-    perl ${params.nfcore_bin}/fishInWinter.pl sort.filter.cov.contig  sort.filter.dpmean > ${id}.contig.abundance
+    perl ${params.nfcore_bin}/fishInWinter.pl sort.filter.cov.contig  sort.filter.dpmean > ${id}.abundance
 
     """
 }
