@@ -13,7 +13,7 @@ process CONTIG {
     path("sort.filter.cov")
     path("sort.filter.cov.contig")
     path("sort.filter.dpmean")
-    path("${id}.abundance"),emit:"abundance"
+    path("${id}.contig.abundance"),emit:"abundance"
 
     script:
     """
