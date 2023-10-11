@@ -85,17 +85,6 @@ you can also use `--help` to see the parameters.
    nextflow run /path/to/project/ViromeFlowX --help
    ```
 
-## Credits
-
-nf-core/virome was originally written by 👩‍💻yangying.
-
-We thank the following people for their extensive assistance in the development of this pipeline:
-👨Xie hailiang
-🧑Sun yingshuai
-👩‍💻Liang lifeng
-👨‍💻Xiao yang
-
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
 
 ## Contributions and Support
 
