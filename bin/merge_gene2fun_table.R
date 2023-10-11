@@ -12,10 +12,10 @@ funTable <-  opt$options$map
 geneAbu <-   opt$options$rpkm
 outputFile <- opt$options$output
 
-mapTable <- read.table(funTable)
+mapTable <- read.table(funTable,check.names = FALSE)
 names(mapTable) <- c("ID","FUNID")
 
-gene_abu <- read.table(geneAbu,header = TRUE,sep = '\t')
+gene_abu <- read.table(geneAbu,header = TRUE,sep = '\t',check.names = FALSE)
 
 if(ncol(gene_abu)==2){
   #In the case of having only one sample, remove rows with abundance values that are all 0

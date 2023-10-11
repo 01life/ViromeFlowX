@@ -1,4 +1,4 @@
-# ![ViromeFlowX](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only) ![ViromeFlowX](docs/images/nf-core-virome_logo_dark.png#gh-dark-mode-only)
+# ![ViromeFlowX](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only)
 
 [![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/virome/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
@@ -84,40 +84,3 @@ you can also use `--help` to see the parameters.
    ```bash
    nextflow run /path/to/project/ViromeFlowX --help
    ```
-
-## Credits
-
-nf-core/virome was originally written by 👩‍💻yangying.
-
-We thank the following people for their extensive assistance in the development of this pipeline:
-👨Xie hailiang
-🧑Sun yingshuai
-👩‍💻Liang lifeng
-👨‍💻Xiao yang
-
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
-
-## Contributions and Support
-
-If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
-
-For further information or help, don't hesitate to get in touch on the [Slack `#virome` channel](https://nfcore.slack.com/channels/virome) (you can join with [this invite](https://nf-co.re/join/slack)).
-
-### :warning: Don't change the main master branch code directly, PLEASE create new branches and commit requirements!
-
-## Citations
-
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use  nf-core/virome for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
-
-An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
-
-You can cite the `nf-core` publication as follows:
-
-> **The nf-core framework for community-curated bioinformatics pipelines.**
->
-> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
->
-> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
