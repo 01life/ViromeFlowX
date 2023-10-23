@@ -103,7 +103,7 @@ wget https://github.com/feargalr/Demovir/blob/master/TrEMBL_viral_taxa.RDS
 The pfam database, referenced in the [`article`](https://doi.org/10.1016/j.chom.2020.06.005), classifies viruses into Caudovirales, Myoviridae, or Microviridae. As the database is no longer updated and relies on the mentioned article, it has been uploaded to GitHub for easy access and download.
 
 ```bash
-wget https://github.com/01life/flowDB/blob/main/virome/virus.pfam](https://github.com/01life/FlowDB/blob/main/ViromeFlowX/virus.pfam
+wget https://raw.githubusercontent.com/01life/FlowDB/main/ViromeFlowX/virus.pfam
 ```
 
 ### demovir_db
