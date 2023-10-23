@@ -2,8 +2,7 @@
 
 ## Introduction
 
-This document describes how to download the required databases for the pipeline.
-:warning: NOTE: Due to the fast iteration of software and database updates, we cannot guarantee that the code in the tutorial is always the latest version. Therefore, we only provide reference installation commands. Users need to adjust specific versions, file names, formats, and other details based on the files they download to ensure that they can independently complete the latest version of software and database configurations. In the future, we will consider providing complete commands for the current version.
+:warning: This document describes how to download the required databases for the pipeline. Due to the fast iteration of software and database updates, we cannot guarantee that the code in the tutorial is always the latest version. Therefore, we only provide reference installation commands. Users need to adjust specific versions, file names, formats, and other details based on the files they download to ensure that they can independently complete the latest version of software and database configurations. In the future, we will consider providing complete commands for the current version.
 <!-- TODO nf-core: Write this documentation describing your workflow's databses -->
 
 ### host_db
