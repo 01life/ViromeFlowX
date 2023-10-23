@@ -37,7 +37,7 @@ chmod -R 755 db
 
 ```bash
 wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-tar -zxvf checkv-db-archived-version.tar.gz 
+tar -zxvf checkv-db-[archived-version].tar.gz 
 cd /path/to/checkv-db/genome_db 
 diamond makedb --in checkv_reps.faa --db checkv_reps
 ```
@@ -64,7 +64,8 @@ parallel --xapply makeblastdb -dbtype {2} -in {1}.fa -parse_seqids -out {1}/{1} 
 ### genome_db & protein_db
 
 ```bash
-https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/
+https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
+https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.protein.faa.gz
 ```
 
 ### CAZy eggnog go ko level4ev pfam
