@@ -12,8 +12,7 @@
             "description": "Define where the pipeline should find input data and save output data.",
             "required": [
                 "input",
-                "outdir",
-                "Account"
+                "outdir"
             ],
             "properties": {
                 "input": {
