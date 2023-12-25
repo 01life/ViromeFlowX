@@ -1,6 +1,6 @@
 process PFAM {
     
-    label 'process_medium'
+    // label 'process_medium'
 
     publishDir "${params.outdir}/05.classify/4.pfam",mode:'copy'
 
