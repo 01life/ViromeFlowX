@@ -15,8 +15,7 @@ process METASPADES {
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
     input:
-    tuple val(id),path(reads1)
-    tuple val(id),path(reads2)
+    tuple val(id),path(reads1),path(reads2)
 
     output:
     tuple val(id),path("${id}/1k.contigs"),emit:"contigs"

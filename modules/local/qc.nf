@@ -10,8 +10,7 @@ process CLEAN {
     publishDir "${params.outdir}/01.QC/",mode:'copy'
 
     input:
-    tuple val(id),path(reads1)
-    tuple val(id),path(reads2)
+    tuple val(id),path(reads1),path(reads2)
 
     output:
     tuple val(id),path("${id}/*1.fq.gz"),emit:"clean_reads1"
