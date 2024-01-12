@@ -26,7 +26,7 @@ process METASPADES {
     """
     mkdir ${id}
 
-    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus}
+    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus} -m 62
 
     perl ${params.nfcore_bin}/deal_fa.pl contigs.fasta ${id} >contigs
 

@@ -198,6 +198,11 @@
                     "type": "string",
                     "default": "/share/app/Demovir/TrEMBL_viral_taxa.RDS",
                     "description": "demovir taxonomic file"
+                },
+                "pfam_pep_chunck_size": {
+                    "type": "integer",
+                    "default": 20000,
+                    "description": "Number of protein sequences in each FPAM task"
                 }
             },
             "fa_icon": "fas fa-server"
