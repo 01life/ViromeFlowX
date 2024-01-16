@@ -75,6 +75,11 @@
                 "skip_kraken2": {
                     "type": "boolean",
                     "description": "skip kraken2"
+                },
+                "metaspades_options": {
+                    "type": "string",
+                    "default": "-m 62",
+                    "description": "Options of metaSPAdes"
                 }
             },
             "fa_icon": "fas fa-broom"

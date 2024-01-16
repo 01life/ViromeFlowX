@@ -5,7 +5,7 @@ process METASPADES {
     
     label 'process_high'
     
-    errorStrategy = { task.exitStatus in [143,137,104,134,139,247] ? 'terminate' : 'retry' }
+    errorStrategy = { task.exitStatus in [143,137,104,134,139,247,250] ? 'terminate' : 'retry' }
     
     // errorStrategy{'retry'}
     // maxRetries 1
@@ -23,10 +23,12 @@ process METASPADES {
     path("${id}/input_dataset.yaml")
 
     script:
+    def options = params.metaspades_options ?: ""
+
     """
     mkdir ${id}
 
-    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus} -m 62
+    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus} ${options}
 
     perl ${params.nfcore_bin}/deal_fa.pl contigs.fasta ${id} >contigs
 
