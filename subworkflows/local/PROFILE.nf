@@ -22,6 +22,12 @@ workflow PROFILE {
     
     CLASSIFY( abundance, taxonomy )
 
-    FUNCTIONAL( cazy, eggnog, go, ko, level4ec, pfam, rpkms )
+
+    ch_map_db = cazy.concat(eggnog, go, ko, level4ec, pfam).map{ it -> 
+        def db = it.name.split("_")[1]
+        return [db, it]
+    }
+
+    FUNCTIONAL( ch_map_db.combine(rpkms) )
 
 }
