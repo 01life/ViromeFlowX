@@ -1,0 +1,11 @@
+seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
+NZ_AMRL01000061.1	1	2	1	1663	0.86	0.86	1	2	1	1663	NA	NA	0	1	2	1	1663	0.86	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_AMRL01000061.1||full	0.86	ssDNA
+NZ_AMRL01000060.1	1	4	2	1807	0.92	0.92	1	4	2	1807	NA	NA	0	1	4	2	1807	0.92	0.0	0.0	0.0	50.0	0.0	50.0	0	dsDNAphage	linear	NZ_AMRL01000060.1||full	0.92	dsDNAphage
+NZ_AMRL01000056.1	1	2	3	3032	0.887	0.887	1	2	3	3032	NA	NA	0	1	2	3	3032	0.887	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_AMRL01000056.1||full	0.887	ssDNA
+NZ_AMRL01000054.1	1	3	612	3137	0.68	0.68	1	3	612	3137	NA	NA	0	1	3	612	3137	0.68	0.0	0.0	0.0	33.3	33.3	33.3	1	dsDNAphage	linear	NZ_AMRL01000054.1||full	0.68	dsDNAphage
+NZ_AMRL01000034.1	1	40	2	29126	0.993	0.993	1	40	2	29126	NA	NA	0	1	40	2	29126	0.993	0.0	2.5	0.0	65.0	2.5	30.0	8	dsDNAphage	linear	NZ_AMRL01000034.1||full	0.993	dsDNAphage
+NZ_AMRL01000024.1	1	76	28	60689	0.947	0.967	1	76	28	60689	NA	NA	0	1	76	28	60689	0.947	0.0	9.2	0.0	35.5	15.8	39.5	6	dsDNAphage	linear	NZ_AMRL01000024.1||full	0.947	dsDNAphage
+NZ_AMRL01000020.1	1	19	2	18628	0.873	0.873	1	19	2	18628	0.873	0.94	1	1	63	2	66485	0.62	0.0	32.3	0.0	38.7	9.7	19.4	8	dsDNAphage	linear	NZ_AMRL01000020.1||0_partial	0.873	dsDNAphage
+NZ_AMRL01000019.1	51	67	55489	70676	0.96	0.96	51	67	55489	70676	0.96	0.973	1	1	67	3	70676	0.767	0.0	5.9	0.0	70.6	11.8	11.8	3	dsDNAphage	linear	NZ_AMRL01000019.1||0_partial	0.96	dsDNAphage
+NZ_AMRL01000011.1	1	34	1	30651	0.907	0.92	1	34	1	30651	0.907	1.0	1	1	108	1	110048	0.473	0.0	37.0	0.0	23.9	19.6	19.6	5	dsDNAphage	linear	NZ_AMRL01000011.1||0_partial	0.907	dsDNAphage
+NZ_AMRL01000002.1	142	226	152664	222106	0.933	0.973	141	227	152119	223188	0.9	1.0	1	1	300	2	303153	0.473	0.0	23.2	0.0	31.3	16.2	29.3	6	dsDNAphage	linear	NZ_AMRL01000002.1||0_partial	0.933	dsDNAphage
