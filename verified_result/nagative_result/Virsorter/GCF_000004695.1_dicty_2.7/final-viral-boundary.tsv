@@ -1,3 +1,0 @@
-seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
-NW_003102045.1	1	2	1	888	0.953	0.953	1	2	1	888	NA	NA	0	1	2	1	888	0.953	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NW_003102045.1||full	0.953	ssDNA
-NC_007087.3	69	75	95142	105230	0.907	0.907	69	75	95142	105230	0.907	0.947	1	1	3612	1782	4923747	0.187	0.0	5.3	5.3	5.3	15.8	68.4	1	dsDNAphage	circular	NC_007087.3||0_partial	0.907	dsDNAphage

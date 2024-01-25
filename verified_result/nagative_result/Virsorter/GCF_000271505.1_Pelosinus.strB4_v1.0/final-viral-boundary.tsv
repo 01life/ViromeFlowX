@@ -1,7 +1,0 @@
-seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
-NZ_AKVJ01000047.1	1	2	281	1217	0.94	0.94	1	2	281	1217	NA	NA	0	1	2	281	1217	0.94	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_AKVJ01000047.1||full	0.94	ssDNA
-NZ_AKVJ01000030.1	205	226	224781	238236	0.853	0.893	205	226	224781	238236	0.853	0.947	1	1	310	209	326498	0.373	0.0	26.5	0.0	14.7	14.7	44.1	1	dsDNAphage	linear	NZ_AKVJ01000030.1||0_partial	0.853	dsDNAphage
-NZ_AKVJ01000017.1	10	32	10002	29202	0.84	0.86	10	32	10002	29202	0.84	0.92	1	1	138	3	157367	0.32	0.0	34.3	0.0	20.0	14.3	31.4	1	dsDNAphage	linear	NZ_AKVJ01000017.1||0_partial	0.84	dsDNAphage
-NZ_AKVJ01000011.1	138	261	147274	249001	0.9	0.947	138	261	147274	249001	0.9	1.0	1	1	261	1095	249001	0.627	0.0	15.3	0.0	30.6	19.4	34.7	6	dsDNAphage	linear	NZ_AKVJ01000011.1||0_partial	0.9	dsDNAphage
-NZ_AKVJ01000004.1	17	101	23332	100512	0.92	0.967	17	103	23332	102743	0.913	1.0	1	1	159	1	164366	0.68	0.0	21.2	0.0	31.3	19.2	28.3	8	dsDNAphage	linear	NZ_AKVJ01000004.1||0_partial	0.92	dsDNAphage
-NZ_AKVJ01000002.1	79	86	76286	84778	0.887	0.887	79	86	76286	84778	0.887	0.913	1	1	155	2	177184	0.093	0.0	55.0	0.0	15.0	20.0	10.0	1	dsDNAphage	linear	NZ_AKVJ01000002.1||0_partial	0.887	dsDNAphage

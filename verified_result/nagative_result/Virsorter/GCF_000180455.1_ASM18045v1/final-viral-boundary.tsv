@@ -1,5 +1,0 @@
-seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
-NZ_CACA01000262.1	1	2	780	1651	0.987	0.987	1	2	780	1651	NA	NA	0	1	2	780	1651	0.987	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_CACA01000262.1||full	0.987	ssDNA
-NZ_CACA01000127.1	1	2	1	1249	1.0	1.0	1	2	1	1249	NA	NA	0	1	2	1	1249	1.0	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_CACA01000127.1||full	1.0	ssDNA
-NZ_CACA01000119.1	1	5	3	2846	0.973	0.973	1	5	3	2846	NA	NA	0	1	5	3	2846	0.973	0.0	0.0	0.0	20.0	0.0	80.0	0	ssDNA	linear	NZ_CACA01000119.1||full	0.973	ssDNA
-NZ_CACA01000351.1	10	17	16940	25921	0.933	0.933	10	17	16940	25921	0.933	0.933	1	1	44	1	54966	0.193	0.0	20.0	0.0	20.0	25.0	35.0	1	dsDNAphage	linear	NZ_CACA01000351.1||0_partial	0.933	dsDNAphage
