@@ -1,0 +1,5 @@
+seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
+NW_667091.1	1	2	1206	7221	0.633	0.633	1	2	1206	7221	NA	NA	0	1	2	1206	7221	0.633	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NW_667091.1||full	0.633	ssDNA
+NW_666879.1	1	2	1167	3513	0.773	0.773	1	2	1167	3513	NA	NA	0	1	2	1167	3513	0.773	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NW_666879.1||full	0.773	ssDNA
+NW_666822.1	1	4	1	2799	0.807	0.807	1	4	1	2799	NA	NA	0	1	4	1	2799	0.807	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NW_666822.1||full	0.807	ssDNA
+NW_666602.1	1	2	106	1627	0.66	0.66	1	2	106	1627	NA	NA	0	1	2	106	1627	0.66	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NW_666602.1||full	0.66	ssDNA

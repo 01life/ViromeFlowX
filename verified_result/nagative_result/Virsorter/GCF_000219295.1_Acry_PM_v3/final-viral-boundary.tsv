@@ -1,0 +1,12 @@
+seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
+NZ_AFPR01000550.1	1	4	792	4698	0.62	0.62	1	4	792	4698	NA	NA	0	1	4	792	4698	0.62	0.0	0.0	0.0	50.0	0.0	50.0	0	dsDNAphage	linear	NZ_AFPR01000550.1||full	0.62	dsDNAphage
+NZ_AFPR01000545.1	1	4	3	2616	0.507	0.507	1	4	3	2616	NA	NA	0	1	4	3	2616	0.507	0.0	0.0	0.0	25.0	25.0	50.0	0	dsDNAphage	linear	NZ_AFPR01000545.1||full	0.507	dsDNAphage
+NZ_AFPR01000544.1	1	3	2	1845	0.847	0.847	1	3	2	1845	NA	NA	0	1	3	2	1845	0.847	0.0	0.0	0.0	66.7	0.0	33.3	0	ssDNA	linear	NZ_AFPR01000544.1||full	0.847	ssDNA
+NZ_AFPR01000395.1	1	3	2	1340	0.513	0.513	1	3	2	1340	NA	NA	0	1	3	2	1340	0.513	0.0	0.0	0.0	33.3	33.3	33.3	0	dsDNAphage	linear	NZ_AFPR01000395.1||full	0.513	dsDNAphage
+NZ_AFPR01000218.1	1	6	1	5123	0.58	0.58	1	6	1	5123	NA	NA	0	1	6	1	5123	0.58	0.0	16.7	0.0	33.3	16.7	33.3	1	dsDNAphage	linear	NZ_AFPR01000218.1||full	0.58	dsDNAphage
+NZ_AFPR01000199.1	1	7	1	4590	0.96	0.96	1	7	1	4590	NA	NA	0	1	7	1	4590	0.96	0.0	0.0	0.0	28.6	14.3	57.1	1	dsDNAphage	linear	NZ_AFPR01000199.1||full	0.96	dsDNAphage
+NZ_AFPR01000170.1	1	8	3	5117	0.867	0.867	1	8	3	5117	NA	NA	0	1	8	3	5117	0.867	0.0	12.5	0.0	25.0	0.0	62.5	1	dsDNAphage	linear	NZ_AFPR01000170.1||full	0.867	dsDNAphage
+NZ_AFPR01000094.1	1	6	1	4985	0.547	0.547	1	6	1	4985	NA	NA	0	1	6	1	4985	0.547	0.0	0.0	0.0	16.7	16.7	66.7	0	dsDNAphage	linear	NZ_AFPR01000094.1||full	0.547	dsDNAphage
+NZ_AFPR01000051.1	1	6	3	1989	0.547	0.547	1	6	3	1989	NA	NA	0	1	6	3	1989	0.547	0.0	0.0	0.0	16.7	16.7	66.7	0	dsDNAphage	linear	NZ_AFPR01000051.1||full	0.547	dsDNAphage
+NZ_AFPR01000040.1	1	8	3	4266	0.973	0.973	1	8	3	4266	NA	NA	0	1	8	3	4266	0.973	0.0	0.0	0.0	12.5	0.0	87.5	1	dsDNAphage	linear	NZ_AFPR01000040.1||full	0.973	dsDNAphage
+NZ_AFPR01000033.1	1	26	51	19885	0.893	0.927	1	26	51	19885	0.893	0.987	1	1	31	51	25013	0.613	0.0	29.0	0.0	19.4	6.5	45.2	1	dsDNAphage	linear	NZ_AFPR01000033.1||0_partial	0.893	dsDNAphage

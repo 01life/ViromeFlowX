@@ -1,0 +1,2 @@
+seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
+NZ_CH672387.1	1076	1128	1213807	1263835	0.893	0.94	1075	1129	1213456	1264896	0.873	0.953	1	1	3988	113	4285269	0.333	0.0	34.3	0.0	26.9	11.9	26.9	10	dsDNAphage	linear	NZ_CH672387.1||0_partial	0.893	dsDNAphage

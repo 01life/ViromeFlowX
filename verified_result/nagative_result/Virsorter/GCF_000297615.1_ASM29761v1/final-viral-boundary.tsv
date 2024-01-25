@@ -1,6 +1,0 @@
-seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
-NZ_AMCE01000085.1	1	43	3	33405	0.987	0.993	1	43	3	33405	NA	NA	0	1	43	3	33405	0.987	0.0	9.3	0.0	58.1	2.3	30.2	5	dsDNAphage	linear	NZ_AMCE01000085.1||full	0.987	dsDNAphage
-NZ_AMCE01000052.1	1	3	89	2252	0.593	0.593	1	3	89	2252	NA	NA	0	1	3	89	2252	0.593	0.0	0.0	0.0	33.3	0.0	66.7	0	ssDNA	linear	NZ_AMCE01000052.1||full	0.593	ssDNA
-NZ_AMCE01000049.1	1	3	142	1999	0.933	0.933	1	3	142	1999	NA	NA	0	1	3	142	1999	0.933	0.0	0.0	0.0	33.3	0.0	66.7	0	ssDNA	linear	NZ_AMCE01000049.1||full	0.933	ssDNA
-NZ_AMCE01000044.1	1	2	3	1355	0.96	0.96	1	2	3	1355	NA	NA	0	1	2	3	1355	0.96	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_AMCE01000044.1||full	0.96	ssDNA
-NZ_AMCE01000110.1	91	132	92477	143031	0.927	0.953	91	132	92477	143031	0.927	0.927	1	1	132	381	143031	0.64	0.0	19.0	0.0	42.9	11.9	26.2	8	dsDNAphage	linear	NZ_AMCE01000110.1||0_partial	0.927	dsDNAphage

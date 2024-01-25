@@ -1,0 +1,7 @@
+seqname	dsDNAphage	ssDNA	max_score	max_score_group	length	hallmark	viral	cellular
+NZ_BAOL01000299.1||full	0.907	0.433	0.907	dsDNAphage	2222	0	100.000	0.000
+NZ_BAOL01000265.1||full	0.773	0.007	0.773	dsDNAphage	3060	1	33.300	0.000
+NZ_BAOL01000125.1||full	0.760	0.373	0.760	dsDNAphage	3528	0	20.000	0.000
+NZ_BAOL01000370.1||lt2gene	nan	nan	nan	dsDNAphage	385	1	100.000	0.000
+NZ_BAOL01000368.1||lt2gene	nan	nan	nan	dsDNAphage	385	1	100.000	0.000
+NZ_BAOL01000315.1||lt2gene	nan	nan	nan	dsDNAphage	1854	1	50.000	0.000

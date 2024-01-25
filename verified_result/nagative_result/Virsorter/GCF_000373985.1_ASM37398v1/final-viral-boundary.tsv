@@ -1,0 +1,17 @@
+seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
+NZ_KB893043.1	1	2	53	966	0.6	0.6	1	2	53	966	NA	NA	0	1	2	53	966	0.6	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_KB893043.1||full	0.6	ssDNA
+NZ_KB893041.1	1	2	306	1010	0.86	0.86	1	2	306	1010	NA	NA	0	1	2	306	1010	0.86	0.0	0.0	0.0	50.0	0.0	50.0	0	ssDNA	linear	NZ_KB893041.1||full	0.86	ssDNA
+NZ_KB893022.1	1	3	1	1445	1.0	1.0	1	3	1	1445	NA	NA	0	1	3	1	1445	1.0	0.0	0.0	0.0	66.7	0.0	33.3	0	ssDNA	linear	NZ_KB893022.1||full	1.0	ssDNA
+NZ_KB893004.1	1	6	45	2149	0.667	0.667	1	6	45	2149	NA	NA	0	1	6	45	2149	0.667	0.0	16.7	0.0	33.3	0.0	50.0	0	dsDNAphage	linear	NZ_KB893004.1||full	0.667	dsDNAphage
+NZ_KB893003.1	1	4	2	2121	0.733	0.733	1	4	2	2121	NA	NA	0	1	4	2	2121	0.733	0.0	0.0	0.0	25.0	0.0	75.0	0	ssDNA	linear	NZ_KB893003.1||full	0.733	ssDNA
+NZ_KB892998.1	1	2	214	2228	0.853	0.853	1	2	214	2228	NA	NA	0	1	2	214	2228	0.853	0.0	0.0	0.0	50.0	0.0	50.0	0	dsDNAphage	linear	NZ_KB892998.1||full	0.853	dsDNAphage
+NZ_KB892994.1	1	2	92	2243	0.74	0.74	1	2	92	2243	NA	NA	0	1	2	92	2243	0.74	0.0	0.0	0.0	100.0	0.0	0.0	0	ssDNA	linear	NZ_KB892994.1||full	0.74	ssDNA
+NZ_KB892992.1	1	6	114	2419	0.533	0.533	1	6	114	2419	NA	NA	0	1	6	114	2419	0.533	0.0	0.0	0.0	33.3	16.7	50.0	0	dsDNAphage	linear	NZ_KB892992.1||full	0.533	dsDNAphage
+NZ_KB892980.1	1	4	2	2912	0.647	0.647	1	4	2	2912	NA	NA	0	1	4	2	2912	0.647	0.0	0.0	0.0	25.0	25.0	50.0	0	dsDNAphage	linear	NZ_KB892980.1||full	0.647	dsDNAphage
+NZ_KB892966.1	1	7	3	3766	0.82	0.82	1	7	3	3766	NA	NA	0	1	7	3	3766	0.82	0.0	0.0	0.0	28.6	0.0	71.4	0	dsDNAphage	linear	NZ_KB892966.1||full	0.82	dsDNAphage
+NZ_KB892959.1	1	7	2	4933	0.647	0.647	1	7	2	4933	NA	NA	0	1	7	2	4933	0.647	0.0	0.0	0.0	14.3	0.0	85.7	0	dsDNAphage	linear	NZ_KB892959.1||full	0.647	dsDNAphage
+NZ_KB892939.1	1	10	64	6111	0.647	0.647	1	10	64	6111	NA	NA	0	1	10	64	6111	0.647	0.0	10.0	0.0	30.0	20.0	40.0	0	dsDNAphage	linear	NZ_KB892939.1||full	0.647	dsDNAphage
+NZ_KB892923.1	1	9	97	7528	0.66	0.66	1	9	97	7528	NA	NA	0	1	9	97	7528	0.66	0.0	0.0	0.0	22.2	22.2	55.6	0	dsDNAphage	linear	NZ_KB892923.1||full	0.66	dsDNAphage
+NZ_KB892907.1	1	17	3	11861	0.547	0.547	1	17	3	11861	NA	NA	0	1	17	3	11861	0.547	0.0	11.8	0.0	23.5	0.0	64.7	0	dsDNAphage	linear	NZ_KB892907.1||full	0.547	dsDNAphage
+NZ_KB893076.1	1	28	833	37391	0.887	0.9	1	28	833	37391	0.887	0.96	1	1	33	833	42154	0.773	0.0	21.2	0.0	21.2	24.2	33.3	4	dsDNAphage	linear	NZ_KB893076.1||0_partial	0.887	dsDNAphage
+NZ_KB893065.1	7	32	4260	35153	0.893	0.9	7	32	4260	35153	0.893	0.927	1	1	45	3	49130	0.693	0.0	23.7	2.6	26.3	13.2	34.2	3	dsDNAphage	linear	NZ_KB893065.1||0_partial	0.893	dsDNAphage

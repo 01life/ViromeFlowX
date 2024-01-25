@@ -1,0 +1,21 @@
+name	length	score	pvalue	qvalue
+NZ_ACIS01000020.1 Pseudogulbenkiania ferrooxidans 2002 ctg4, whole genome shotgun sequence	4996	0.000541464387822783	0.965437788018433	0.503052766061467
+NZ_ACIS01000019.1 Pseudogulbenkiania ferrooxidans 2002 ctg3, whole genome shotgun sequence	14689	0.0310053130479155	0.538564152316275	0.417716812998369
+NZ_ACIS01000018.1 Pseudogulbenkiania ferrooxidans 2002 ctg18, whole genome shotgun sequence	18110	0.0454266226536741	0.468833373756973	0.417716812998369
+NZ_ACIS01000017.1 Pseudogulbenkiania ferrooxidans 2002 ctg2, whole genome shotgun sequence	31162	0.0112341983787691	0.707979626485569	0.417716812998369
+NZ_ACIS01000016.1 Pseudogulbenkiania ferrooxidans 2002 ctg12, whole genome shotgun sequence	58638	0.0155825658258764	0.658137278680572	0.417716812998369
+NZ_ACIS01000015.1 Pseudogulbenkiania ferrooxidans 2002 ctg15, whole genome shotgun sequence	60959	0.0190317763625139	0.624302692214407	0.417716812998369
+NZ_ACIS01000014.1 Pseudogulbenkiania ferrooxidans 2002 ctg17, whole genome shotgun sequence	69164	0.00959705684333336	0.730172204705312	0.417716812998369
+NZ_ACIS01000013.1 Pseudogulbenkiania ferrooxidans 2002 ctg20, whole genome shotgun sequence	82630	0.0287347200321416	0.552510308028135	0.417716812998369
+NZ_ACIS01000012.1 Pseudogulbenkiania ferrooxidans 2002 ctg10, whole genome shotgun sequence	84794	0.0320671053746062	0.53262187727383	0.417716812998369
+NZ_ACIS01000011.1 Pseudogulbenkiania ferrooxidans 2002 ctg7, whole genome shotgun sequence	96190	0.0162760006484207	0.650497210768858	0.417716812998369
+NZ_ACIS01000010.1 Pseudogulbenkiania ferrooxidans 2002 ctg14, whole genome shotgun sequence	169976	0.00854364437654666	0.748362842590347	0.417716812998369
+NZ_ACIS01000009.1 Pseudogulbenkiania ferrooxidans 2002 ctg8, whole genome shotgun sequence	242433	0.0121346658698918	0.696337618239146	0.417716812998369
+NZ_ACIS01000008.1 Pseudogulbenkiania ferrooxidans 2002 ctg21, whole genome shotgun sequence	286935	0.00779292046593686	0.761581372786806	0.417716812998369
+NZ_ACIS01000007.1 Pseudogulbenkiania ferrooxidans 2002 ctg16, whole genome shotgun sequence	293246	0.010127229955133	0.723138491389765	0.417716812998369
+NZ_ACIS01000006.1 Pseudogulbenkiania ferrooxidans 2002 ctg13, whole genome shotgun sequence	334317	0.0109425067899639	0.710890128547174	0.417716812998369
+NZ_ACIS01000005.1 Pseudogulbenkiania ferrooxidans 2002 ctg5, whole genome shotgun sequence	395779	0.00970037879243794	0.728353140916808	0.417716812998369
+NZ_ACIS01000004.1 Pseudogulbenkiania ferrooxidans 2002 ctg11, whole genome shotgun sequence	408363	0.0149719617376453	0.665170991996119	0.417716812998369
+NZ_ACIS01000003.1 Pseudogulbenkiania ferrooxidans 2002 ctg9, whole genome shotgun sequence	482560	0.0168288867945938	0.646010186757216	0.417716812998369
+NZ_ACIS01000002.1 Pseudogulbenkiania ferrooxidans 2002 ctg6, whole genome shotgun sequence	534937	0.0148176302404693	0.666747513946156	0.417716812998369
+NZ_ACIS01000001.1 Pseudogulbenkiania ferrooxidans 2002 ctg1, whole genome shotgun sequence	558909	0.0122952621046226	0.694033470773708	0.417716812998369

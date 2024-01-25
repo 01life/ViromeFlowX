@@ -1,5 +1,0 @@
-seqname	trim_orf_index_start	trim_orf_index_end	trim_bp_start	trim_bp_end	trim_pr	trim_pr_max	prox_orf_index_start	prox_orf_index_end	prox_bp_start	prox_bp_end	prox_pr	prox_pr_max	partial	full_orf_index_start	full_orf_index_end	full_bp_start	full_bp_end	pr_full	arc	bac	euk	vir	mix	unaligned	hallmark_cnt	group	shape	seqname_new	final_max_score	final_max_score_group
-NZ_HE578947.1	26	68	27184	69878	0.907	0.94	26	68	27184	69878	0.907	0.993	1	1	666	50	733913	0.36	0.0	47.3	0.0	29.1	18.2	5.5	7	dsDNAphage	linear	NZ_HE578947.1||0_partial	0.907	dsDNAphage
-NZ_HE578946.1	9	35	9168	27639	0.967	0.967	9	36	9168	29097	0.907	1.0	1	1	762	87	785829	0.273	0.0	32.5	0.0	20.0	20.0	27.5	4	dsDNAphage	linear	NZ_HE578946.1||0_partial	0.967	dsDNAphage
-NZ_HE578945.1	1563	1631	1616111	1676781	0.927	0.96	1562	1631	1615097	1676781	0.9	1.0	1	1	2038	256	2115219	0.34	0.0	17.1	0.0	22.0	23.2	37.8	6	dsDNAphage	linear	NZ_HE578945.1||0_partial	0.927	dsDNAphage
-NZ_HE578945.1	1171	1217	1255268	1285223	0.907	0.953	1171	1218	1255268	1287805	0.9	1.0	1	1	2038	256	2115219	0.34	0.0	36.7	0.0	28.3	11.7	23.3	1	dsDNAphage	linear	NZ_HE578945.1||1_partial	0.907	dsDNAphage
