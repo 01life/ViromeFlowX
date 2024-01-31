@@ -8,8 +8,7 @@ process KRAKEN2 {
     publishDir "${params.outdir}/08.profile/Kraken2/${id}",mode:'copy'
 
     input:
-    tuple val(id),path(reads1)
-    tuple val(id),path(reads2)
+    tuple val(id),path(reads1),path(reads2)
 
     output:
     path("${id}*.xls")

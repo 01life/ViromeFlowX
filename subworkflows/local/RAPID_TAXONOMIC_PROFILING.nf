@@ -12,7 +12,7 @@ workflow RAPID_TAXONOMIC_PROFILING {
 
     main:
 
-    KRAKEN2( clean_reads1, clean_reads2 )
+    KRAKEN2( clean_reads1.join(clean_reads2) )
     
     MERGEKRAKEN2( KRAKEN2.out.mapping.collect() )
     

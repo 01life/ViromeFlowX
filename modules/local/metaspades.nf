@@ -5,7 +5,7 @@ process METASPADES {
     
     label 'process_high'
     
-    errorStrategy = { task.exitStatus in [143,137,104,134,139,247] ? 'terminate' : 'retry' }
+    errorStrategy = { task.exitStatus in [143,137,104,134,139,247,250] ? 'terminate' : 'retry' }
     
     // errorStrategy{'retry'}
     // maxRetries 1
@@ -15,8 +15,7 @@ process METASPADES {
     publishDir "${params.outdir}/02.assembly/",mode:'copy'
 
     input:
-    tuple val(id),path(reads1)
-    tuple val(id),path(reads2)
+    tuple val(id),path(reads1),path(reads2)
 
     output:
     tuple val(id),path("${id}/1k.contigs"),emit:"contigs"
@@ -24,10 +23,12 @@ process METASPADES {
     path("${id}/input_dataset.yaml")
 
     script:
+    def options = params.metaspades_options ?: ""
+
     """
     mkdir ${id}
 
-    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus}
+    metaspades.py -o \$PWD --meta -1 ${reads1} -2 ${reads2} -t ${task.cpus} ${options}
 
     perl ${params.nfcore_bin}/deal_fa.pl contigs.fasta ${id} >contigs
 

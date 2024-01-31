@@ -2,7 +2,26 @@ process MERGE {
 
     label 'process_low'
 
-    publishDir "${params.outdir}/05.classify/6.merge",mode:'copy'
+    publishDir(
+        path: "${params.outdir}/05.classify/4.pfam",
+        pattern: "pfam.out.virus.taxonomy.format",
+        mode: "copy",
+        failOnError: true
+    )
+    
+    publishDir(
+        path: "${params.outdir}/05.classify/6.merge",
+        saveAs: {filename -> {
+                if ( filename.contains("pfam.out.virus.taxonomy.format") ) {
+                    return null;
+                }
+                def out = file(filename)
+                return "${out.name}";
+            }
+        },
+        mode: "copy",
+        failOnError: true
+    )
 
     input:
     path(cdhitslen)
@@ -16,6 +35,7 @@ process MERGE {
     path("*.taxonomy.txt")
     path("crAss*")
     path("contigs.taxonomy.txt"),emit:"taxonomy"
+    path("pfam.out.virus.taxonomy.format")
 
     script:
     """

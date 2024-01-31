@@ -74,6 +74,11 @@
                 "skip_kraken2": {
                     "type": "boolean",
                     "description": "skip kraken2"
+                },
+                "metaspades_options": {
+                    "type": "string",
+                    "default": "-m 62",
+                    "description": "Options of metaSPAdes"
                 }
             },
             "fa_icon": "fas fa-broom"
@@ -197,6 +202,11 @@
                     "type": "string",
                     "default": "/PATH_TO_YOUR_DATABASE/Demovir/TrEMBL_viral_taxa.RDS",
                     "description": "demovir taxonomic file"
+                },
+                "pfam_pep_chunck_size": {
+                    "type": "integer",
+                    "default": 20000,
+                    "description": "Number of protein sequences in each FPAM task"
                 }
             },
             "fa_icon": "fas fa-server"

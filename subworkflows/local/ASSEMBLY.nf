@@ -12,7 +12,7 @@ workflow ASSEMBLY {
 
     main:
     
-    METASPADES(clean_reads1, clean_reads2)
+    METASPADES(clean_reads1.join(clean_reads2))
 
     contigs = METASPADES.out.contigs
                 .map{ id,file -> [ id,[file] ]}
