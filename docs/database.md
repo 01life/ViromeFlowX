@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document describes how to download the required databases for the pipeline.
+:warning: This document describes how to download the required databases for the pipeline. Due to the fast iteration of software and database updates, we cannot guarantee that the code in the tutorial is always the latest version. Therefore, we only provide reference installation commands. Users need to adjust specific versions, file names, formats, and other details based on the files they download to ensure that they can independently complete the latest version of software and database configurations. In the future, we will consider providing complete commands for the current version.
 <!-- TODO nf-core: Write this documentation describing your workflow's databses -->
 
 ### host_db
@@ -37,7 +37,7 @@ chmod -R 755 db
 
 ```bash
 wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-tar -zxvf checkv-db-archived-version.tar.gz 
+tar -zxvf checkv-db-[archived-version].tar.gz 
 cd /path/to/checkv-db/genome_db 
 diamond makedb --in checkv_reps.faa --db checkv_reps
 ```
@@ -64,7 +64,8 @@ parallel --xapply makeblastdb -dbtype {2} -in {1}.fa -parse_seqids -out {1}/{1} 
 ### genome_db & protein_db
 
 ```bash
-https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/
+https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz
+https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.protein.faa.gz
 ```
 
 ### CAZy eggnog go ko level4ev pfam
@@ -103,7 +104,7 @@ wget https://github.com/feargalr/Demovir/blob/master/TrEMBL_viral_taxa.RDS
 The pfam database, referenced in the [`article`](https://doi.org/10.1016/j.chom.2020.06.005), classifies viruses into Caudovirales, Myoviridae, or Microviridae. As the database is no longer updated and relies on the mentioned article, it has been uploaded to GitHub for easy access and download.
 
 ```bash
-wget https://github.com/01life/flowDB/blob/main/virome/virus.pfam
+wget https://raw.githubusercontent.com/01life/FlowDB/main/ViromeFlowX/virus.pfam
 ```
 
 ### demovir_db
