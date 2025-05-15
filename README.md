@@ -86,3 +86,4 @@ To ensure the smoothest possible analysis using ViromeFlowX, we recommend taking
 If you found ViromeFlowX usefull in your research, please cite the publication: [ViromeFlowX: a Comprehensive Nextflow-based Automated Workflow for Mining Viral Genomes from Metagenomic Sequencing Data.](https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.001202)
 
 > Wang X, Ding Z, Yang Y, et al. ViromeFlowX: a Comprehensive Nextflow-based Automated Workflow for Mining Viral Genomes from Metagenomic Sequencing Data[J]. Microbial Genomics, 2024, 10(2): 001202.
+
