@@ -66,7 +66,6 @@ To ensure the smoothest possible analysis using ViromeFlowX, we recommend taking
       --outdir <OUTDIR>
    ```
 
-   > [!NOTE]
    > If you are new to Nextflow and nf-core, check the [Nextflow installation guide](https://nf-co.re/docs/usage/installation). Ensure your setup passes the `-profile test` before processing real data.
 
 4. Advance usage
