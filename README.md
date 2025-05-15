@@ -1,14 +1,10 @@
 # ![ViromeFlowX](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only)
 
-[![AWS CI](https://img.shields.io/badge/CI%20tests-full%20size-FF9900?labelColor=000000&logo=Amazon%20AWS)](https://nf-co.re/virome/results)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
-
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A522.10.1-23aa62.svg)](https://www.nextflow.io/)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-[![Launch on Nextflow Tower](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Nextflow%20Tower-%234256e7)](https://tower.nf/launch?pipeline=https://github.com/nf-core/virome)
-
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23virome-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/virome)[![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
+[![run with slurm](https://img.shields.io/badge/run%20with-slurm-1AAEE8.svg?labelColor=000000)](https://www.schedmd.com)
 
 ## Introduction
 
@@ -19,12 +15,6 @@
 <p align="center">
     <img src="docs/images/workflow.jpg" alt="ViromeFlowX workflow overview" width="90%">
 </p>
-
-The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!
-
-<!-- TODO nf-core: Add full-sized test dataset and amend the paragraph below if applicable -->
-
-On release, automated continuous integration tests run the pipeline on a full-sized dataset on the AWS cloud infrastructure. This ensures that the pipeline runs on AWS, has sensible resource allocation defaults set to run on real-world datasets, and permits the persistent storage of results to benchmark between pipeline releases and other analysis sources.The results obtained from the full-sized test can be viewed on the [nf-core website](https://nf-co.re/virome/results).
 
 ## Pipeline summary
 
@@ -38,55 +28,62 @@ On release, automated continuous integration tests run the pipeline on a full-si
 6. Viral Taxonomic Classify Assignment ( [`usearch`](https://drive5.com/usearch) [`Blast`](https://blast.ncbi.nlm.nih.gov/Blast.cgi) [`taxonkit`](https://github.com/shenwei356/taxonkit) [`CoverM`](https://github.com/wwood/CoverM) )
 
 
-## Quick Start
+## Getting Start
 
-1. Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=22.10.1`)
+### Pre-requisites
 
-2. Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/) (you can follow [this tutorial](https://singularity-tutorial.github.io/01-installation/)), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(you can use [`Conda`](https://conda.io/miniconda.html) both to install Nextflow itself and also to manage software within pipelines. Please only use it within pipelines as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_. It is recommended to use [`mamba`](https://github.com/mamba-org/mamba) or [`Conda`](https://conda.io/miniconda.html) for installing and managing software of this pipeline.
+To ensure the smoothest possible analysis using ViromeFlowX, we recommend taking the time to pre-build both the software components and the reference databases before you begin your analysis. This preparatory step will help guarantee a more efficient and hassle-free experience.
 
-3. Install the software dependencies of ViromeFlowX with the following command:
+- **Environment Setup**: Most of the tools required by the pipeline can be conveniently installed using a Conda environment. Use the command below to create a new Conda environment based on the [environment.yml](environment.yml) configuration file.
 
    ```bash
-   mamba/conda env create -f /path/to/project/ViromeFlowX/environment.yml
+   conda env create -f environment.yml
    ```
    > Notes: The [`usearch`](http://www.drive5.com/usearch/) tool is not supported for installation through conda. You need to manually download and install it. Please refer to the official [`documentation`](http://www.drive5.com/usearch/manual/install.html) for installation instructions.
 
-4. Download and configure the databases, please refer to the [`documentation`](https://github.com/01life/ViromeFlowX/blob/main/docs/database.md) for details
+- **Database Setup**: Refer to the [`Database Installation and Configuration`](docs/database.md) for downloading and configuring required databases.
 
-5. Download the pipeline and test it on a minimal dataset with a single command:
 
-   ```bash
-   nextflow run /path/to/project/ViromeFlowX -profile test,YOURPROFILE --outdir <OUTDIR>
+### Install and Usage
+
+1. Clone the repository
+   ```
+   git clone https://github.com/01life/ViromeFlowX
    ```
 
-   Note that some form of configuration will be needed so that Nextflow knows how to fetch the required software. This is usually done in the form of a config profile (`YOURPROFILE` in the example command above). You can chain multiple config profiles in a comma-separated string.
-
-   > - The pipeline comes with config profiles called `docker`, `singularity`, `podman`, `shifter`, `charliecloud` and `conda` which instruct the pipeline to use the named tool for software management. For example, `-profile test,docker`.
-   > - Please check [nf-core/configs](https://github.com/nf-core/configs#documentation) to see if a custom config file to run nf-core pipelines already exists for your Institute. If so, you can simply use `-profile <institute>` in your command. This will enable either `docker` or `singularity` and set the appropriate execution settings for your local compute environment.
-   > - If you are using `singularity`, please use the [`nf-core download`](https://nf-co.re/tools/#downloading-pipelines-for-offline-use) command to download images first, before running the pipeline. Setting the [`NXF_SINGULARITY_CACHEDIR` or `singularity.cacheDir`](https://www.nextflow.io/docs/latest/singularity.html?#singularity-docker-hub) Nextflow options enables you to store and re-use the images from a central location for future pipeline runs.
-   > - If you are using `conda`, it is highly recommended to use the [`NXF_CONDA_CACHEDIR` or `conda.cacheDir`](https://www.nextflow.io/docs/latest/conda.html) settings to store the environments in a central location for future pipeline runs.
-
-6. Start running your own analysis!
-
-   <!-- TODO nf-core: Update the example "typical command" below used to run the pipeline -->
-
-   ```bash
-   nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile <docker/singularity/podman/shifter/charliecloud/conda/institute>
+2. Prepare a samplesheet `samplesheet.csv` with your input data that looks as follows
+   ```csv
+   id,reads1,read2
+   sample_2,/PATH/sample_L002_R1.fastq.gz,/PATH/sample_L002_R2.fastq.gz
+   sample_3,/PATH/sample_L003_R1.fastq.gz,/PATH/sample_L003_R2.fastq.gz
    ```
 
-## Documentation
+3. Start running the pipeline
+   ```
+   nextflow run ViromeFlowX \
+      -profile <docker/singularity/conda/.../institute> \
+      --input samplesheet.csv \
+      --outdir <OUTDIR>
+   ```
 
-The nf-core/virome pipeline comes with documentation about the pipeline [usage](docs/usage.md), [parameters](https://nf-co.re/pipeline_schema_builder?id=1685934039_c37b87cf4b3c) and [output](docs/output.md).
+   > [!NOTE]
+   > If you are new to Nextflow and nf-core, check the [Nextflow installation guide](https://nf-co.re/docs/usage/installation). Ensure your setup passes the `-profile test` before processing real data.
 
-The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2、CheckV) -> Taxonomic Classify(Kraken2) -> Geneset -> Taxonomic Classify Assignment (demovir、pfam、protein、crAss、genome) -> Abundance
-you can also use `--help` to see the parameters.
+4. Advance usage
+
+   The pipeline will run QC -> Metaspades(min_len=1k) -> Identify(VirFinder、VirSorter2、CheckV) -> Taxonomic Classify(Kraken2) -> Geneset -> Taxonomic Classify Assignment (demovir、pfam、protein、crAss、genome) -> Abundance. You can also use `--help` to see the parameters. For comprehensive tutorials and implementation guidelines, please refer to our [Usage Documentation](docs/usage.md).
 
    ```bash
    nextflow run /path/to/project/ViromeFlowX --help
    ```
+
+5. Output information
+
+   To better understand the output files generated by ViromeFlowX and how to interpret them, refer to the [Output Documentation](docs/output.md).
 
 ## Citation
 
 If you found ViromeFlowX usefull in your research, please cite the publication: [ViromeFlowX: a Comprehensive Nextflow-based Automated Workflow for Mining Viral Genomes from Metagenomic Sequencing Data.](https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.001202)
 
 > Wang X, Ding Z, Yang Y, et al. ViromeFlowX: a Comprehensive Nextflow-based Automated Workflow for Mining Viral Genomes from Metagenomic Sequencing Data[J]. Microbial Genomics, 2024, 10(2): 001202.
+

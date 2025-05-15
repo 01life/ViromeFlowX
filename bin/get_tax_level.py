@@ -20,7 +20,7 @@ def extract(lines, level, path):
         if line[0] != '#' :
             #处理头信息
             if cols[0]=='Taxonomy':
-                content = "\t"+"\t".join(cols[2:]) + '\n'
+                content = "\t"+"\t".join(cols[1:]) + '\n'
                 out.write(content)
             else:
             #提取门属种级别丰度信息
@@ -30,7 +30,7 @@ def extract(lines, level, path):
                     if (newID == ""):
                         newID = 'unclassify'+str(n)
                         n += 1
-                    content = str(newID)+"\t"+"\t".join(cols[2:]) + '\n'
+                    content = str(newID)+"\t"+"\t".join(cols[1:]) + '\n'
                     #content += "\t".join(x for x in cols) + "\n"
                     out.write(content)
     

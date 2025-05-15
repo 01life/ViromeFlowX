@@ -23,9 +23,9 @@ workflow INPUT_PARSER {
                         def contig = row.contig ? file(row.contig, checkIfExists: true) : false
                         
                         // Check if given combination is valid
-                        if (!reads1) exit 1, "Invalid input samplesheet: reads1 can not be empty."
-                        if (!reads2) exit 1, "Invalid input samplesheet: reads2 can not be empty."
-                        if (!contig && params.skip_assembly) exit 1, "Invalid input samplesheet: contig can not be empty."
+                        if (!reads1 && !params.only_identify) exit 1, "Invalid input samplesheet: reads1 can not be empty."
+                        if (!reads2 && !params.only_identify) exit 1, "Invalid input samplesheet: reads2 can not be empty."
+                        if (!contig && params.skip_assembly || !contig && params.only_identify) exit 1, "Invalid input samplesheet: contig can not be empty."
                         
                         return [ id, reads1, reads2, contig ]
                 

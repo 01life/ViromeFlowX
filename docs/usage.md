@@ -1,9 +1,5 @@
 # ViromeFlowX: Usage
 
-## :warning: Please read this documentation on the nf-core website: [https://nf-co.re/ViromeFlowX/usage](https://nf-co.re/ViromeFlowX/usage)
-
-> _Documentation of pipeline parameters is generated automatically from the pipeline schema and can no longer be found in markdown files._
-
 ## Introduction
 
 <!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
@@ -18,33 +14,29 @@ You will need to create a samplesheet with information about the samples you wou
 --input '[path to samplesheet file]'
 ```
 
-### Run the whole pipeline with default parameters
+The CSV file can support the following column names:
+| Column    | Description                                                                                                                                                                            |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. |
+| `reads1` | Full path to raw or clean reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+| `reads2` | Full path to raw or clean reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".   
+| `contig` | Full path to assembly contigs. File has to have the extension ".fa" or ".fasta".
 
-If you want to run the whole pipeline with default parameters, there is a strict requirement for the first 3 columns to match those defined in the table below. 
+
+
+## Run the whole pipeline with default parameters
+
+If you want to run the whole pipeline with default parameters, there is a strict requirement for the first 3 columns to match those defined in the table below. An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline. The reads1 and reads2 columns in the samplesheet.csv file are used to specify the paths to the corresponding raw sequence files.
 
 ```console
 id,reads1,read2
 sample_2,/PATH/sample_L002_R1.fastq.gz,/PATH/sample_L002_R2.fastq.gz
 sample_3,/PATH/sample_L003_R1.fastq.gz,/PATH/sample_L003_R2.fastq.gz
-
-
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `reads1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-| `reads2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-
-An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
-
-## Running the whole pipeline
-
-The typical command for running the pipeline is as follows:
-
-```bash
-nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm
 ```
 
-This will launch the pipeline with the `slurm` configuration profile. See below for more information about profiles.
+```bash
+nextflow run ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm
+```
 
 Note that the pipeline will create the following files in your working directory:
 
@@ -55,63 +47,41 @@ work                # Directory containing the nextflow working files
 # Other nextflow hidden files, eg. history of pipeline runs and old logs.
 ```
 
-### Run with special parameters
+## Run with special parameters
 
-1. skip QC step of the pipeline
+### 1. skip QC step
 
-If you want to run the pipeline with parameter --skip_qc, the input samplesheet.csv must contain the following three columns: id, reads1, reads2. The information in the reads1 and reads2 columns corresponds to the cleaned sequence files.
-
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `reads1` | Full path to FastQ file for cleaned short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-| `reads2` | Full path to FastQ file for cleaned short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".              
-
-> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the cleaned sequence files.
-
-The command to skip QC steps when running the pipeline is as follows:
+If you want to skip QC analysis, run the pipeline with `--skip_qc`. The input samplesheet.csv must include the columns id, reads1, and reads2, which indicate the sample identifiers and the full paths to the cleaned sequence files.
 
 ```bash
-nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_qc
+nextflow run ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_qc
 ```
 
 
-2. skip Assembly step of the pipeline
+### 2. skip Assembly step
 
-If you want to run the pipeline with parameter --skip_assembly, the input samplesheet.csv must contain the following four columns: id, reads1, reads2, contig. The information in the reads1 and reads2 columns corresponds to the cleaned sequence files.The contig column information is the full path of the sample contigs sequence file.
-
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `reads1` | Full path to clean reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-| `reads2` | Full path to clean reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".   
-| `contig` | Full path to assembly contigs. File has to have the extension ".fa" or ".fasta".            
-
-The command to skip Assembly steps when running the pipeline is as follows:
+If you want to skip Assembly analysis, run the pipeline with `--skip_assembly`. The input samplesheet.csv must include the following columns: id, reads1, reads2, and contig. The reads1 and reads2 fields indicate the paths to the cleaned sequence files, whereas the contig field contains the full path to the sample's assembled contigs.
 
 ```bash
-nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_assembly
-```
-> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the cleaned sequence files.
-
-
-3. skip Kraken2 step of the pipeline
-
-The command to skip Kraken2 steps when running the pipeline is as follows:
-
-```bash
-nextflow run /path/to/project/ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_kraken2
+nextflow run ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_assembly
 ```
 
-> **NB:**  The information in the reads1 and reads2 columns of samplesheet.csv corresponds to the raw sequence files.
 
+### 3. skip Kraken2 step
 
-### Updating the pipeline
-
-When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
+If you want to skip Kraken2 analysis, run the pipeline with `--skip_kraken2`. In this case, the input samplesheet.csv should contain three columns: id, reads1, and reads2. These columns are used to provide the sample IDs and the file locations of the raw sequence data.
 
 ```bash
-nextflow pull ViromeFlowX
+nextflow run ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --skip_kraken2
+```
+
+
+### 4. only run Identify step
+
+If you only want to run the virus identification anlysis of the pipeline, use the `--only_identify` parameter. The input samplesheet.csv must then contain two columns: id for sample names and contig for the full paths to the assembled contig files.
+
+```
+nextflow run ViromeFlowX --input samplesheet.csv --outdir <OUTDIR> -profile slurm --only_identify
 ```
 
 ### Reproducibility

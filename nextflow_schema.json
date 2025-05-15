@@ -79,6 +79,10 @@
                     "type": "string",
                     "default": "-m 62",
                     "description": "Options of metaSPAdes"
+                },
+                "only_identify":{
+                    "type": "boolean",
+                    "description": "Only run the virus contig identification analysis of the pipeline"
                 }
             },
             "fa_icon": "fas fa-broom"
