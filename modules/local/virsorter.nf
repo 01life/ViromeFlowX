@@ -6,8 +6,6 @@ process VIRSORTER {
 
     publishDir "${params.outdir}/03.identify/VirSorter",mode:'copy'
 
-    // conda '/share/app/miniconda3/envs/vs2'
-
     input:
     tuple val(id),path(contigs)
 

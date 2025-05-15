@@ -77,6 +77,7 @@
                 },
                 "metaspades_options": {
                     "type": "string",
+                    "default": "-m 62",
                     "description": "Options of metaSPAdes"
                 },
                 "only_identify":{
