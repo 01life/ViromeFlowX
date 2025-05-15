@@ -54,49 +54,50 @@ workflow VIROME {
     ch_clean_reads1 = Channel.empty()
     ch_clean_reads2 = Channel.empty()
 
-    //Run pipeline with skip_assembly or skip_QC，input reads is clean_reads
-    if(params.skip_qc || params.skip_assembly){
-        ch_clean_reads1 = ch_reads1
-        ch_clean_reads2 = ch_reads2
+    //Only run identify step if params.only_identify is true
+    if(params.only_identify){
+
+        IDENTIFY( ch_contig )
+    
+    //Run the whole pipeline in default
     }else{
-        //Run QC
-        if( !params.skip_qc ){
-            QC( ch_reads1, ch_reads2 )
-            ch_clean_reads1 = QC.out.clean_reads1
-            ch_clean_reads2 = QC.out.clean_reads2
+        
+        //Run pipeline with skip_assembly or skip_QC，input reads is clean_reads
+        if(params.skip_qc || params.skip_assembly){
+            ch_clean_reads1 = ch_reads1
+            ch_clean_reads2 = ch_reads2
+        }else{
+            //Run QC
+            if( !params.skip_qc ){
+                QC( ch_reads1, ch_reads2 )
+                ch_clean_reads1 = QC.out.clean_reads1
+                ch_clean_reads2 = QC.out.clean_reads2
+            }
         }
+
+        //Run assembly
+        if(!params.skip_assembly){
+            ASSEMBLY( ch_clean_reads1, ch_clean_reads2 )
+            ch_contig = ASSEMBLY.out.contigs
+        }
+
+        //Run kraken2
+        if(!params.skip_kraken2){
+            RAPID_TAXONOMIC_PROFILING(ch_clean_reads1, ch_clean_reads2)
+        }
+    
+        IDENTIFY( ch_contig )
+
+        GENESET(IDENTIFY.out.all_virus)
+
+        CLASSIFY ( GENESET.out.virus_fa, GENESET.out.virus_len, GENESET.out.viral_cds, GENESET.out.viral_pep )
+
+        ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, GENESET.out.virus_fa, GENESET.out.virus_bed )
+
+        PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, GENESET.out.cazy, GENESET.out.eggnog, GENESET.out.go, GENESET.out.ko, GENESET.out.level4ec, GENESET.out.pfam, ABUNDANCE.out.rpkms)
+
     }
 
-    //Run assembly
-    if(!params.skip_assembly){
-        ASSEMBLY( ch_clean_reads1, ch_clean_reads2 )
-        ch_contig = ASSEMBLY.out.contigs
-    }
-
-    //Run kraken2
-    if(!params.skip_kraken2){
-        RAPID_TAXONOMIC_PROFILING(ch_clean_reads1, ch_clean_reads2)
-    }
-   
-    IDENTIFY( ch_contig )
-
-    //PREDICT ( IDENTIFY.out.all_virus )
-
-    //ANNOTATION ( PREDICT.out.virus_fa )
-
-    GENESET(IDENTIFY.out.all_virus)
-
-    CLASSIFY ( GENESET.out.virus_fa, GENESET.out.virus_len, GENESET.out.viral_cds, GENESET.out.viral_pep )
-
-    ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, GENESET.out.virus_fa, GENESET.out.virus_bed )
-
-    PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, GENESET.out.cazy, GENESET.out.eggnog, GENESET.out.go, GENESET.out.ko, GENESET.out.level4ec, GENESET.out.pfam, ABUNDANCE.out.rpkms)
-
-    //CLASSIFY ( PREDICT.out.virus_fa, PREDICT.out.virus_len, PREDICT.out.viral_cds, PREDICT.out.viral_pep )
-
-    //ABUNDANCE ( ch_clean_reads1, ch_clean_reads2, PREDICT.out.virus_fa, ANNOTATION.out.virus_bed )
-
-    //PROFILE ( ABUNDANCE.out.contigs_abundance, CLASSIFY.out.taxonomy, ANNOTATION.out.cazy, ANNOTATION.out.eggnog, ANNOTATION.out.go, ANNOTATION.out.ko, ANNOTATION.out.level4ec, ANNOTATION.out.pfam, ABUNDANCE.out.rpkms)
    
 }
 
