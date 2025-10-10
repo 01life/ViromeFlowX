@@ -1,18 +1,13 @@
 ----------------------------------------------------
-                                        ,--./,-.
-        ___     __   __   __   ___     /,-._.--~\\
-  |\\ | |__  __ /  ` /  \\ |__) |__         }  {
-  | \\| |       \\__, \\__/ |  \\ |___     \\`-._,-`-,
-                                        `._,._,'
-  nf-core/virome v${version}
+  ViromeFlowX v${version}
 ----------------------------------------------------
 Run Name: $runName
 
 <% if (success){
-    out << "## nf-core/virome execution completed successfully! ##"
+    out << "## ViromeFlowX execution completed successfully! ##"
 } else {
     out << """####################################################
-## nf-core/virome execution completed unsuccessfully! ##
+## ViromeFlowX execution completed unsuccessfully! ##
 ####################################################
 The exit status of the task that caused the workflow execution to fail was: $exitStatus.
 The full error message was:
@@ -35,5 +30,5 @@ Pipeline Configuration:
 <% out << summary.collect{ k,v -> " - $k: $v" }.join("\n") %>
 
 --
-nf-core/virome
-https://github.com/nf-core/virome
+ViromeFlowX
+https://github.com/01life/ViromeFlowX
