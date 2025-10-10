@@ -1,6 +1,3 @@
-//
-// This file holds several functions specific to the workflow/metagenome.nf in the nf-core/metagenome pipeline
-//
 
 import groovy.text.SimpleTemplateEngine
 

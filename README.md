@@ -1,5 +1,3 @@
-# ![ViromeFlowX](docs/images/nf-core-virome_logo_light.png#gh-light-mode-only)
-
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A522.10.1-23aa62.svg)](https://www.nextflow.io/)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
@@ -8,8 +6,6 @@
 
 ## Introduction
 
-<!-- TODO nf-core: Write a 1-2 sentence summary of what data the pipeline is for and what it does -->
-
 **ViromeFlowX** is a comprehensive Nextflow-based automated workflow for mining viral genomes from metagenomic sequencing Data. Understanding the link between the human gut virome and diseases has garnered significant interest in the research community. Extracting virus-related information from metagenomic sequencing data is crucial for unravelling virus composition, host interactions, and disease associations. However, current metagenomic analysis workflows for viral genomes vary in effectiveness, posing challenges for researchers seeking the most up-to-date tools. To address this, we present ViromeFlowX, a user-friendly Nextflow workflow that automates viral genome assembly, identification, classification, and annotation. This streamlined workflow integrates cutting-edge tools for processing raw sequencing data for taxonomic annotation and functional analysis. Application to a dataset of 200 metagenomic samples yielded high-quality viral genomes. ViromeFlowX enables efficient mining of viral genomic data, offering a valuable resource to investigate the gut virome’s role in virus-host interactions and virus-related diseases.
 
 <p align="center">
@@ -17,8 +13,6 @@
 </p>
 
 ## Pipeline summary
-
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
 
 1. Quality Control ( [`trimmomatic`](https://github.com/usadellab/Trimmomatic) [`bowtie2`](https://github.com/BenLangmead/bowtie2) )
 2. Assembly ( [`metaspades`](https://github.com/ablab/spades) )
@@ -66,6 +60,7 @@ To ensure the smoothest possible analysis using ViromeFlowX, we recommend taking
       --outdir <OUTDIR>
    ```
 
+   > [!NOTE]
    > If you are new to Nextflow and nf-core, check the [Nextflow installation guide](https://nf-co.re/docs/usage/installation). Ensure your setup passes the `-profile test` before processing real data.
 
 4. Advance usage
@@ -86,3 +81,15 @@ If you found ViromeFlowX usefull in your research, please cite the publication: 
 
 > Wang X, Ding Z, Yang Y, et al. ViromeFlowX: a Comprehensive Nextflow-based Automated Workflow for Mining Viral Genomes from Metagenomic Sequencing Data[J]. Microbial Genomics, 2024, 10(2): 001202.
 
+
+## Acknowledgements
+
+This pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/master/LICENSE). We gratefully acknowledge the nf-core community for their tooling, framework, and support, which have been essential to the development of this pipeline.
+
+> The nf-core framework for community-curated bioinformatics pipelines.  
+> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.  
+> *Nat Biotechnol.* 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://doi.org/10.1038/s41587-020-0439-x).
+
+> Empowering bioinformatics communities with Nextflow and nf-core.  
+> Langer, B.E., Amaral, A., Baudement, M.O., Bonath, F. et al.  
+> *Genome Biol.* 26, 228 (2025). doi: [10.1186/s13059-025-03673-9](https://doi.org/10.1186/s13059-025-03673-9).

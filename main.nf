@@ -1,12 +1,9 @@
 #!/usr/bin/env nextflow
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    nf-core/virome
+    ViromeFlowX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/nf-core/virome
-
-    Website: https://nf-co.re/virome
-    Slack  : https://nfcore.slack.com/channels/virome
+    Github : https://github.com/01life/ViromeFlowX
 ----------------------------------------------------------------------------------------
 */
 
@@ -30,7 +27,7 @@ WorkflowMain.initialise(workflow, params, log)
 include { VIROME } from './workflows/virome'
 
 //
-// WORKFLOW: Run main nf-core/virome analysis pipeline
+// WORKFLOW: Run main ViromeFlowX analysis pipeline
 //
 workflow NFCORE_VIROME {
     VIROME ()
@@ -44,7 +41,6 @@ workflow NFCORE_VIROME {
 
 //
 // WORKFLOW: Execute a single named workflow for the pipeline
-// See: https://github.com/nf-core/rnaseq/issues/619
 //
 workflow {
     NFCORE_VIROME ()
